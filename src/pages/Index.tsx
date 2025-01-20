@@ -6,10 +6,10 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState<'chat' | 'community' | 'lives' | 'music'>('chat');
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C]">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-x-hidden">
       {/* Header */}
       <header className="bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] backdrop-blur-lg border-b border-white/10">
-        <div className="container mx-auto flex justify-between items-center py-2 px-6">
+        <div className="container mx-auto flex justify-between items-center py-2 px-4">
           <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white animate-pulse hover:animate-none transition-all duration-300">
             24hs.Online
           </h1>
@@ -40,10 +40,10 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto p-4 lg:p-6">
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 h-[calc(100vh-8rem)]">
+      <main className="flex-1 container mx-auto p-4 max-w-full">
+        <div className="flex flex-col lg:flex-row gap-4 h-[calc(100vh-8rem)]">
           {/* Left Column */}
-          <div className="w-full lg:w-2/3 space-y-4 lg:space-y-6 overflow-y-auto">
+          <div className="w-full lg:w-2/3 space-y-4 overflow-y-auto">
             {/* Video Section */}
             <section className="rounded-xl overflow-hidden shadow-[0_0_30px_rgba(155,135,245,0.15)] bg-gradient-to-r from-[#2C2F3E] to-[#1A1F2C] p-1">
               <div className="relative w-full pt-[56.25%] rounded-lg overflow-hidden">
@@ -57,7 +57,7 @@ const Index = () => {
             </section>
 
             {/* Mini Cards Section */}
-            <section className="grid grid-cols-4 gap-2 md:gap-4">
+            <section className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-4">
               {/* Chat Card */}
               <button
                 onClick={() => setActiveSection('chat')}
