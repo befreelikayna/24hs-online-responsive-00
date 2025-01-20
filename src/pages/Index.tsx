@@ -6,7 +6,7 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState<'chat' | 'community' | 'lives' | 'music'>('chat');
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-hidden">
       {/* Header */}
       <header className="bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] backdrop-blur-lg border-b border-white/10">
         <div className="container mx-auto flex justify-between items-center py-2 px-4">
@@ -40,8 +40,8 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto p-4 max-w-full">
-        <div className="flex flex-col lg:flex-row gap-4 min-h-[calc(100vh-8rem)]">
+      <main className="flex-1 container mx-auto p-4">
+        <div className="flex flex-col lg:flex-row gap-4">
           {/* Left Column */}
           <div className="w-full lg:w-2/3 flex flex-col gap-4">
             {/* Video Section */}
@@ -58,7 +58,6 @@ const Index = () => {
 
             {/* Mini Cards Section */}
             <section className="grid grid-cols-4 gap-2 md:gap-4">
-              {/* Chat Card */}
               <button
                 onClick={() => setActiveSection('chat')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
@@ -133,8 +132,8 @@ const Index = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-full lg:w-1/3 flex-1 min-h-[50vh] lg:min-h-0">
-            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-full flex flex-col lg:sticky lg:top-4">
+          <div className="w-full lg:w-1/3 flex-1">
+            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 min-h-[calc(100vh-16rem)] lg:min-h-0 flex flex-col lg:sticky lg:top-4">
               <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
                 {activeSection === 'chat' && 'Chat ao Vivo'}
                 {activeSection === 'community' && 'Comunidade'}
