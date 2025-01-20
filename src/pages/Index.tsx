@@ -30,9 +30,12 @@ const Index = () => {
             {/* Video Section */}
             <section className="bg-white rounded-lg shadow-md p-4">
               <div className="relative w-full pt-[56.25%]">
-                <div className="absolute inset-0 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500">Área do Vídeo</span>
-                </div>
+                <iframe 
+                  className="absolute inset-0 w-full h-full rounded-lg"
+                  src="https://iblups.com/embed/abretv" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </section>
 
