@@ -1,7 +1,10 @@
 import { Bell, MessageSquare, User, Users, Video, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState<'chat' | 'community' | 'lives' | 'music'>('chat');
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -40,75 +43,67 @@ const Index = () => {
             </section>
 
             {/* Mini Cards Section */}
-            <section className="rounded-xl p-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <section className="rounded-xl">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {/* Chat Card */}
-                <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg hover:shadow-md transition-all duration-300">
-                  <div className="p-3 bg-blue-500 rounded-full">
-                    <MessageSquare className="h-6 w-6 text-white" />
+                <button
+                  onClick={() => setActiveSection('chat')}
+                  className={`flex items-center p-3 rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                    activeSection === 'chat'
+                      ? 'bg-blue-500 text-white shadow-lg'
+                      : 'bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <MessageSquare className="h-4 w-4" />
+                    <span className="font-medium text-sm">CHAT</span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-gray-800">CHAT</h3>
-                    <p className="text-sm text-gray-600">Converse com outros usuários</p>
-                  </div>
-                  <Button 
-                    variant="ghost" 
-                    className="hover:bg-blue-200 transition-colors"
-                  >
-                    <MessageSquare className="h-5 w-5" />
-                  </Button>
-                </div>
+                </button>
 
                 {/* Community Card */}
-                <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg hover:shadow-md transition-all duration-300">
-                  <div className="p-3 bg-purple-500 rounded-full">
-                    <Users className="h-6 w-6 text-white" />
+                <button
+                  onClick={() => setActiveSection('community')}
+                  className={`flex items-center p-3 rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                    activeSection === 'community'
+                      ? 'bg-purple-500 text-white shadow-lg'
+                      : 'bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    <span className="font-medium text-sm">COMUNIDADE</span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-gray-800">COMUNIDADE</h3>
-                    <p className="text-sm text-gray-600">Conecte-se com a comunidade</p>
-                  </div>
-                  <Button 
-                    variant="ghost" 
-                    className="hover:bg-purple-200 transition-colors"
-                  >
-                    <Users className="h-5 w-5" />
-                  </Button>
-                </div>
+                </button>
 
-                {/* Live Streams Card */}
-                <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-red-50 to-red-100 rounded-lg hover:shadow-md transition-all duration-300">
-                  <div className="p-3 bg-red-500 rounded-full">
-                    <Video className="h-6 w-6 text-white" />
+                {/* Lives Card */}
+                <button
+                  onClick={() => setActiveSection('lives')}
+                  className={`flex items-center p-3 rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                    activeSection === 'lives'
+                      ? 'bg-red-500 text-white shadow-lg'
+                      : 'bg-gradient-to-r from-red-50 to-red-100 hover:from-red-100 hover:to-red-200'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Video className="h-4 w-4" />
+                    <span className="font-medium text-sm">LIVES</span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-gray-800">LIVES</h3>
-                    <p className="text-sm text-gray-600">Assista transmissões ao vivo</p>
-                  </div>
-                  <Button 
-                    variant="ghost" 
-                    className="hover:bg-red-200 transition-colors"
-                  >
-                    <Video className="h-5 w-5" />
-                  </Button>
-                </div>
+                </button>
 
                 {/* Music Card */}
-                <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg hover:shadow-md transition-all duration-300">
-                  <div className="p-3 bg-green-500 rounded-full">
-                    <Music className="h-6 w-6 text-white" />
+                <button
+                  onClick={() => setActiveSection('music')}
+                  className={`flex items-center p-3 rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                    activeSection === 'music'
+                      ? 'bg-green-500 text-white shadow-lg'
+                      : 'bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Music className="h-4 w-4" />
+                    <span className="font-medium text-sm">MÚSICA</span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-gray-800">MÚSICA</h3>
-                    <p className="text-sm text-gray-600">Ouça suas músicas favoritas</p>
-                  </div>
-                  <Button 
-                    variant="ghost" 
-                    className="hover:bg-green-200 transition-colors"
-                  >
-                    <Music className="h-5 w-5" />
-                  </Button>
-                </div>
+                </button>
               </div>
             </section>
           </div>
@@ -116,9 +111,25 @@ const Index = () => {
           {/* Right Column */}
           <div className="w-full md:w-1/3">
             <section className="bg-white rounded-xl shadow-lg p-6 h-full">
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">Coluna Direita</h2>
+              <h2 className="text-xl font-semibold mb-4 text-gray-800">
+                {activeSection === 'chat' && 'Chat'}
+                {activeSection === 'community' && 'Comunidade'}
+                {activeSection === 'lives' && 'Lives'}
+                {activeSection === 'music' && 'Música'}
+              </h2>
               <div className="h-[calc(100%-2rem)] bg-gray-50 rounded-lg p-4">
-                {/* Conteúdo da coluna direita aqui */}
+                {activeSection === 'chat' && (
+                  <p>Área do chat</p>
+                )}
+                {activeSection === 'community' && (
+                  <p>Área da comunidade</p>
+                )}
+                {activeSection === 'lives' && (
+                  <p>Área das lives</p>
+                )}
+                {activeSection === 'music' && (
+                  <p>Área da música</p>
+                )}
               </div>
             </section>
           </div>
