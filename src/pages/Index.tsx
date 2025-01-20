@@ -6,11 +6,11 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState<'chat' | 'community' | 'lives' | 'music'>('chat');
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C]">
       {/* Header */}
-      <header className="bg-gradient-to-r from-[#243949] to-[#517fa4] backdrop-blur-lg border-b border-white/10">
+      <header className="bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] backdrop-blur-lg border-b border-white/10">
         <div className="container mx-auto flex justify-between items-center py-4 px-6">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
             24hs.Online
           </h1>
           <div className="flex gap-4">
@@ -33,7 +33,7 @@ const Index = () => {
           {/* Left Column */}
           <div className="w-full lg:w-2/3 space-y-6">
             {/* Video Section */}
-            <section className="rounded-xl overflow-hidden shadow-2xl bg-gradient-to-r from-gray-800 to-gray-900 p-1">
+            <section className="rounded-xl overflow-hidden shadow-[0_0_30px_rgba(155,135,245,0.15)] bg-gradient-to-r from-[#2C2F3E] to-[#1A1F2C] p-1">
               <div className="relative w-full pt-[56.25%] rounded-lg overflow-hidden">
                 <iframe 
                   className="absolute inset-0 w-full h-full"
@@ -51,13 +51,13 @@ const Index = () => {
                 onClick={() => setActiveSection('chat')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
                   activeSection === 'chat'
-                    ? 'bg-gradient-to-br from-blue-600 to-blue-400 shadow-lg shadow-blue-500/50'
-                    : 'bg-gradient-to-br from-gray-800 to-gray-700 hover:from-blue-600 hover:to-blue-400'
+                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
+                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
                 <div className="p-4 flex items-center gap-3">
-                  <MessageSquare className={`h-5 w-5 ${activeSection === 'chat' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'chat' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
+                  <MessageSquare className={`h-5 w-5 ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
+                  <span className={`font-medium ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     CHAT
                   </span>
                 </div>
@@ -69,13 +69,13 @@ const Index = () => {
                 onClick={() => setActiveSection('community')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
                   activeSection === 'community'
-                    ? 'bg-gradient-to-br from-purple-600 to-purple-400 shadow-lg shadow-purple-500/50'
-                    : 'bg-gradient-to-br from-gray-800 to-gray-700 hover:from-purple-600 hover:to-purple-400'
+                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
+                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
                 <div className="p-4 flex items-center gap-3">
-                  <Users className={`h-5 w-5 ${activeSection === 'community' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'community' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
+                  <Users className={`h-5 w-5 ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
+                  <span className={`font-medium ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     COMUNIDADE
                   </span>
                 </div>
@@ -87,13 +87,13 @@ const Index = () => {
                 onClick={() => setActiveSection('lives')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
                   activeSection === 'lives'
-                    ? 'bg-gradient-to-br from-red-600 to-red-400 shadow-lg shadow-red-500/50'
-                    : 'bg-gradient-to-br from-gray-800 to-gray-700 hover:from-red-600 hover:to-red-400'
+                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
+                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
                 <div className="p-4 flex items-center gap-3">
-                  <Video className={`h-5 w-5 ${activeSection === 'lives' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'lives' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
+                  <Video className={`h-5 w-5 ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
+                  <span className={`font-medium ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     LIVES
                   </span>
                 </div>
@@ -105,13 +105,13 @@ const Index = () => {
                 onClick={() => setActiveSection('music')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
                   activeSection === 'music'
-                    ? 'bg-gradient-to-br from-green-600 to-green-400 shadow-lg shadow-green-500/50'
-                    : 'bg-gradient-to-br from-gray-800 to-gray-700 hover:from-green-600 hover:to-green-400'
+                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
+                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
                 <div className="p-4 flex items-center gap-3">
-                  <Music className={`h-5 w-5 ${activeSection === 'music' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'music' ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
+                  <Music className={`h-5 w-5 ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
+                  <span className={`font-medium ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     MÚSICA
                   </span>
                 </div>
@@ -122,25 +122,25 @@ const Index = () => {
 
           {/* Right Column */}
           <div className="w-full lg:w-1/3">
-            <section className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-2xl border border-white/10 backdrop-blur-lg p-6">
-              <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-6">
+              <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
                 {activeSection === 'chat' && 'Chat ao Vivo'}
                 {activeSection === 'community' && 'Comunidade'}
                 {activeSection === 'lives' && 'Lives Disponíveis'}
                 {activeSection === 'music' && 'Playlist'}
               </h2>
-              <div className="h-[calc(100vh-20rem)] bg-gray-900/50 rounded-lg p-4 backdrop-blur-sm border border-white/5">
+              <div className="h-[calc(100vh-20rem)] bg-[#1A1F2C]/50 rounded-lg p-4 backdrop-blur-sm border border-[#9b87f5]/5">
                 {activeSection === 'chat' && (
-                  <p className="text-gray-400">Área do chat em desenvolvimento...</p>
+                  <p className="text-[#D6BCFA]/70">Área do chat em desenvolvimento...</p>
                 )}
                 {activeSection === 'community' && (
-                  <p className="text-gray-400">Área da comunidade em desenvolvimento...</p>
+                  <p className="text-[#D6BCFA]/70">Área da comunidade em desenvolvimento...</p>
                 )}
                 {activeSection === 'lives' && (
-                  <p className="text-gray-400">Área das lives em desenvolvimento...</p>
+                  <p className="text-[#D6BCFA]/70">Área das lives em desenvolvimento...</p>
                 )}
                 {activeSection === 'music' && (
-                  <p className="text-gray-400">Área da música em desenvolvimento...</p>
+                  <p className="text-[#D6BCFA]/70">Área da música em desenvolvimento...</p>
                 )}
               </div>
             </section>
@@ -149,9 +149,9 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-gray-900 to-gray-800 border-t border-white/10 mt-8">
+      <footer className="bg-gradient-to-r from-[#1A1F2C] to-[#2C2F3E] border-t border-[#9b87f5]/10 mt-8">
         <div className="container mx-auto py-6 px-4 text-center">
-          <p className="text-gray-400">&copy; 2024 24hs.Online. Todos os direitos reservados.</p>
+          <p className="text-[#D6BCFA]/70">&copy; 2024 24hs.Online. Todos os direitos reservados.</p>
         </div>
       </footer>
     </div>
