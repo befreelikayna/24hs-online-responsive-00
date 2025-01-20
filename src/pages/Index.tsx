@@ -39,23 +39,21 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Buttons Section */}
+            {/* Chat Card Section (replacing buttons) */}
             <section className="bg-white rounded-xl shadow-lg p-6">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg hover:shadow-md transition-all duration-300">
+                <div className="p-3 bg-blue-500 rounded-full">
+                  <MessageSquare className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg text-gray-800">CHAT</h3>
+                  <p className="text-sm text-gray-600">Converse com outros usuários</p>
+                </div>
                 <Button 
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
+                  variant="ghost" 
+                  className="hover:bg-blue-200 transition-colors"
                 >
-                  Botão 1
-                </Button>
-                <Button 
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                  Botão 2
-                </Button>
-                <Button 
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                  Botão 3
+                  <MessageSquare className="h-5 w-5" />
                 </Button>
               </div>
             </section>
