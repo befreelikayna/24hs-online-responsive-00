@@ -56,7 +56,7 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Mini Cards Section - Now in a single row */}
+            {/* Mini Cards Section */}
             <section className="grid grid-cols-4 gap-2 md:gap-4">
               {/* Chat Card */}
               <button
@@ -133,8 +133,8 @@ const Index = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-full lg:w-1/3 flex-1">
-            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-full flex flex-col sticky top-4">
+          <div className="w-full lg:w-1/3 flex-1 min-h-[50vh] lg:min-h-0">
+            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-full flex flex-col lg:sticky lg:top-4">
               <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
                 {activeSection === 'chat' && 'Chat ao Vivo'}
                 {activeSection === 'community' && 'Comunidade'}
