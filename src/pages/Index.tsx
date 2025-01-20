@@ -24,9 +24,9 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto p-4">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* Left Column */}
-          <div className="w-full space-y-6">
+          <div className="w-full md:w-2/3 space-y-6">
             {/* Video Section */}
             <section className="bg-white rounded-lg shadow-md p-4">
               <div className="relative w-full pt-[56.25%]">
@@ -47,7 +47,7 @@ const Index = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-full">
+          <div className="w-full md:w-1/3">
             <section className="bg-white rounded-lg shadow-md p-4 h-full">
               <h2 className="text-xl font-semibold mb-4">Coluna Direita</h2>
               <div className="h-[calc(100%-2rem)]">
