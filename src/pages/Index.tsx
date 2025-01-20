@@ -29,9 +29,9 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto p-4 lg:p-6">
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
           {/* Left Column */}
-          <div className="w-full lg:w-2/3 space-y-6">
+          <div className="w-full lg:w-2/3 space-y-4 lg:space-y-6">
             {/* Video Section */}
             <section className="rounded-xl overflow-hidden shadow-[0_0_30px_rgba(155,135,245,0.15)] bg-gradient-to-r from-[#2C2F3E] to-[#1A1F2C] p-1">
               <div className="relative w-full pt-[56.25%] rounded-lg overflow-hidden">
@@ -45,7 +45,7 @@ const Index = () => {
             </section>
 
             {/* Mini Cards Section */}
-            <section className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <section className="grid grid-cols-4 gap-2 md:gap-4">
               {/* Chat Card */}
               <button
                 onClick={() => setActiveSection('chat')}
@@ -55,9 +55,9 @@ const Index = () => {
                     : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
-                <div className="p-4 flex items-center gap-3">
+                <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <MessageSquare className={`h-5 w-5 ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`hidden md:inline font-medium ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     CHAT
                   </span>
                 </div>
@@ -73,9 +73,9 @@ const Index = () => {
                     : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
-                <div className="p-4 flex items-center gap-3">
+                <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Users className={`h-5 w-5 ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`hidden md:inline font-medium ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     COMUNIDADE
                   </span>
                 </div>
@@ -91,9 +91,9 @@ const Index = () => {
                     : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
-                <div className="p-4 flex items-center gap-3">
+                <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Video className={`h-5 w-5 ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`hidden md:inline font-medium ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     LIVES
                   </span>
                 </div>
@@ -109,9 +109,9 @@ const Index = () => {
                     : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
                 }`}
               >
-                <div className="p-4 flex items-center gap-3">
+                <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Music className={`h-5 w-5 ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`font-medium ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`hidden md:inline font-medium ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     MÚSICA
                   </span>
                 </div>
