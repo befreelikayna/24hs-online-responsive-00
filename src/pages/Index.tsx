@@ -41,9 +41,9 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto p-4 max-w-full">
-        <div className="flex flex-col lg:flex-row gap-4 h-[calc(100vh-8rem)]">
+        <div className="flex flex-col lg:flex-row gap-4 min-h-[calc(100vh-8rem)]">
           {/* Left Column */}
-          <div className="w-full lg:w-2/3 space-y-4 overflow-y-auto">
+          <div className="w-full lg:w-2/3 flex flex-col gap-4">
             {/* Video Section */}
             <section className="rounded-xl overflow-hidden shadow-[0_0_30px_rgba(155,135,245,0.15)] bg-gradient-to-r from-[#2C2F3E] to-[#1A1F2C] p-1">
               <div className="relative w-full pt-[56.25%] rounded-lg overflow-hidden">
@@ -56,8 +56,8 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Mini Cards Section */}
-            <section className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-4">
+            {/* Mini Cards Section - Now in a single row */}
+            <section className="grid grid-cols-4 gap-2 md:gap-4">
               {/* Chat Card */}
               <button
                 onClick={() => setActiveSection('chat')}
@@ -133,7 +133,7 @@ const Index = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-full lg:w-1/3 h-full overflow-hidden">
+          <div className="w-full lg:w-1/3 h-full">
             <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-full flex flex-col">
               <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
                 {activeSection === 'chat' && 'Chat ao Vivo'}
