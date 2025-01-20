@@ -41,9 +41,9 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto p-4 lg:p-6">
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 h-[calc(100vh-8rem)]">
           {/* Left Column */}
-          <div className="w-full lg:w-2/3 space-y-4 lg:space-y-6">
+          <div className="w-full lg:w-2/3 space-y-4 lg:space-y-6 overflow-y-auto">
             {/* Video Section */}
             <section className="rounded-xl overflow-hidden shadow-[0_0_30px_rgba(155,135,245,0.15)] bg-gradient-to-r from-[#2C2F3E] to-[#1A1F2C] p-1">
               <div className="relative w-full pt-[56.25%] rounded-lg overflow-hidden">
@@ -133,15 +133,15 @@ const Index = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-full lg:w-1/3">
-            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-6">
+          <div className="w-full lg:w-1/3 h-full overflow-hidden">
+            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-full flex flex-col">
               <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
                 {activeSection === 'chat' && 'Chat ao Vivo'}
                 {activeSection === 'community' && 'Comunidade'}
                 {activeSection === 'lives' && 'Lives Disponíveis'}
                 {activeSection === 'music' && 'Playlist'}
               </h2>
-              <div className="h-[calc(100vh-20rem)] bg-[#1A1F2C]/50 rounded-lg p-4 backdrop-blur-sm border border-[#9b87f5]/5">
+              <div className="flex-1 bg-[#1A1F2C]/50 rounded-lg p-4 backdrop-blur-sm border border-[#9b87f5]/5 overflow-y-auto">
                 {activeSection === 'chat' && (
                   <p className="text-[#D6BCFA]/70">Área do chat em desenvolvimento...</p>
                 )}
