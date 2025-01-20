@@ -8,12 +8,12 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-hidden">
       {/* Header */}
-      <header className="bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] backdrop-blur-lg border-b border-white/10">
-        <div className="container mx-auto flex justify-between items-center py-2 px-4">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white animate-pulse hover:animate-none transition-all duration-300">
+      <header className="bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] backdrop-blur-lg border-b border-white/10 fixed top-0 w-full z-50">
+        <div className="container mx-auto flex justify-between items-center h-14 px-4">
+          <h1 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white animate-pulse hover:animate-none transition-all duration-300">
             24hs.Online
           </h1>
-          <div className="flex gap-3">
+          <div className="flex gap-2 md:gap-3">
             <Button 
               variant="ghost" 
               size="icon" 
@@ -40,7 +40,7 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto p-4">
+      <main className="flex-1 container mx-auto p-4 mt-14">
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Left Column */}
           <div className="w-full lg:w-2/3 flex flex-col gap-4">
@@ -57,7 +57,7 @@ const Index = () => {
             </section>
 
             {/* Mini Cards Section */}
-            <section className="grid grid-cols-4 gap-2 md:gap-4">
+            <section className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-4">
               <button
                 onClick={() => setActiveSection('chat')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
@@ -68,14 +68,13 @@ const Index = () => {
               >
                 <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <MessageSquare className={`h-5 w-5 ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline font-medium ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`text-sm md:text-base font-medium ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     CHAT
                   </span>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </button>
 
-              {/* Community Card */}
               <button
                 onClick={() => setActiveSection('community')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
@@ -86,14 +85,13 @@ const Index = () => {
               >
                 <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Users className={`h-5 w-5 ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline font-medium ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`text-sm md:text-base font-medium ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     COMUNIDADE
                   </span>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </button>
 
-              {/* Lives Card */}
               <button
                 onClick={() => setActiveSection('lives')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
@@ -104,14 +102,13 @@ const Index = () => {
               >
                 <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Video className={`h-5 w-5 ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline font-medium ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`text-sm md:text-base font-medium ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     LIVES
                   </span>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </button>
 
-              {/* Music Card */}
               <button
                 onClick={() => setActiveSection('music')}
                 className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
@@ -122,7 +119,7 @@ const Index = () => {
               >
                 <div className="p-2 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Music className={`h-5 w-5 ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline font-medium ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                  <span className={`text-sm md:text-base font-medium ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
                     MÚSICA
                   </span>
                 </div>
@@ -133,7 +130,7 @@ const Index = () => {
 
           {/* Right Column */}
           <div className="w-full lg:w-1/3 flex-1">
-            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 min-h-[calc(100vh-16rem)] lg:min-h-0 flex flex-col lg:sticky lg:top-4">
+            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 min-h-[calc(100vh-16rem)] lg:min-h-[calc(100vh-10rem)] flex flex-col lg:sticky lg:top-20">
               <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
                 {activeSection === 'chat' && 'Chat ao Vivo'}
                 {activeSection === 'community' && 'Comunidade'}
