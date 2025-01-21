@@ -73,7 +73,10 @@ export const ChatMessage = ({
               userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
             )}
           >
-            <ThumbsUp className="w-3.5 h-3.5" />
+            <ThumbsUp 
+              className="w-3.5 h-3.5" 
+              fill={userReactions.liked ? "currentColor" : "none"}
+            />
             <span>{likes}</span>
           </button>
           <button
@@ -83,7 +86,10 @@ export const ChatMessage = ({
               userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
             )}
           >
-            <ThumbsDown className="w-3.5 h-3.5" />
+            <ThumbsDown 
+              className="w-3.5 h-3.5" 
+              fill={userReactions.disliked ? "currentColor" : "none"}
+            />
             <span>{dislikes}</span>
           </button>
           <button
@@ -93,7 +99,10 @@ export const ChatMessage = ({
               userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
             )}
           >
-            <Heart className="w-3.5 h-3.5" />
+            <Heart 
+              className="w-3.5 h-3.5" 
+              fill={userReactions.hearted ? "currentColor" : "none"}
+            />
             <span>{hearts}</span>
           </button>
           <button
