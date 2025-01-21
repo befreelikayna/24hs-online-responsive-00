@@ -84,7 +84,7 @@ export const LiveChat = () => {
 
   return (
     <div className="flex flex-col h-full relative">
-      <div className="flex-1 overflow-y-auto p-2 space-y-2 scrollbar-hide pb-2 mb-[60px] md:mb-0">
+      <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
         {messages.map((message) => (
           <ChatMessage
             key={message.id}
@@ -93,11 +93,13 @@ export const LiveChat = () => {
           />
         ))}
       </div>
-      <ChatInput
-        value={newMessage}
-        onChange={setNewMessage}
-        onSend={handleSendMessage}
-      />
+      <div className="absolute bottom-0 left-0 right-0">
+        <ChatInput
+          value={newMessage}
+          onChange={setNewMessage}
+          onSend={handleSendMessage}
+        />
+      </div>
     </div>
   );
 };
