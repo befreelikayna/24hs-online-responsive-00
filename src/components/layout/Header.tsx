@@ -1,12 +1,11 @@
 import { Bell, MessageSquare, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 interface HeaderProps {
   onLogout?: () => void;
@@ -35,8 +34,8 @@ export const Header = ({ onLogout }: HeaderProps) => {
             <MessageSquare className="h-5 w-5 stroke-[1.5]" />
           </Button>
           
-          <Dialog>
-            <DialogTrigger asChild>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -44,34 +43,27 @@ export const Header = ({ onLogout }: HeaderProps) => {
               >
                 <User className="h-5 w-5 stroke-[1.5]" />
               </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-[#1A1F2C] text-white border-[#9b87f5]/20">
-              <DialogHeader>
-                <DialogTitle className="text-xl font-bold text-[#D6BCFA]">Perfil</DialogTitle>
-              </DialogHeader>
-              <div className="flex flex-col gap-4 py-4">
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-white/5 text-white"
-                  onClick={() => {
-                    // Implement view profile functionality
-                    console.log("View profile clicked");
-                  }}
-                >
-                  <User className="mr-2 h-5 w-5" />
-                  Ver Perfil
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-white/5 text-white"
-                  onClick={onLogout}
-                >
-                  <LogOut className="mr-2 h-5 w-5" />
-                  Sair
-                </Button>
-              </div>
-            </DialogContent>
-          </Dialog>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 bg-[#1A1F2C] text-white border-[#9b87f5]/20">
+              <DropdownMenuItem 
+                className="flex items-center gap-2 hover:bg-white/5 cursor-pointer"
+                onClick={() => {
+                  // Implement view profile functionality
+                  console.log("View profile clicked");
+                }}
+              >
+                <User className="h-4 w-4" />
+                Ver Perfil
+              </DropdownMenuItem>
+              <DropdownMenuItem 
+                className="flex items-center gap-2 hover:bg-white/5 cursor-pointer"
+                onClick={onLogout}
+              >
+                <LogOut className="h-4 w-4" />
+                Sair
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
