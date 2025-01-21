@@ -143,8 +143,8 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
     : messages;
 
   return (
-    <div className="flex flex-col h-full relative bg-[#1A1F2C]">
-      <div className="flex items-center justify-between px-4 py-1 border-b border-[#9b87f5]/10">
+    <div className="flex flex-col h-full bg-[#1A1F2C]">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-[#9b87f5]/10">
         <div className="flex items-center gap-2">
           <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
           <Filter 
@@ -166,7 +166,7 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
           )}
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto p-2 space-y-2 scrollbar-hide">
+      <div className="flex-1 min-h-0 overflow-y-auto p-2 space-y-2 scrollbar-hide">
         {filteredMessages.map((message) => (
           <ChatMessage
             key={message.id}
@@ -176,7 +176,7 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
           />
         ))}
       </div>
-      <div className="w-full">
+      <div className="mt-auto border-t border-[#9b87f5]/10">
         <ChatInput
           value={newMessage}
           onChange={setNewMessage}
