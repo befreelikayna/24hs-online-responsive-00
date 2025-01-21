@@ -7,7 +7,6 @@ const Index = () => {
 
   return (
     <div className="h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-hidden">
-      {/* Header */}
       <header className="bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] backdrop-blur-lg border-b border-white/10 w-full z-50 h-14 flex-shrink-0">
         <div className="container mx-auto flex justify-between items-center h-full px-4">
           <h1 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white animate-pulse hover:animate-none transition-all duration-300">
@@ -57,18 +56,18 @@ const Index = () => {
             </section>
 
             {/* Mini Cards Section */}
-            <section className="grid grid-cols-4 gap-2 md:gap-4">
+            <section className="grid grid-cols-4 gap-2">
               <button
                 onClick={() => setActiveSection('chat')}
-                className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'chat'
-                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
-                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
+                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
+                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2 md:p-4 flex items-center justify-center gap-2">
-                  <MessageSquare className={`h-5 w-5 ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline text-sm md:text-base font-medium ${activeSection === 'chat' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                <div className="p-2.5 flex items-center justify-center gap-2">
+                  <MessageSquare className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
+                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
                     CHAT
                   </span>
                 </div>
@@ -76,15 +75,15 @@ const Index = () => {
 
               <button
                 onClick={() => setActiveSection('community')}
-                className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'community'
-                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
-                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
+                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
+                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2 md:p-4 flex items-center justify-center gap-2">
-                  <Users className={`h-5 w-5 ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline text-sm md:text-base font-medium ${activeSection === 'community' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                <div className="p-2.5 flex items-center justify-center gap-2">
+                  <Users className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
+                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
                     COMUNIDADE
                   </span>
                 </div>
@@ -92,15 +91,15 @@ const Index = () => {
 
               <button
                 onClick={() => setActiveSection('lives')}
-                className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'lives'
-                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
-                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
+                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
+                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2 md:p-4 flex items-center justify-center gap-2">
-                  <Video className={`h-5 w-5 ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline text-sm md:text-base font-medium ${activeSection === 'lives' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                <div className="p-2.5 flex items-center justify-center gap-2">
+                  <Video className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
+                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
                     LIVES
                   </span>
                 </div>
@@ -108,15 +107,15 @@ const Index = () => {
 
               <button
                 onClick={() => setActiveSection('music')}
-                className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'music'
-                    ? 'bg-gradient-to-br from-[#9b87f5] to-[#7E69AB] shadow-lg shadow-[#9b87f5]/30'
-                    : 'bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] hover:from-[#9b87f5] hover:to-[#7E69AB]'
+                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
+                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2 md:p-4 flex items-center justify-center gap-2">
-                  <Music className={`h-5 w-5 ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`} />
-                  <span className={`hidden md:inline text-sm md:text-base font-medium ${activeSection === 'music' ? 'text-white' : 'text-[#D6BCFA] group-hover:text-white'}`}>
+                <div className="p-2.5 flex items-center justify-center gap-2">
+                  <Music className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
+                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
                     MÚSICA
                   </span>
                 </div>
@@ -124,7 +123,6 @@ const Index = () => {
             </section>
           </div>
 
-          {/* Right Column */}
           <div className="w-full lg:w-1/3 h-full">
             <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4">
               <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
@@ -200,7 +198,6 @@ const Index = () => {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-gradient-to-r from-[#1A1F2C] to-[#2C2F3E] border-t border-[#9b87f5]/10 flex-shrink-0">
         <div className="container mx-auto py-3 px-4 text-center">
           <p className="text-[#D6BCFA]/70 text-sm">&copy; 2024 24hs.Online. Todos os direitos reservados.</p>
