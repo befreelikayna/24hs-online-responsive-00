@@ -82,7 +82,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       hearts: 0,
       replies: [],
       userReactions: { liked: false, disliked: false, hearted: false },
-      read: true
+      read: true // Mensagens enviadas pelo usuário já são consideradas lidas
     };
 
     setMessages([...messages, message]);
@@ -137,12 +137,30 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     })));
   };
 
-  const unreadCount = messages.filter(message => !message.read).length;
+  // Calcula o número de mensagens não lidas (excluindo as mensagens do próprio usuário)
+  const unreadCount = messages.filter(message => !message.read && message.userName !== "Você").length;
 
-  // Notify parent component when unread count changes
+  // Notifica o componente pai quando o número de mensagens não lidas muda
   useEffect(() => {
     onUnreadCountChange?.(unreadCount);
   }, [unreadCount, onUnreadCountChange]);
+
+  // Monitora o scroll do chat
+  useEffect(() => {
+    const chatContainer = document.querySelector('.scrollbar-hide');
+    if (!chatContainer) return;
+
+    const handleScroll = () => {
+      const { scrollHeight, scrollTop, clientHeight } = chatContainer;
+      // Se o usuário chegou ao final do chat, marca todas as mensagens como lidas
+      if (scrollHeight - scrollTop <= clientHeight + 100) {
+        markAllAsRead();
+      }
+    };
+
+    chatContainer.addEventListener('scroll', handleScroll);
+    return () => chatContainer.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const filteredMessages = filterUserMessages
     ? messages.filter(message => message.userName === "Você")
