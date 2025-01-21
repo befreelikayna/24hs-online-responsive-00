@@ -126,26 +126,74 @@ const Index = () => {
 
           {/* Right Column */}
           <div className="w-full lg:w-1/3 h-full">
-            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-full lg:sticky lg:top-4">
-              <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
-                {activeSection === 'chat' && 'Chat ao Vivo'}
-                {activeSection === 'community' && 'Comunidade'}
-                {activeSection === 'lives' && 'Lives Disponíveis'}
-                {activeSection === 'music' && 'Playlist'}
-              </h2>
-              <div className="bg-[#1A1F2C]/50 rounded-lg p-4 backdrop-blur-sm border border-[#9b87f5]/5 h-[calc(100%-5rem)] overflow-y-auto">
-                {activeSection === 'chat' && (
-                  <p className="text-[#D6BCFA]/70">Área do chat em desenvolvimento...</p>
-                )}
-                {activeSection === 'community' && (
-                  <p className="text-[#D6BCFA]/70">Área da comunidade em desenvolvimento...</p>
-                )}
-                {activeSection === 'lives' && (
-                  <p className="text-[#D6BCFA]/70">Área das lives em desenvolvimento...</p>
-                )}
-                {activeSection === 'music' && (
-                  <p className="text-[#D6BCFA]/70">Área da música em desenvolvimento...</p>
-                )}
+            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
+                <h2 className="text-xl font-bold text-white">
+                  {activeSection === 'chat' && (
+                    <div className="flex items-center gap-2">
+                      <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
+                      <span>Chat ao Vivo</span>
+                    </div>
+                  )}
+                  {activeSection === 'community' && (
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-[#9b87f5]" />
+                      <span>Comunidade</span>
+                    </div>
+                  )}
+                  {activeSection === 'lives' && (
+                    <div className="flex items-center gap-2">
+                      <Video className="w-5 h-5 text-[#9b87f5]" />
+                      <span>Lives Disponíveis</span>
+                    </div>
+                  )}
+                  {activeSection === 'music' && (
+                    <div className="flex items-center gap-2">
+                      <Music className="w-5 h-5 text-[#9b87f5]" />
+                      <span>Playlist</span>
+                    </div>
+                  )}
+                </h2>
+              </div>
+              <div className="p-6 h-[calc(100%-4rem)] overflow-y-auto">
+                <div className="bg-[#1A1F2C]/80 rounded-xl p-6 backdrop-blur-sm border border-[#9b87f5]/10 h-full">
+                  {activeSection === 'chat' && (
+                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                      <MessageSquare className="w-12 h-12 text-[#9b87f5]/30" />
+                      <p className="text-[#D6BCFA]/70 text-center">
+                        Área do chat em desenvolvimento...<br/>
+                        Em breve você poderá interagir com outros usuários!
+                      </p>
+                    </div>
+                  )}
+                  {activeSection === 'community' && (
+                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                      <Users className="w-12 h-12 text-[#9b87f5]/30" />
+                      <p className="text-[#D6BCFA]/70 text-center">
+                        Área da comunidade em desenvolvimento...<br/>
+                        Em breve você poderá conectar com a comunidade!
+                      </p>
+                    </div>
+                  )}
+                  {activeSection === 'lives' && (
+                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                      <Video className="w-12 h-12 text-[#9b87f5]/30" />
+                      <p className="text-[#D6BCFA]/70 text-center">
+                        Área das lives em desenvolvimento...<br/>
+                        Em breve você poderá acessar mais conteúdo ao vivo!
+                      </p>
+                    </div>
+                  )}
+                  {activeSection === 'music' && (
+                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                      <Music className="w-12 h-12 text-[#9b87f5]/30" />
+                      <p className="text-[#D6BCFA]/70 text-center">
+                        Área da música em desenvolvimento...<br/>
+                        Em breve você poderá curtir suas músicas favoritas!
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             </section>
           </div>
