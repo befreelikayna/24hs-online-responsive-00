@@ -15,7 +15,8 @@ export const NavigationTabs = ({ activeSection, setActiveSection, isLoggedIn = f
       toast({
         title: "Ops! 🔒",
         description: "Ei! Faz um login rapidinho pra gente continuar juntos nessa!",
-        className: "bg-[#1A1F2C] text-white border-[#9b87f5]/20 animate-in slide-in-from-bottom-1/2 duration-300",
+        className: "group transform data-[state=open]:animate-contentShow bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] text-white border border-[#9b87f5]/20 shadow-[0_0_30px_rgba(155,135,245,0.15)] backdrop-blur-lg",
+        duration: 3000,
       });
       return;
     }
