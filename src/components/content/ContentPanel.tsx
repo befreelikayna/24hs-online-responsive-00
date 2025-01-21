@@ -56,10 +56,17 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           )}
         </h2>
         {activeSection === 'chat' && (
-          <Scroll
-            className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
-            onClick={scrollToBottom}
-          />
+          <div className="relative">
+            <Scroll
+              className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+              onClick={scrollToBottom}
+            />
+            {unreadCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                {unreadCount}
+              </span>
+            )}
+          </div>
         )}
       </div>
       <div className="h-[calc(100%-4rem)] overflow-y-auto">

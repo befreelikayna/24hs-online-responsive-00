@@ -25,6 +25,7 @@ interface Message {
   hearts: number;
   replies: Reply[];
   userReactions: MessageReactions;
+  read: boolean;
 }
 
 interface LiveChatProps {
@@ -49,7 +50,8 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
           timestamp: new Date(Date.now() - 1000 * 60 * 4),
         }
       ],
-      userReactions: { liked: false, disliked: false, hearted: false }
+      userReactions: { liked: false, disliked: false, hearted: false },
+      read: false
     },
     {
       id: '2',
@@ -60,7 +62,8 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
       dislikes: 0,
       hearts: 2,
       replies: [],
-      userReactions: { liked: false, disliked: false, hearted: false }
+      userReactions: { liked: false, disliked: false, hearted: false },
+      read: false
     }
   ]);
   const [newMessage, setNewMessage] = useState("");
@@ -77,7 +80,8 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
       dislikes: 0,
       hearts: 0,
       replies: [],
-      userReactions: { liked: false, disliked: false, hearted: false }
+      userReactions: { liked: false, disliked: false, hearted: false },
+      read: true
     };
 
     setMessages([...messages, message]);
@@ -124,6 +128,15 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
       return message;
     }));
   };
+
+  const markAllAsRead = () => {
+    setMessages(messages.map(message => ({
+      ...message,
+      read: true
+    })));
+  };
+
+  const unreadCount = messages.filter(message => !message.read).length;
 
   const filteredMessages = filterUserMessages
     ? messages.filter(message => message.userName === "Você")
