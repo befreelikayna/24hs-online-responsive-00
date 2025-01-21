@@ -1,4 +1,4 @@
-import { ThumbsUp, ThumbsDown, Heart, MessageCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { ThumbsUp, ThumbsDown, Heart, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -67,9 +67,9 @@ export const ChatMessage = ({
         <span className="font-semibold text-[#9b87f5]">{userName}</span>
         <span className="text-xs text-gray-400">{formatTime(timestamp)}</span>
       </div>
-      <p className="text-white/90 text-sm leading-tight mb-3">{text}</p>
+      <p className="text-white/90 text-sm leading-tight mb-2">{text}</p>
       
-      <div className="flex items-center justify-between py-2 border-t border-[#9b87f5]/10">
+      <div className="flex items-center justify-between py-1.5 border-t border-[#9b87f5]/10">
         <div className="flex items-center gap-4">
           <button
             onClick={() => onReaction(id, 'liked')}
@@ -119,9 +119,9 @@ export const ChatMessage = ({
         </div>
         <button
           onClick={() => setShowReplies(!showReplies)}
-          className="flex items-center gap-1 text-gray-400 hover:text-[#9b87f5] transition-colors"
+          className="text-xs text-gray-400 hover:text-[#9b87f5] transition-colors"
         >
-          <span className="text-xs">{replies.length} respostas</span>
+          {replies.length} respostas
         </button>
       </div>
       
@@ -149,9 +149,9 @@ export const ChatMessage = ({
       )}
 
       {replies.length > 0 && showReplies && (
-        <div className="mt-2 space-y-2 pl-4 border-l-2 border-[#9b87f5]/10">
+        <div className="mt-2 space-y-1.5 pl-3 border-l-2 border-[#9b87f5]/10">
           {replies.map((reply) => (
-            <div key={reply.id} className="bg-[#1A1F2C]/30 rounded-lg p-2">
+            <div key={reply.id} className="bg-[#7E69AB]/20 rounded-lg p-1.5">
               <div className="flex justify-between items-center">
                 <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}</span>
                 <span className="text-xs text-gray-400">{formatTime(reply.timestamp)}</span>
