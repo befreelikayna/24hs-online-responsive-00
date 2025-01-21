@@ -145,51 +145,53 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
                 >
                   <div className="flex justify-between items-start">
                     <span className="font-semibold text-[#9b87f5]">{message.userName}</span>
-                    <span className="text-xs text-gray-400">{formatTime(message.timestamp)}</span>
                   </div>
                   <p className="text-white/90">{message.text}</p>
-                  <div className="flex gap-4 pt-2">
-                    <button
-                      onClick={() => handleReaction(message.id, 'liked')}
-                      className={cn(
-                        "flex items-center gap-1 text-sm transition-colors",
-                        message.userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-                      )}
-                    >
-                      <ThumbsUp className="w-4 h-4" />
-                      <span>{message.likes}</span>
-                    </button>
-                    <button
-                      onClick={() => handleReaction(message.id, 'disliked')}
-                      className={cn(
-                        "flex items-center gap-1 text-sm transition-colors",
-                        message.userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-                      )}
-                    >
-                      <ThumbsDown className="w-4 h-4" />
-                      <span>{message.dislikes}</span>
-                    </button>
-                    <button
-                      onClick={() => handleReaction(message.id, 'hearted')}
-                      className={cn(
-                        "flex items-center gap-1 text-sm transition-colors",
-                        message.userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-                      )}
-                    >
-                      <Heart className="w-4 h-4" />
-                      <span>{message.hearts}</span>
-                    </button>
+                  <div className="flex items-center justify-between pt-2">
+                    <div className="flex gap-4">
+                      <button
+                        onClick={() => handleReaction(message.id, 'liked')}
+                        className={cn(
+                          "flex items-center gap-1 text-sm transition-colors",
+                          message.userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+                        )}
+                      >
+                        <ThumbsUp className="w-4 h-4" />
+                        <span>{message.likes}</span>
+                      </button>
+                      <button
+                        onClick={() => handleReaction(message.id, 'disliked')}
+                        className={cn(
+                          "flex items-center gap-1 text-sm transition-colors",
+                          message.userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+                        )}
+                      >
+                        <ThumbsDown className="w-4 h-4" />
+                        <span>{message.dislikes}</span>
+                      </button>
+                      <button
+                        onClick={() => handleReaction(message.id, 'hearted')}
+                        className={cn(
+                          "flex items-center gap-1 text-sm transition-colors",
+                          message.userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+                        )}
+                      >
+                        <Heart className="w-4 h-4" />
+                        <span>{message.hearts}</span>
+                      </button>
+                    </div>
+                    <span className="text-xs text-gray-400">{formatTime(message.timestamp)}</span>
                   </div>
                 </div>
               ))}
             </div>
             <div className="p-4 border-t border-[#9b87f5]/10">
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-start">
                 <Textarea
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Digite sua mensagem..."
-                  className="min-h-[44px] bg-[#1A1F2C]/50 border-[#9b87f5]/20 focus:border-[#9b87f5]/50 resize-none"
+                  className="min-h-[44px] bg-[#1A1F2C]/50 border-[#9b87f5]/20 focus:border-[#9b87f5]/50 resize-none flex-1"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
                       e.preventDefault();
@@ -199,7 +201,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
                 />
                 <Button
                   onClick={handleSendMessage}
-                  className="bg-[#9b87f5] hover:bg-[#9b87f5]/90"
+                  className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 h-[44px]"
                 >
                   Enviar
                 </Button>
