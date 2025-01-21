@@ -2,6 +2,19 @@ import { useState } from "react";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 
+interface MessageReactions {
+  liked: boolean;
+  disliked: boolean;
+  hearted: boolean;
+}
+
+interface Reply {
+  id: string;
+  userName: string;
+  text: string;
+  timestamp: Date;
+}
+
 interface Message {
   id: string;
   userName: string;
@@ -10,11 +23,8 @@ interface Message {
   likes: number;
   dislikes: number;
   hearts: number;
-  userReactions: {
-    liked: boolean;
-    disliked: boolean;
-    hearted: boolean;
-  };
+  replies: Reply[];
+  userReactions: MessageReactions;
 }
 
 export const LiveChat = () => {
@@ -27,6 +37,14 @@ export const LiveChat = () => {
       likes: 2,
       dislikes: 0,
       hearts: 1,
+      replies: [
+        {
+          id: '1-1',
+          userName: "Carol",
+          text: "Tudo ótimo! E com você?",
+          timestamp: new Date(Date.now() - 1000 * 60 * 4),
+        }
+      ],
       userReactions: { liked: false, disliked: false, hearted: false }
     },
     {
@@ -37,6 +55,7 @@ export const LiveChat = () => {
       likes: 1,
       dislikes: 0,
       hearts: 2,
+      replies: [],
       userReactions: { liked: false, disliked: false, hearted: false }
     }
   ]);
@@ -53,6 +72,7 @@ export const LiveChat = () => {
       likes: 0,
       dislikes: 0,
       hearts: 0,
+      replies: [],
       userReactions: { liked: false, disliked: false, hearted: false }
     };
 
@@ -82,6 +102,25 @@ export const LiveChat = () => {
     }));
   };
 
+  const handleReply = (messageId: string, replyText: string) => {
+    setMessages(messages.map(message => {
+      if (message.id === messageId) {
+        const newReply: Reply = {
+          id: `${messageId}-${message.replies.length + 1}`,
+          userName: "Você",
+          text: replyText,
+          timestamp: new Date(),
+        };
+        
+        return {
+          ...message,
+          replies: [...message.replies, newReply]
+        };
+      }
+      return message;
+    }));
+  };
+
   return (
     <div className="flex flex-col h-full relative">
       <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
@@ -90,6 +129,7 @@ export const LiveChat = () => {
             key={message.id}
             {...message}
             onReaction={handleReaction}
+            onReply={handleReply}
           />
         ))}
       </div>
