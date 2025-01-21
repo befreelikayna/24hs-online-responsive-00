@@ -11,6 +11,7 @@ interface ContentPanelProps {
 
 export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }: ContentPanelProps) => {
   const [filterUserMessages, setFilterUserMessages] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   const scrollToBottom = () => {
     const chatContainer = document.querySelector('.scrollbar-hide');
@@ -71,7 +72,10 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
       </div>
       <div className="h-[calc(100%-4rem)] overflow-y-auto">
         {activeSection === 'chat' ? (
-          <LiveChat filterUserMessages={filterUserMessages} />
+          <LiveChat 
+            filterUserMessages={filterUserMessages} 
+            onUnreadCountChange={setUnreadCount}
+          />
         ) : (
           <div className="h-full flex items-center justify-center">
             {activeSection === 'community' && (

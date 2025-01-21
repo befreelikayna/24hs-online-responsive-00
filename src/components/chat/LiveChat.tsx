@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 
@@ -30,9 +30,10 @@ interface Message {
 
 interface LiveChatProps {
   filterUserMessages?: boolean;
+  onUnreadCountChange?: (count: number) => void;
 }
 
-export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
+export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: LiveChatProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -137,6 +138,11 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
   };
 
   const unreadCount = messages.filter(message => !message.read).length;
+
+  // Notify parent component when unread count changes
+  useEffect(() => {
+    onUnreadCountChange?.(unreadCount);
+  }, [unreadCount, onUnreadCountChange]);
 
   const filteredMessages = filterUserMessages
     ? messages.filter(message => message.userName === "Você")
