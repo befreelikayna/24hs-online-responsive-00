@@ -4,11 +4,12 @@ import { AuthPanel } from "@/components/auth/AuthPanel";
 interface ContentPanelProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
   isLoggedIn?: boolean;
+  onDemoLogin?: () => void;
 }
 
-export const ContentPanel = ({ activeSection, isLoggedIn = false }: ContentPanelProps) => {
+export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }: ContentPanelProps) => {
   if (!isLoggedIn) {
-    return <AuthPanel />;
+    return <AuthPanel onDemoLogin={onDemoLogin} />;
   }
 
   return (

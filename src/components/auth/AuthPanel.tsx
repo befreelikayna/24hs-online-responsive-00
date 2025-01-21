@@ -2,14 +2,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { LogIn, UserPlus, Key, Mail } from "lucide-react";
+import { LogIn, UserPlus, Key, Mail, Gamepad2 } from "lucide-react";
 
 interface AuthPanelProps {
   onLogin?: () => void;
   onSignup?: () => void;
+  onDemoLogin?: () => void;
 }
 
-export const AuthPanel = ({ onLogin, onSignup }: AuthPanelProps) => {
+export const AuthPanel = ({ onLogin, onSignup, onDemoLogin }: AuthPanelProps) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -95,6 +96,27 @@ export const AuthPanel = ({ onLogin, onSignup }: AuthPanelProps) => {
 
           <Button type="submit" className="w-full">
             {isLogin ? "Entrar" : "Cadastrar"}
+          </Button>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-[#9b87f5]/10" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-[#1A1F2C] px-2 text-muted-foreground">
+                Ou continue com
+              </span>
+            </div>
+          </div>
+
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onDemoLogin}
+            className="w-full"
+          >
+            <Gamepad2 className="mr-2 h-4 w-4" />
+            Entrar com Conta Demo
           </Button>
 
           <p className="text-center text-sm text-[#D6BCFA]/70">

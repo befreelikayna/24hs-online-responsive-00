@@ -7,6 +7,11 @@ import { ContentPanel } from "@/components/content/ContentPanel";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<'chat' | 'community' | 'lives' | 'music'>('chat');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleDemoLogin = () => {
+    setIsLoggedIn(true);
+  };
 
   return (
     <div className="h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-hidden">
@@ -23,7 +28,11 @@ const Index = () => {
           </div>
 
           <div className="w-full lg:w-1/3 h-full">
-            <ContentPanel activeSection={activeSection} />
+            <ContentPanel 
+              activeSection={activeSection} 
+              isLoggedIn={isLoggedIn}
+              onDemoLogin={handleDemoLogin}
+            />
           </div>
         </div>
       </main>
