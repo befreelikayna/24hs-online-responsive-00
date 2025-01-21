@@ -1,10 +1,16 @@
 import { MessageSquare, Users, Video, Music } from "lucide-react";
+import { AuthPanel } from "@/components/auth/AuthPanel";
 
 interface ContentPanelProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
+  isLoggedIn?: boolean;
 }
 
-export const ContentPanel = ({ activeSection }: ContentPanelProps) => {
+export const ContentPanel = ({ activeSection, isLoggedIn = false }: ContentPanelProps) => {
+  if (!isLoggedIn) {
+    return <AuthPanel />;
+  }
+
   return (
     <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4">
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
