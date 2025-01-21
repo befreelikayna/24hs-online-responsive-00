@@ -27,7 +27,11 @@ interface Message {
   userReactions: MessageReactions;
 }
 
-export const LiveChat = () => {
+interface LiveChatProps {
+  filterUserMessages?: boolean;
+}
+
+export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -121,10 +125,14 @@ export const LiveChat = () => {
     }));
   };
 
+  const filteredMessages = filterUserMessages
+    ? messages.filter(message => message.userName === "Você")
+    : messages;
+
   return (
     <div className="flex flex-col h-full relative">
       <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
-        {messages.map((message) => (
+        {filteredMessages.map((message) => (
           <ChatMessage
             key={message.id}
             {...message}

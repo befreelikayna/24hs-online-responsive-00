@@ -1,6 +1,7 @@
-import { MessageSquare, Users, Video, Music } from "lucide-react";
+import { MessageSquare, Users, Video, Music, Filter } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
+import { useState } from "react";
 
 interface ContentPanelProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
@@ -9,6 +10,8 @@ interface ContentPanelProps {
 }
 
 export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }: ContentPanelProps) => {
+  const [filterUserMessages, setFilterUserMessages] = useState(false);
+
   if (!isLoggedIn) {
     return <AuthPanel onDemoLogin={onDemoLogin} />;
   }
@@ -20,7 +23,10 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           {activeSection === 'chat' && (
             <div className="flex items-center gap-2">
               <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
-              <span>Chat ao Vivo</span>
+              <Filter 
+                className={`w-5 h-5 cursor-pointer transition-colors ${filterUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
+                onClick={() => setFilterUserMessages(!filterUserMessages)}
+              />
             </div>
           )}
           {activeSection === 'community' && (
@@ -45,7 +51,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
       </div>
       <div className="h-[calc(100%-4rem)] overflow-y-auto">
         {activeSection === 'chat' ? (
-          <LiveChat />
+          <LiveChat filterUserMessages={filterUserMessages} />
         ) : (
           <div className="h-full flex items-center justify-center">
             {activeSection === 'community' && (
