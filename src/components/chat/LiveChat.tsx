@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
-import { Badge } from "@/components/ui/badge";
-import { Scroll } from "lucide-react";
 
 interface MessageReactions {
   liked: boolean;
@@ -66,7 +64,6 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
     }
   ]);
   const [newMessage, setNewMessage] = useState("");
-  const [unreadMessages, setUnreadMessages] = useState(2);
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -85,15 +82,6 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
 
     setMessages([...messages, message]);
     setNewMessage("");
-    setUnreadMessages(prev => prev + 1);
-  };
-
-  const scrollToBottom = () => {
-    const chatContainer = document.querySelector('.scrollbar-hide');
-    if (chatContainer) {
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-      setUnreadMessages(0);
-    }
   };
 
   const handleReaction = (messageId: string, reactionType: 'liked' | 'disliked' | 'hearted') => {
@@ -143,25 +131,7 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
 
   return (
     <div className="flex flex-col h-full relative">
-      <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
-        <div className="flex items-center gap-2">
-          <h2 className="text-xl font-bold text-white">Chat</h2>
-        </div>
-        <div className="relative">
-          <Scroll
-            className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
-            onClick={scrollToBottom}
-          />
-          {unreadMessages > 0 && (
-            <Badge 
-              className="absolute -top-2 -right-2 px-[6px] py-[2px] bg-[#1EAEDB] text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center"
-            >
-              {unreadMessages}
-            </Badge>
-          )}
-        </div>
-      </div>
-      <div className="absolute top-[72px] left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
+      <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
         {filteredMessages.map((message) => (
           <ChatMessage
             key={message.id}
