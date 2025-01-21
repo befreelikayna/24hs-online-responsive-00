@@ -67,7 +67,6 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
   ]);
   const [newMessage, setNewMessage] = useState("");
   const [unreadMessages, setUnreadMessages] = useState(2);
-  const [showOnlyUserMessages, setShowOnlyUserMessages] = useState(filterUserMessages);
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -138,35 +137,35 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
     }));
   };
 
-  const filteredMessages = showOnlyUserMessages
+  const filteredMessages = filterUserMessages
     ? messages.filter(message => message.userName === "Você")
     : messages;
 
   return (
-    <div className="flex flex-col h-full bg-[#1A1F2C]">
-      <div className="flex items-center justify-between px-4 py-2 border-b border-[#9b87f5]/10">
+    <div className="flex flex-col h-full relative">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <div className="flex items-center gap-2">
           <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
           <Filter 
-            className={`w-5 h-5 cursor-pointer transition-colors ${showOnlyUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
-            onClick={() => setShowOnlyUserMessages(!showOnlyUserMessages)}
+            className={`w-5 h-5 cursor-pointer transition-colors ${filterUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
+            onClick={() => setFilterUserMessages(!filterUserMessages)}
           />
-        </div>
-        <div className="relative">
-          <Scroll
-            className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
-            onClick={scrollToBottom}
-          />
-          {unreadMessages > 0 && (
-            <Badge 
-              className="absolute -top-2 -right-2 px-[6px] py-[2px] bg-[#1EAEDB] text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center"
-            >
-              {unreadMessages}
-            </Badge>
-          )}
+          <div className="relative">
+            <Scroll
+              className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+              onClick={scrollToBottom}
+            />
+            {unreadMessages > 0 && (
+              <Badge 
+                className="absolute -top-2 -right-2 px-[6px] py-[2px] bg-[#1EAEDB] text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center"
+              >
+                {unreadMessages}
+              </Badge>
+            )}
+          </div>
         </div>
       </div>
-      <div className="flex-1 min-h-0 overflow-y-auto p-2 space-y-2 scrollbar-hide">
+      <div className="absolute top-[72px] left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
         {filteredMessages.map((message) => (
           <ChatMessage
             key={message.id}
@@ -176,7 +175,7 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
           />
         ))}
       </div>
-      <div className="mt-auto border-t border-[#9b87f5]/10">
+      <div className="absolute bottom-0 left-0 right-0">
         <ChatInput
           value={newMessage}
           onChange={setNewMessage}

@@ -1,4 +1,4 @@
-import { Users, Video, Music } from "lucide-react";
+import { MessageSquare, Users, Video, Music, Filter } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
@@ -20,6 +20,15 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 mb-[-60px]">
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <h2 className="text-xl font-bold text-white">
+          {activeSection === 'chat' && (
+            <div className="flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
+              <Filter 
+                className={`w-5 h-5 cursor-pointer transition-colors ${filterUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
+                onClick={() => setFilterUserMessages(!filterUserMessages)}
+              />
+            </div>
+          )}
           {activeSection === 'community' && (
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5 text-[#9b87f5]" />
