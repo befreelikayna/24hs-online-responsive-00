@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut } from "lucide-react";
+import { Bell, MessageSquare, User, LogOut, Scroll } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -33,6 +33,20 @@ export const Header = ({ onLogout, isLoggedIn = false }: HeaderProps) => {
             className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110 p-1.5"
           >
             <MessageSquare className="h-5 w-5 stroke-[1.5]" />
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110 p-1.5"
+            onClick={() => {
+              // Scroll to latest messages functionality
+              const chatContainer = document.querySelector('.scrollbar-hide');
+              if (chatContainer) {
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+              }
+            }}
+          >
+            <Scroll className="h-5 w-5 stroke-[1.5]" />
           </Button>
 
           <DropdownMenu>
