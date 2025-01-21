@@ -67,6 +67,7 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
   ]);
   const [newMessage, setNewMessage] = useState("");
   const [unreadMessages, setUnreadMessages] = useState(2);
+  const [showOnlyUserMessages, setShowOnlyUserMessages] = useState(filterUserMessages);
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -137,7 +138,7 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
     }));
   };
 
-  const filteredMessages = filterUserMessages
+  const filteredMessages = showOnlyUserMessages
     ? messages.filter(message => message.userName === "Você")
     : messages;
 
@@ -147,8 +148,8 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
         <div className="flex items-center gap-2">
           <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
           <Filter 
-            className={`w-5 h-5 cursor-pointer transition-colors ${filterUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
-            onClick={() => setFilterUserMessages(!filterUserMessages)}
+            className={`w-5 h-5 cursor-pointer transition-colors ${showOnlyUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
+            onClick={() => setShowOnlyUserMessages(!showOnlyUserMessages)}
           />
           <div className="relative">
             <Scroll
