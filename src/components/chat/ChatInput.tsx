@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useRef } from "react";
+import { Send } from "lucide-react";
 
 interface ChatInputProps {
   value: string;
@@ -35,9 +36,10 @@ export const ChatInput = ({ value, onChange, onSend }: ChatInputProps) => {
         />
         <Button
           onClick={handleSend}
-          className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 h-[32px] px-3 rounded-md font-medium transition-all duration-200 hover:shadow-lg hover:shadow-[#9b87f5]/20 whitespace-nowrap"
+          size="icon"
+          className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 h-8 w-8 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-[#9b87f5]/20 p-0"
         >
-          Enviar
+          <Send className="h-4 w-4" />
         </Button>
       </div>
     </div>
