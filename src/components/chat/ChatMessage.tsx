@@ -69,52 +69,59 @@ export const ChatMessage = ({
       </div>
       <p className="text-white/90 text-sm leading-tight mb-3">{text}</p>
       
-      <div className="flex items-center gap-4 py-2 border-t border-[#9b87f5]/10">
+      <div className="flex items-center justify-between py-2 border-t border-[#9b87f5]/10">
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => onReaction(id, 'liked')}
+            className={cn(
+              "flex items-center gap-1 transition-colors",
+              userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+            )}
+          >
+            <ThumbsUp 
+              className="w-4 h-4" 
+              fill={userReactions.liked ? "currentColor" : "none"}
+            />
+            <span className="text-xs">{likes}</span>
+          </button>
+          <button
+            onClick={() => onReaction(id, 'disliked')}
+            className={cn(
+              "flex items-center gap-1 transition-colors",
+              userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+            )}
+          >
+            <ThumbsDown 
+              className="w-4 h-4" 
+              fill={userReactions.disliked ? "currentColor" : "none"}
+            />
+            <span className="text-xs">{dislikes}</span>
+          </button>
+          <button
+            onClick={() => onReaction(id, 'hearted')}
+            className={cn(
+              "flex items-center gap-1 transition-colors",
+              userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+            )}
+          >
+            <Heart 
+              className="w-4 h-4" 
+              fill={userReactions.hearted ? "currentColor" : "none"}
+            />
+            <span className="text-xs">{hearts}</span>
+          </button>
+          <button
+            onClick={() => setIsReplying(!isReplying)}
+            className="flex items-center gap-1 text-gray-400 hover:text-[#9b87f5] transition-colors"
+          >
+            <MessageCircle className="w-4 h-4" />
+          </button>
+        </div>
         <button
-          onClick={() => onReaction(id, 'liked')}
-          className={cn(
-            "flex items-center gap-1 transition-colors",
-            userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-          )}
-        >
-          <ThumbsUp 
-            className="w-4 h-4" 
-            fill={userReactions.liked ? "currentColor" : "none"}
-          />
-          <span className="text-xs">{likes}</span>
-        </button>
-        <button
-          onClick={() => onReaction(id, 'disliked')}
-          className={cn(
-            "flex items-center gap-1 transition-colors",
-            userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-          )}
-        >
-          <ThumbsDown 
-            className="w-4 h-4" 
-            fill={userReactions.disliked ? "currentColor" : "none"}
-          />
-          <span className="text-xs">{dislikes}</span>
-        </button>
-        <button
-          onClick={() => onReaction(id, 'hearted')}
-          className={cn(
-            "flex items-center gap-1 transition-colors",
-            userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-          )}
-        >
-          <Heart 
-            className="w-4 h-4" 
-            fill={userReactions.hearted ? "currentColor" : "none"}
-          />
-          <span className="text-xs">{hearts}</span>
-        </button>
-        <button
-          onClick={() => setIsReplying(!isReplying)}
+          onClick={() => setShowReplies(!showReplies)}
           className="flex items-center gap-1 text-gray-400 hover:text-[#9b87f5] transition-colors"
         >
-          <MessageCircle className="w-4 h-4" />
-          <span className="text-xs">{replies.length}</span>
+          <span className="text-xs">{replies.length} respostas</span>
         </button>
       </div>
       
@@ -141,29 +148,17 @@ export const ChatMessage = ({
         </div>
       )}
 
-      {replies.length > 0 && (
-        <div className="mt-2">
-          <button
-            onClick={() => setShowReplies(!showReplies)}
-            className="flex items-center gap-1 text-sm text-gray-400 hover:text-[#9b87f5] transition-colors"
-          >
-            {showReplies ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-            <span>{replies.length} respostas</span>
-          </button>
-          
-          {showReplies && (
-            <div className="mt-2 space-y-2 pl-4 border-l-2 border-[#9b87f5]/10">
-              {replies.map((reply) => (
-                <div key={reply.id} className="bg-[#1A1F2C]/30 rounded-lg p-2">
-                  <div className="flex justify-between items-center">
-                    <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}</span>
-                    <span className="text-xs text-gray-400">{formatTime(reply.timestamp)}</span>
-                  </div>
-                  <p className="text-white/90 text-sm leading-tight mt-1">{reply.text}</p>
-                </div>
-              ))}
+      {replies.length > 0 && showReplies && (
+        <div className="mt-2 space-y-2 pl-4 border-l-2 border-[#9b87f5]/10">
+          {replies.map((reply) => (
+            <div key={reply.id} className="bg-[#1A1F2C]/30 rounded-lg p-2">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}</span>
+                <span className="text-xs text-gray-400">{formatTime(reply.timestamp)}</span>
+              </div>
+              <p className="text-white/90 text-sm leading-tight mt-1">{reply.text}</p>
             </div>
-          )}
+          ))}
         </div>
       )}
     </div>
