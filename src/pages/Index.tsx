@@ -155,10 +155,10 @@ const Index = () => {
                   )}
                 </h2>
               </div>
-              <div className="p-6 h-[calc(100%-4rem)] overflow-y-auto">
-                <div className="bg-[#1A1F2C]/80 rounded-xl p-6 backdrop-blur-sm border border-[#9b87f5]/10 h-full">
+              <div className="h-[calc(100%-4rem)] overflow-y-auto">
+                <div className="h-full flex items-center justify-center">
                   {activeSection === 'chat' && (
-                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                    <div className="flex flex-col items-center justify-center space-y-4">
                       <MessageSquare className="w-12 h-12 text-[#9b87f5]/30" />
                       <p className="text-[#D6BCFA]/70 text-center">
                         Área do chat em desenvolvimento...<br/>
@@ -167,7 +167,7 @@ const Index = () => {
                     </div>
                   )}
                   {activeSection === 'community' && (
-                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                    <div className="flex flex-col items-center justify-center space-y-4">
                       <Users className="w-12 h-12 text-[#9b87f5]/30" />
                       <p className="text-[#D6BCFA]/70 text-center">
                         Área da comunidade em desenvolvimento...<br/>
@@ -176,7 +176,7 @@ const Index = () => {
                     </div>
                   )}
                   {activeSection === 'lives' && (
-                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                    <div className="flex flex-col items-center justify-center space-y-4">
                       <Video className="w-12 h-12 text-[#9b87f5]/30" />
                       <p className="text-[#D6BCFA]/70 text-center">
                         Área das lives em desenvolvimento...<br/>
@@ -185,7 +185,7 @@ const Index = () => {
                     </div>
                   )}
                   {activeSection === 'music' && (
-                    <div className="flex flex-col items-center justify-center h-full space-y-4">
+                    <div className="flex flex-col items-center justify-center space-y-4">
                       <Music className="w-12 h-12 text-[#9b87f5]/30" />
                       <p className="text-[#D6BCFA]/70 text-center">
                         Área da música em desenvolvimento...<br/>
