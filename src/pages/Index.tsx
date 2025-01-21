@@ -27,7 +27,8 @@ const Index = () => {
             <StreamPlayer />
             <NavigationTabs 
               activeSection={activeSection} 
-              setActiveSection={setActiveSection} 
+              setActiveSection={setActiveSection}
+              isLoggedIn={isLoggedIn}
             />
           </div>
 

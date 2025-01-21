@@ -1,15 +1,31 @@
 import { MessageSquare, Users, Video, Music } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface NavigationTabsProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
   setActiveSection: (section: 'chat' | 'community' | 'lives' | 'music') => void;
+  isLoggedIn?: boolean;
 }
 
-export const NavigationTabs = ({ activeSection, setActiveSection }: NavigationTabsProps) => {
+export const NavigationTabs = ({ activeSection, setActiveSection, isLoggedIn = false }: NavigationTabsProps) => {
+  const { toast } = useToast();
+
+  const handleSectionClick = (section: 'chat' | 'community' | 'lives' | 'music') => {
+    if (!isLoggedIn) {
+      toast({
+        title: "Ops! 🔒",
+        description: "Ei! Faz um login rapidinho pra gente continuar juntos nessa!",
+        className: "bg-[#1A1F2C] text-white border-[#9b87f5]/20 animate-in slide-in-from-bottom-1/2 duration-300",
+      });
+      return;
+    }
+    setActiveSection(section);
+  };
+
   return (
     <section className="grid grid-cols-4 gap-2">
       <button
-        onClick={() => setActiveSection('chat')}
+        onClick={() => handleSectionClick('chat')}
         className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
           activeSection === 'chat'
             ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
@@ -25,7 +41,7 @@ export const NavigationTabs = ({ activeSection, setActiveSection }: NavigationTa
       </button>
 
       <button
-        onClick={() => setActiveSection('community')}
+        onClick={() => handleSectionClick('community')}
         className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
           activeSection === 'community'
             ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
@@ -41,7 +57,7 @@ export const NavigationTabs = ({ activeSection, setActiveSection }: NavigationTa
       </button>
 
       <button
-        onClick={() => setActiveSection('lives')}
+        onClick={() => handleSectionClick('lives')}
         className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
           activeSection === 'lives'
             ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
@@ -57,7 +73,7 @@ export const NavigationTabs = ({ activeSection, setActiveSection }: NavigationTa
       </button>
 
       <button
-        onClick={() => setActiveSection('music')}
+        onClick={() => handleSectionClick('music')}
         className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
           activeSection === 'music'
             ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
