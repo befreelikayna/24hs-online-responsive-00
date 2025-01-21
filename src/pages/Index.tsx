@@ -133,7 +133,7 @@ const Index = () => {
                 {activeSection === 'lives' && 'Lives Disponíveis'}
                 {activeSection === 'music' && 'Playlist'}
               </h2>
-              <div className="flex-1 bg-[#1A1F2C]/50 rounded-lg p-4 backdrop-blur-sm border border-[#9b87f5]/5 h-[calc(100%-4rem)]">
+              <div className="bg-[#1A1F2C]/50 rounded-lg p-4 backdrop-blur-sm border border-[#9b87f5]/5 min-h-[200px] max-h-[calc(100vh-16rem)] lg:max-h-[calc(100vh-18rem)] overflow-y-auto">
                 {activeSection === 'chat' && (
                   <p className="text-[#D6BCFA]/70">Área do chat em desenvolvimento...</p>
                 )}
