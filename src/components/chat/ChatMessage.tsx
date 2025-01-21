@@ -63,59 +63,60 @@ export const ChatMessage = ({
 
   return (
     <div className="bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mb-2">
         <span className="font-semibold text-[#9b87f5]">{userName}</span>
-        <div className="flex items-center gap-2 text-sm">
-          <button
-            onClick={() => onReaction(id, 'liked')}
-            className={cn(
-              "flex items-center gap-1 transition-colors",
-              userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-            )}
-          >
-            <ThumbsUp 
-              className="w-3.5 h-3.5" 
-              fill={userReactions.liked ? "currentColor" : "none"}
-            />
-            <span>{likes}</span>
-          </button>
-          <button
-            onClick={() => onReaction(id, 'disliked')}
-            className={cn(
-              "flex items-center gap-1 transition-colors",
-              userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-            )}
-          >
-            <ThumbsDown 
-              className="w-3.5 h-3.5" 
-              fill={userReactions.disliked ? "currentColor" : "none"}
-            />
-            <span>{dislikes}</span>
-          </button>
-          <button
-            onClick={() => onReaction(id, 'hearted')}
-            className={cn(
-              "flex items-center gap-1 transition-colors",
-              userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-            )}
-          >
-            <Heart 
-              className="w-3.5 h-3.5" 
-              fill={userReactions.hearted ? "currentColor" : "none"}
-            />
-            <span>{hearts}</span>
-          </button>
-          <button
-            onClick={() => setIsReplying(!isReplying)}
-            className="flex items-center gap-1 text-gray-400 hover:text-[#9b87f5] transition-colors"
-          >
-            <MessageCircle className="w-3.5 h-3.5" />
-            <span>{replies.length}</span>
-          </button>
-          <span className="text-xs text-gray-400 ml-1">{formatTime(timestamp)}</span>
-        </div>
+        <span className="text-xs text-gray-400">{formatTime(timestamp)}</span>
       </div>
-      <p className="text-white/90 text-sm leading-tight">{text}</p>
+      <p className="text-white/90 text-sm leading-tight mb-3">{text}</p>
+      
+      <div className="flex items-center gap-4 py-2 border-t border-[#9b87f5]/10">
+        <button
+          onClick={() => onReaction(id, 'liked')}
+          className={cn(
+            "flex items-center gap-1 transition-colors",
+            userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+          )}
+        >
+          <ThumbsUp 
+            className="w-4 h-4" 
+            fill={userReactions.liked ? "currentColor" : "none"}
+          />
+          <span className="text-xs">{likes}</span>
+        </button>
+        <button
+          onClick={() => onReaction(id, 'disliked')}
+          className={cn(
+            "flex items-center gap-1 transition-colors",
+            userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+          )}
+        >
+          <ThumbsDown 
+            className="w-4 h-4" 
+            fill={userReactions.disliked ? "currentColor" : "none"}
+          />
+          <span className="text-xs">{dislikes}</span>
+        </button>
+        <button
+          onClick={() => onReaction(id, 'hearted')}
+          className={cn(
+            "flex items-center gap-1 transition-colors",
+            userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+          )}
+        >
+          <Heart 
+            className="w-4 h-4" 
+            fill={userReactions.hearted ? "currentColor" : "none"}
+          />
+          <span className="text-xs">{hearts}</span>
+        </button>
+        <button
+          onClick={() => setIsReplying(!isReplying)}
+          className="flex items-center gap-1 text-gray-400 hover:text-[#9b87f5] transition-colors"
+        >
+          <MessageCircle className="w-4 h-4" />
+          <span className="text-xs">{replies.length}</span>
+        </button>
+      </div>
       
       {isReplying && (
         <div className="mt-2 flex gap-2">
