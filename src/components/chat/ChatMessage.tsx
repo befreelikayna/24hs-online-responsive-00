@@ -38,7 +38,7 @@ export const ChatMessage = ({
   };
 
   return (
-    <div className="bg-[#1A1F2C]/50 rounded-lg p-3 space-y-1.5">
+    <div className="bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1">
       <div className="flex justify-between items-center">
         <span className="font-semibold text-[#9b87f5]">{userName}</span>
         <div className="flex items-center gap-2 text-sm">
@@ -75,7 +75,7 @@ export const ChatMessage = ({
           <span className="text-xs text-gray-400 ml-1">{formatTime(timestamp)}</span>
         </div>
       </div>
-      <p className="text-white/90 text-sm">{text}</p>
+      <p className="text-white/90 text-sm leading-tight">{text}</p>
     </div>
   );
 };
