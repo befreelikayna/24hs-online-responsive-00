@@ -149,14 +149,14 @@ export const ChatMessage = ({
       )}
 
       {replies.length > 0 && showReplies && (
-        <div className="mt-2 space-y-1.5 pl-3 border-l-2 border-[#9b87f5]/10">
+        <div className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10">
           {replies.map((reply) => (
-            <div key={reply.id} className="bg-[#7E69AB]/20 rounded-lg p-1.5">
-              <div className="flex justify-between items-center">
+            <div key={reply.id} className="bg-[#7E69AB]/20 rounded-md p-1">
+              <div className="flex justify-between items-center mb-0.5">
                 <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}</span>
                 <span className="text-xs text-gray-400">{formatTime(reply.timestamp)}</span>
               </div>
-              <p className="text-white/90 text-sm leading-tight mt-1">{reply.text}</p>
+              <p className="text-white/90 text-sm leading-snug">{reply.text}</p>
             </div>
           ))}
         </div>
