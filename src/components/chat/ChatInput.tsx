@@ -25,7 +25,7 @@ export const ChatInput = ({ value, onChange, onSend }: ChatInputProps) => {
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Digite sua mensagem..."
-          className="min-h-[32px] max-h-[32px] bg-[#9b87f5]/5 hover:bg-[#9b87f5]/10 border-0 focus:border-0 focus-visible:ring-1 focus-visible:ring-[#9b87f5]/30 focus-visible:ring-offset-0 resize-none flex-1 rounded-lg text-sm py-1 px-3 transition-all duration-200"
+          className="min-h-[32px] max-h-[32px] bg-[#9b87f5]/5 border-0 focus-visible:bg-[#9b87f5]/10 focus-visible:ring-2 focus-visible:ring-[#9b87f5]/40 focus-visible:ring-offset-0 resize-none flex-1 rounded-lg text-sm py-1 px-3"
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();
