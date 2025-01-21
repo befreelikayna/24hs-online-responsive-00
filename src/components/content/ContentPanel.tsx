@@ -14,7 +14,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   }
 
   return (
-    <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4">
+    <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 mb-[-60px]">
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <h2 className="text-xl font-bold text-white">
           {activeSection === 'chat' && (
