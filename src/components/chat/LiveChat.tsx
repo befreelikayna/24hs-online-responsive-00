@@ -84,7 +84,13 @@ export const LiveChat = () => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide" style={{
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
+        '::-webkit-scrollbar': {
+          display: 'none'
+        }
+      }}>
         {messages.map((message) => (
           <ChatMessage
             key={message.id}
