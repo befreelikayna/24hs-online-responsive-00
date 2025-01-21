@@ -2,6 +2,7 @@ import { MessageSquare, Users, Video, Music, Filter, Scroll } from "lucide-react
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
 
 interface ContentPanelProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
@@ -11,11 +12,13 @@ interface ContentPanelProps {
 
 export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }: ContentPanelProps) => {
   const [filterUserMessages, setFilterUserMessages] = useState(false);
+  const [unreadMessages, setUnreadMessages] = useState(2); // Initialize with 2 for demo purposes
 
   const scrollToBottom = () => {
     const chatContainer = document.querySelector('.scrollbar-hide');
     if (chatContainer) {
       chatContainer.scrollTop = chatContainer.scrollHeight;
+      setUnreadMessages(0); // Reset unread count when scrolling to bottom
     }
   };
 
@@ -56,10 +59,19 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           )}
         </h2>
         {activeSection === 'chat' && (
-          <Scroll
-            className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
-            onClick={scrollToBottom}
-          />
+          <div className="relative">
+            <Scroll
+              className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+              onClick={scrollToBottom}
+            />
+            {unreadMessages > 0 && (
+              <Badge 
+                className="absolute -top-2 -right-2 px-[6px] py-[2px] bg-[#1EAEDB] text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center"
+              >
+                {unreadMessages}
+              </Badge>
+            )}
+          </div>
         )}
       </div>
       <div className="h-[calc(100%-4rem)] overflow-y-auto">
