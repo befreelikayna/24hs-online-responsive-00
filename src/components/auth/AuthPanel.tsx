@@ -45,7 +45,7 @@ export const AuthPanel = ({ onLogin, onSignup, onDemoLogin }: AuthPanelProps) =>
         </h2>
       </div>
 
-      <div className="p-6">
+      <div className="p-6 h-[calc(100%-5rem)] overflow-y-auto scrollbar-hide">
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <div className="space-y-2">
