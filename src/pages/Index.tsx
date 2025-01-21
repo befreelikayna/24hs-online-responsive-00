@@ -40,7 +40,7 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto p-4 mt-14">
+      <main className="flex-1 w-full p-4 mt-14">
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Left Column */}
           <div className="w-full lg:w-2/3 flex flex-col gap-4">
@@ -56,7 +56,7 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Mini Cards Section - Mobile: Icons only in single row, Desktop: Text and icons */}
+            {/* Mini Cards Section */}
             <section className="grid grid-cols-4 gap-2 md:gap-4">
               <button
                 onClick={() => setActiveSection('chat')}
@@ -125,8 +125,8 @@ const Index = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-full lg:w-1/3 flex-1">
-            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-[calc(100vh-16rem)] md:h-[calc(100vh-12rem)] lg:min-h-[calc(100vh-10rem)] overflow-y-auto lg:sticky lg:top-20">
+          <div className="w-full lg:w-1/3">
+            <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg p-4 h-[calc(100vh-16rem)] md:h-[calc(100vh-12rem)] lg:min-h-[calc(100vh-10rem)] overflow-y-auto fixed lg:sticky lg:top-20 w-[calc(100vw-2rem)] lg:w-auto left-4 right-4">
               <h2 className="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-white">
                 {activeSection === 'chat' && 'Chat ao Vivo'}
                 {activeSection === 'community' && 'Comunidade'}
