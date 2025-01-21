@@ -56,19 +56,19 @@ const Index = () => {
             </section>
 
             {/* Mini Cards Section */}
-            <section className="grid grid-cols-4 gap-2">
+            <section className="grid grid-cols-4 gap-1.5 px-1">
               <button
                 onClick={() => setActiveSection('chat')}
                 className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'chat'
-                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
+                    ? 'bg-[#9b87f5]/10 shadow-sm shadow-[#9b87f5]/5 border border-[#9b87f5]/20'
+                    : 'bg-[#2C2F3E]/30 hover:bg-[#9b87f5]/5 border border-transparent hover:border-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2.5 flex items-center justify-center gap-2">
-                  <MessageSquare className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-                    CHAT
+                <div className="py-2 px-1.5 flex items-center justify-center gap-1.5">
+                  <MessageSquare className={`h-4 w-4 ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`} />
+                  <span className={`hidden md:inline text-xs font-medium ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`}>
+                    Chat
                   </span>
                 </div>
               </button>
@@ -77,14 +77,14 @@ const Index = () => {
                 onClick={() => setActiveSection('community')}
                 className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'community'
-                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
+                    ? 'bg-[#9b87f5]/10 shadow-sm shadow-[#9b87f5]/5 border border-[#9b87f5]/20'
+                    : 'bg-[#2C2F3E]/30 hover:bg-[#9b87f5]/5 border border-transparent hover:border-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2.5 flex items-center justify-center gap-2">
-                  <Users className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-                    COMUNIDADE
+                <div className="py-2 px-1.5 flex items-center justify-center gap-1.5">
+                  <Users className={`h-4 w-4 ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`} />
+                  <span className={`hidden md:inline text-xs font-medium ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`}>
+                    Social
                   </span>
                 </div>
               </button>
@@ -93,14 +93,14 @@ const Index = () => {
                 onClick={() => setActiveSection('lives')}
                 className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'lives'
-                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
+                    ? 'bg-[#9b87f5]/10 shadow-sm shadow-[#9b87f5]/5 border border-[#9b87f5]/20'
+                    : 'bg-[#2C2F3E]/30 hover:bg-[#9b87f5]/5 border border-transparent hover:border-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2.5 flex items-center justify-center gap-2">
-                  <Video className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-                    LIVES
+                <div className="py-2 px-1.5 flex items-center justify-center gap-1.5">
+                  <Video className={`h-4 w-4 ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`} />
+                  <span className={`hidden md:inline text-xs font-medium ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`}>
+                    Lives
                   </span>
                 </div>
               </button>
@@ -109,14 +109,14 @@ const Index = () => {
                 onClick={() => setActiveSection('music')}
                 className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
                   activeSection === 'music'
-                    ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-                    : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
+                    ? 'bg-[#9b87f5]/10 shadow-sm shadow-[#9b87f5]/5 border border-[#9b87f5]/20'
+                    : 'bg-[#2C2F3E]/30 hover:bg-[#9b87f5]/5 border border-transparent hover:border-[#9b87f5]/10'
                 }`}
               >
-                <div className="p-2.5 flex items-center justify-center gap-2">
-                  <Music className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-                  <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-                    MÚSICA
+                <div className="py-2 px-1.5 flex items-center justify-center gap-1.5">
+                  <Music className={`h-4 w-4 ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`} />
+                  <span className={`hidden md:inline text-xs font-medium ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/50'}`}>
+                    Music
                   </span>
                 </div>
               </button>
