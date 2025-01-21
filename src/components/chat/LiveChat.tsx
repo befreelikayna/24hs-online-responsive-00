@@ -144,29 +144,29 @@ export const LiveChat = ({ filterUserMessages = false }: LiveChatProps) => {
 
   return (
     <div className="flex flex-col h-full relative">
-      <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-[#9b87f5]/10">
         <div className="flex items-center gap-2">
           <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
           <Filter 
             className={`w-5 h-5 cursor-pointer transition-colors ${showOnlyUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
             onClick={() => setShowOnlyUserMessages(!showOnlyUserMessages)}
           />
-          <div className="relative">
-            <Scroll
-              className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
-              onClick={scrollToBottom}
-            />
-            {unreadMessages > 0 && (
-              <Badge 
-                className="absolute -top-2 -right-2 px-[6px] py-[2px] bg-[#1EAEDB] text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center"
-              >
-                {unreadMessages}
-              </Badge>
-            )}
-          </div>
+        </div>
+        <div className="relative">
+          <Scroll
+            className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+            onClick={scrollToBottom}
+          />
+          {unreadMessages > 0 && (
+            <Badge 
+              className="absolute -top-2 -right-2 px-[6px] py-[2px] bg-[#1EAEDB] text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center"
+            >
+              {unreadMessages}
+            </Badge>
+          )}
         </div>
       </div>
-      <div className="absolute top-[72px] left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
+      <div className="absolute top-[48px] left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
         {filteredMessages.map((message) => (
           <ChatMessage
             key={message.id}
