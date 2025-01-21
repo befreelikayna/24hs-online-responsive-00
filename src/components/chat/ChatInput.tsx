@@ -18,14 +18,14 @@ export const ChatInput = ({ value, onChange, onSend }: ChatInputProps) => {
   };
 
   return (
-    <div className="sticky bottom-0 left-0 right-0 p-1.5 border-t border-[#9b87f5]/10">
+    <div className="sticky bottom-0 left-0 right-0 p-1.5">
       <div className="flex gap-2 items-end max-w-full mx-auto">
         <Textarea
           ref={textareaRef}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Digite sua mensagem..."
-          className="min-h-[36px] max-h-[36px] bg-transparent border-[#9b87f5]/20 focus:border-[#9b87f5]/40 focus:ring-0 resize-none flex-1 rounded-lg text-sm py-1.5 px-3"
+          className="min-h-[36px] max-h-[36px] bg-[#9b87f5]/10 border-0 focus:border-0 focus:ring-0 resize-none flex-1 rounded-lg text-sm py-1.5 px-3"
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();
