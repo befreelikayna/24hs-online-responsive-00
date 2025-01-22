@@ -1,4 +1,4 @@
-import { X, User, Calendar, MessageSquare, Heart, Facebook, Instagram } from "lucide-react";
+import { X, User, Calendar, MessageSquare, Heart, Facebook, Instagram, ThumbsUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface UserInfoProps {
@@ -82,23 +82,28 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           </Button>
         </div>
 
-        <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
-          <Calendar className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
-          <p className="text-xs text-gray-400">Entrou em</p>
-          <p className="text-sm text-white font-medium">Janeiro 2024</p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-3 gap-2">
           <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
             <MessageSquare className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
             <p className="text-xs text-gray-400">Mensagens</p>
             <p className="text-sm text-white font-medium">127</p>
           </div>
           <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
-            <Heart className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
+            <ThumbsUp className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
             <p className="text-xs text-gray-400">Curtidas</p>
             <p className="text-sm text-white font-medium">324</p>
           </div>
+          <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
+            <Heart className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
+            <p className="text-xs text-gray-400">Reações</p>
+            <p className="text-sm text-white font-medium">45</p>
+          </div>
+        </div>
+
+        <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
+          <Calendar className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
+          <p className="text-xs text-gray-400">Entrou em</p>
+          <p className="text-sm text-white font-medium">Janeiro 2024</p>
         </div>
 
         <div className="bg-[#2C2F3E] p-3 rounded-lg">
