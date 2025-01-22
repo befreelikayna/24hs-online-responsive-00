@@ -1,5 +1,6 @@
-import { X, User, Calendar, MessageSquare, Heart, Facebook, Instagram, ThumbsUp } from "lucide-react";
+import { X, User, Calendar, MessageSquare, Heart, Facebook, Instagram, ThumbsUp, UserPlus, UserMinus, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 interface UserInfoProps {
   userName: string;
@@ -7,6 +8,15 @@ interface UserInfoProps {
 }
 
 export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
+  // Simulate follow state - in a real app this would come from a backend
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [followersCount, setFollowersCount] = useState(42);
+
+  const handleFollowToggle = () => {
+    setIsFollowing(!isFollowing);
+    setFollowersCount(prev => isFollowing ? prev - 1 : prev + 1);
+  };
+
   return (
     <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-4 bg-[#1A1F2C]/95 rounded-lg scrollbar-hide">
       <div className="flex justify-between items-center mb-4">
@@ -24,10 +34,32 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#9b87f5] to-[#D6BCFA] flex items-center justify-center">
             <User className="w-8 h-8 text-white" />
           </div>
-          <div>
+          <div className="flex-1">
             <h4 className="text-base font-semibold text-white">{userName}</h4>
             <p className="text-sm text-gray-400">Membro desde 2024</p>
           </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleFollowToggle}
+            className={`flex items-center gap-2 ${
+              isFollowing 
+                ? 'bg-red-500/10 hover:bg-red-500/20 text-red-500' 
+                : 'bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]'
+            }`}
+          >
+            {isFollowing ? (
+              <>
+                <UserMinus className="w-4 h-4" />
+                Deixar de Seguir
+              </>
+            ) : (
+              <>
+                <UserPlus className="w-4 h-4" />
+                Seguir
+              </>
+            )}
+          </Button>
         </div>
 
         <div className="flex justify-end gap-2">
@@ -82,7 +114,7 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-4 gap-2">
           <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
             <MessageSquare className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
             <p className="text-xs text-gray-400">Mensagens</p>
@@ -98,14 +130,17 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
             <p className="text-xs text-gray-400">Reações</p>
             <p className="text-sm text-white font-medium">45</p>
           </div>
+          <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
+            <Users className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
+            <p className="text-xs text-gray-400">Seguidores</p>
+            <p className="text-sm text-white font-medium">{followersCount}</p>
+          </div>
         </div>
 
-        <div className="bg-[#2C2F3E] p-3 rounded-lg">
-          <div className="flex items-center justify-center gap-2">
-            <Calendar className="w-5 h-5 text-[#9b87f5]" />
-            <p className="text-xs text-gray-400">Entrou em</p>
-            <p className="text-sm text-white font-medium">Janeiro 2024</p>
-          </div>
+        <div className="flex items-center justify-center gap-2 bg-[#2C2F3E] p-3 rounded-lg">
+          <Calendar className="w-5 h-5 text-[#9b87f5]" />
+          <p className="text-xs text-gray-400">Entrou em</p>
+          <p className="text-sm text-white font-medium">Janeiro 2024</p>
         </div>
 
         <div className="bg-[#2C2F3E] p-3 rounded-lg">
