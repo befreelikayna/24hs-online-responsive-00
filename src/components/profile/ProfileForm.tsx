@@ -41,23 +41,23 @@ export const ProfileForm = () => {
 
   return (
     <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[#9b87f5]/10">
-        <h2 className="text-lg font-bold text-white flex items-center gap-2">
+      <div className="flex items-center justify-between p-3 sm:px-4 sm:py-3 border-b border-[#9b87f5]/10">
+        <h2 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
           <User className="w-4 h-4 text-[#9b87f5]" />
           <span>Personalizar Perfil</span>
         </h2>
       </div>
 
-      <div className="p-4">
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="p-3 sm:p-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           <Accordion type="single" collapsible className="space-y-2">
             <AccordionItem value="personal" className="border-[#9b87f5]/10">
-              <AccordionTrigger className="text-sm hover:no-underline">
+              <AccordionTrigger className="text-xs sm:text-sm hover:no-underline py-2 sm:py-3">
                 Informações Pessoais
               </AccordionTrigger>
               <AccordionContent className="space-y-3 pt-2">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-xs">Nome Completo</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="name" className="text-[10px] sm:text-xs">Nome Completo</Label>
                   <div className="relative">
                     <Input
                       id="name"
@@ -65,15 +65,15 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      className="pl-8 h-9 text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
                       placeholder="Seu nome completo"
                     />
-                    <User className="absolute left-2.5 top-2 h-4 w-4 text-[#9b87f5]" />
+                    <User className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-xs">Email</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="email" className="text-[10px] sm:text-xs">Email</Label>
                   <div className="relative">
                     <Input
                       id="email"
@@ -81,15 +81,15 @@ export const ProfileForm = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="pl-8 h-9 text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
                       placeholder="seu@email.com"
                     />
-                    <AtSign className="absolute left-2.5 top-2 h-4 w-4 text-[#9b87f5]" />
+                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="username" className="text-xs">Nome de Usuário</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="username" className="text-[10px] sm:text-xs">Nome de Usuário</Label>
                   <div className="relative">
                     <Input
                       id="username"
@@ -97,22 +97,22 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.username}
                       onChange={handleChange}
-                      className="pl-8 h-9 text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
                       placeholder="@donossosistema"
                     />
-                    <AtSign className="absolute left-2.5 top-2 h-4 w-4 text-[#9b87f5]" />
+                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
                   </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="social" className="border-[#9b87f5]/10">
-              <AccordionTrigger className="text-sm hover:no-underline">
+              <AccordionTrigger className="text-xs sm:text-sm hover:no-underline py-2 sm:py-3">
                 Redes Sociais
               </AccordionTrigger>
               <AccordionContent className="space-y-3 pt-2">
-                <div className="space-y-2">
-                  <Label htmlFor="facebook" className="text-xs">Facebook</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="facebook" className="text-[10px] sm:text-xs">Facebook</Label>
                   <div className="relative">
                     <Input
                       id="facebook"
@@ -120,15 +120,15 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.facebook}
                       onChange={handleChange}
-                      className="pl-8 h-9 text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
                       placeholder="Seu perfil do Facebook"
                     />
-                    <Facebook className="absolute left-2.5 top-2 h-4 w-4 text-[#9b87f5]" />
+                    <Facebook className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="instagram" className="text-xs">Instagram</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="instagram" className="text-[10px] sm:text-xs">Instagram</Label>
                   <div className="relative">
                     <Input
                       id="instagram"
@@ -136,15 +136,15 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.instagram}
                       onChange={handleChange}
-                      className="pl-8 h-9 text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
                       placeholder="Seu perfil do Instagram"
                     />
-                    <Instagram className="absolute left-2.5 top-2 h-4 w-4 text-[#9b87f5]" />
+                    <Instagram className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="discord" className="text-xs">Discord</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="discord" className="text-[10px] sm:text-xs">Discord</Label>
                   <div className="relative">
                     <Input
                       id="discord"
@@ -152,18 +152,18 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.discord}
                       onChange={handleChange}
-                      className="pl-8 h-9 text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
                       placeholder="Seu perfil do Discord"
                     />
-                    <Link className="absolute left-2.5 top-2 h-4 w-4 text-[#9b87f5]" />
+                    <Link className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
                   </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
 
-          <Button type="submit" className="w-full h-9 text-sm">
-            <Save className="w-4 h-4 mr-2" />
+          <Button type="submit" className="w-full h-8 sm:h-9 text-xs sm:text-sm">
+            <Save className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
             Salvar Alterações
           </Button>
         </form>
