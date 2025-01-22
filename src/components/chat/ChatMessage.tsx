@@ -123,7 +123,7 @@ export const ChatMessage = ({
           onClick={() => setShowReplies(!showReplies)}
           className="text-xs text-gray-400 hover:text-[#9b87f5] transition-colors"
         >
-          {replies.length} respostas
+          {replies.length} comentários
         </button>
       </div>
       
