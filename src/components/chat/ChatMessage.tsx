@@ -63,11 +63,13 @@ export const ChatMessage = ({
 
   return (
     <div className="bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1">
-      <div className="flex justify-between items-center mb-2">
-        <span className="font-semibold text-[#9b87f5]">{userName}</span>
-        <span className="text-xs text-gray-400">{formatTime(timestamp)}</span>
+      <div className="flex items-start gap-2">
+        <div className="flex items-center gap-2 min-w-fit">
+          <span className="font-semibold text-[#9b87f5]">{userName}:</span>
+        </div>
+        <p className="text-white/90 text-sm leading-tight flex-1">{text}</p>
+        <span className="text-xs text-gray-400 whitespace-nowrap">{formatTime(timestamp)}</span>
       </div>
-      <p className="text-white/90 text-sm leading-tight mb-2">{text}</p>
       
       <div className="flex items-center justify-between py-1.5 border-t border-[#9b87f5]/10">
         <div className="flex items-center gap-4">
@@ -152,11 +154,13 @@ export const ChatMessage = ({
         <div className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10">
           {replies.map((reply) => (
             <div key={reply.id} className="bg-[#7E69AB]/20 rounded-md p-1">
-              <div className="flex justify-between items-center mb-0.5">
-                <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}</span>
+              <div className="flex items-center gap-2 justify-between">
+                <div className="flex items-center gap-1">
+                  <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}:</span>
+                  <p className="text-white/90 text-sm leading-snug">{reply.text}</p>
+                </div>
                 <span className="text-xs text-gray-400">{formatTime(reply.timestamp)}</span>
               </div>
-              <p className="text-white/90 text-sm leading-snug">{reply.text}</p>
             </div>
           ))}
         </div>
