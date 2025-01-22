@@ -111,7 +111,7 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
         </div>
 
         <div className="flex items-center justify-center gap-2 bg-[#2C2F3E] p-3 rounded-lg">
-          <Calendar className="w-5 h-5 text-[#9b87f5]" />
+          <Calendar className="w-5 h-5 text-[#7E69AB]" />
           <p className="text-xs text-gray-400">Entrou em</p>
           <p className="text-sm text-white font-medium">Janeiro 2024</p>
         </div>
@@ -144,7 +144,7 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
               <p className="text-sm text-white font-semibold">45</p>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-[#9b87f5] to-[#D6BCFA] p-4 rounded-xl shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(155,135,245,0.3)] relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#E5DEFF] to-[#7E69AB] p-4 rounded-xl shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(126,105,171,0.3)] relative overflow-hidden">
             <div className="flex flex-col items-center relative z-10">
               <div className="bg-white/20 p-2 rounded-lg mb-2 backdrop-blur-sm">
                 <Users className="w-5 h-5 text-white" />
@@ -157,7 +157,7 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
         </div>
 
         <div className="bg-[#2C2F3E] p-3 rounded-lg">
-          <h5 className="text-sm text-[#9b87f5] font-medium mb-1">Sobre</h5>
+          <h5 className="text-sm text-[#7E69AB] font-medium mb-1">Sobre</h5>
           <p className="text-xs text-gray-400">
             Membro ativo da comunidade, sempre participando das discussões e compartilhando conhecimento.
           </p>
