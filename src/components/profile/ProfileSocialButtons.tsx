@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import { Facebook, Instagram, Youtube, Twitter, TikTok } from "lucide-react";
 import { useState } from "react";
 
 export const ProfileSocialButtons = () => {
@@ -9,7 +9,7 @@ export const ProfileSocialButtons = () => {
     youtube: "https://youtube.com/channel",
     twitter: "@usuario",
     tiktok: "@usuario",
-    kawi: ""
+    kwai: ""
   });
 
   const renderSocialButtons = () => {
@@ -63,6 +63,33 @@ export const ProfileSocialButtons = () => {
           className="bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10"
         >
           <Twitter className="w-4 h-4 text-[#9b87f5]" />
+        </Button>
+      );
+    }
+
+    if (socialLinks.tiktok) {
+      buttons.push(
+        <Button 
+          key="tiktok"
+          variant="outline" 
+          size="icon"
+          className="bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10"
+        >
+          <TikTok className="w-4 h-4 text-[#9b87f5]" />
+        </Button>
+      );
+    }
+
+    if (socialLinks.kwai) {
+      buttons.push(
+        <Button 
+          key="kwai"
+          variant="outline" 
+          size="icon"
+          className="bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10"
+        >
+          {/* Note: Kwai icon is not available in lucide-react, using a text alternative */}
+          <span className="w-4 h-4 text-[#9b87f5] text-xs font-bold">K</span>
         </Button>
       );
     }
