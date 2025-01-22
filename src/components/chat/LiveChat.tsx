@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
+import { UserInfo } from "./UserInfo";
 
 interface MessageReactions {
   liked: boolean;
@@ -68,6 +69,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     }
   ]);
   const [newMessage, setNewMessage] = useState("");
+  const [selectedUser, setSelectedUser] = useState<string | null>(null);
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -82,7 +84,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       hearts: 0,
       replies: [],
       userReactions: { liked: false, disliked: false, hearted: false },
-      read: true // Mensagens enviadas pelo usuário já são consideradas lidas
+      read: true
     };
 
     setMessages([...messages, message]);
@@ -130,6 +132,10 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     }));
   };
 
+  const handleUserSelect = (userName: string) => {
+    setSelectedUser(userName);
+  };
+
   const markAllAsRead = () => {
     setMessages(messages.map(message => ({
       ...message,
@@ -137,22 +143,18 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     })));
   };
 
-  // Calcula o número de mensagens não lidas (excluindo as mensagens do próprio usuário)
   const unreadCount = messages.filter(message => !message.read && message.userName !== "Você").length;
 
-  // Notifica o componente pai quando o número de mensagens não lidas muda
   useEffect(() => {
     onUnreadCountChange?.(unreadCount);
   }, [unreadCount, onUnreadCountChange]);
 
-  // Monitora o scroll do chat
   useEffect(() => {
     const chatContainer = document.querySelector('.scrollbar-hide');
     if (!chatContainer) return;
 
     const handleScroll = () => {
       const { scrollHeight, scrollTop, clientHeight } = chatContainer;
-      // Se o usuário chegou ao final do chat, marca todas as mensagens como lidas
       if (scrollHeight - scrollTop <= clientHeight + 100) {
         markAllAsRead();
       }
@@ -168,16 +170,21 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
 
   return (
     <div className="flex flex-col h-full relative">
-      <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
-        {filteredMessages.map((message) => (
-          <ChatMessage
-            key={message.id}
-            {...message}
-            onReaction={handleReaction}
-            onReply={handleReply}
-          />
-        ))}
-      </div>
+      {selectedUser ? (
+        <UserInfo userName={selectedUser} onClose={() => setSelectedUser(null)} />
+      ) : (
+        <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
+          {filteredMessages.map((message) => (
+            <ChatMessage
+              key={message.id}
+              {...message}
+              onReaction={handleReaction}
+              onReply={handleReply}
+              onUserSelect={handleUserSelect}
+            />
+          ))}
+        </div>
+      )}
       <div className="absolute bottom-0 left-0 right-0">
         <ChatInput
           value={newMessage}

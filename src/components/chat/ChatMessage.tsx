@@ -27,6 +27,7 @@ interface ChatMessageProps {
   userReactions: MessageReactions;
   onReaction: (messageId: string, reactionType: 'liked' | 'disliked' | 'hearted') => void;
   onReply: (messageId: string, replyText: string) => void;
+  onUserSelect?: (userName: string) => void;
 }
 
 export const ChatMessage = ({
@@ -40,7 +41,8 @@ export const ChatMessage = ({
   replies,
   userReactions,
   onReaction,
-  onReply
+  onReply,
+  onUserSelect
 }: ChatMessageProps) => {
   const [isReplying, setIsReplying] = useState(false);
   const [replyText, setReplyText] = useState("");
@@ -61,11 +63,22 @@ export const ChatMessage = ({
     }
   };
 
+  const handleUserNameClick = () => {
+    if (onUserSelect) {
+      onUserSelect(userName);
+    }
+  };
+
   return (
     <div className="bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1">
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-2 min-w-fit">
-          <span className="font-semibold text-[#9b87f5]">{userName}:</span>
+          <span 
+            className="font-semibold text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
+            onClick={handleUserNameClick}
+          >
+            {userName}:
+          </span>
         </div>
         <p className="text-white/90 text-sm flex-1">{text}</p>
         <span className="text-xs text-gray-400 whitespace-nowrap">{formatTime(timestamp)}</span>
