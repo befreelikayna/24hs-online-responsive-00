@@ -71,7 +71,7 @@ export const ChatMessage = ({
         <span className="text-xs text-gray-400 whitespace-nowrap">{formatTime(timestamp)}</span>
       </div>
       
-      <div className="flex items-center justify-between py-1.5 border-t border-[#9b87f5]/10">
+      <div className="flex items-center justify-between py-1.5 border-t border-[#9b87f5]/5">
         <div className="flex items-center gap-4">
           <button
             onClick={() => onReaction(id, 'liked')}
