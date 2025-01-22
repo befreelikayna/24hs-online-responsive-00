@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { User, Link, Save, Facebook, Instagram, AtSign, Calendar, Mail, Camera } from "lucide-react";
+import { User, Link, Save, Facebook, Instagram, AtSign, Calendar, Mail, Camera, Users } from "lucide-react";
 
 export const ProfileForm = () => {
   const { toast } = useToast();
@@ -100,6 +100,22 @@ export const ProfileForm = () => {
           <div className="text-center space-y-1">
             <h2 className="text-xl font-bold text-white">{formData.name}</h2>
             <p className="text-sm text-[#9b87f5]">{formData.username}</p>
+          </div>
+
+          {/* Novo contador de seguidores com efeito neon */}
+          <div className="relative mt-4 group">
+            <div className="absolute inset-0 bg-[#9b87f5] blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+            <div className="relative bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#9b87f5] p-0.5 rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
+              <div className="bg-[#1A1F2C]/90 px-6 py-3 rounded-lg backdrop-blur-sm flex items-center gap-2">
+                <Users className="w-5 h-5 text-[#9b87f5] animate-pulse" />
+                <div className="flex flex-col">
+                  <span className="text-xs text-[#9b87f5]/70">Seguidores</span>
+                  <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#9b87f5] [text-shadow:_0_0_15px_rgb(155_135_245_/_40%)]">
+                    42
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="w-full max-w-sm grid grid-cols-2 gap-4 mt-4">
