@@ -62,6 +62,12 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
                 <DropdownMenuContent className="w-56 bg-[#2C2F3E] border-[#9b87f5]/20 text-[#D6BCFA] animate-scale-in">
                   <DropdownMenuLabel className="font-bold">Minha Conta</DropdownMenuLabel>
                   <DropdownMenuSeparator className="bg-[#9b87f5]/10" />
+                  <Link to="/watching">
+                    <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
+                      <CirclePlay className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+                      <span>Continuar Assistindo</span>
+                    </DropdownMenuItem>
+                  </Link>
                   <Link to="/profile">
                     <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
                       <User className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
