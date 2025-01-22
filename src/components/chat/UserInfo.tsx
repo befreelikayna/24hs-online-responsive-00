@@ -1,4 +1,5 @@
 import { X, User, Calendar, MessageSquare, Heart, Facebook, Instagram } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface UserInfoProps {
   userName: string;
@@ -29,14 +30,22 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-4 py-2">
-          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
-            <Facebook className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
+        <div className="flex justify-end gap-2">
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+          >
+            <Facebook className="w-4 h-4" />
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+          >
             <svg 
               viewBox="0 0 24 24" 
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -46,14 +55,22 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
               <path d="M9 12A6 6 0 1 0 9 0a6 6 0 0 0 0 12z" />
               <path d="M12.5 4.5v15M15 7v9" />
             </svg>
-          </a>
-          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
-            <Instagram className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+          >
+            <Instagram className="w-4 h-4" />
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+          >
             <svg 
               viewBox="0 0 24 24" 
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -62,7 +79,7 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
             </svg>
-          </a>
+          </Button>
         </div>
 
         <div className="grid grid-cols-3 gap-2">
