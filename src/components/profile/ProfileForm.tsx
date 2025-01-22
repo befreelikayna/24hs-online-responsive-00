@@ -38,8 +38,8 @@ export const ProfileForm = () => {
           <div className="absolute -top-2 -right-2 z-10">
             <Accordion type="single" collapsible>
               <AccordionItem value="profile-info" className="border-none">
-                <AccordionTrigger className="group p-0 hover:no-underline [&[data-state=open]>div]:bg-[#252839]">
-                  <div className="p-2 rounded-full bg-[#2C2F3E] hover:bg-[#252839] transition-colors">
+                <AccordionTrigger className="group p-0 hover:no-underline [&[data-state=open]>div]:bg-[#252839]" asChild>
+                  <div className="p-2 rounded-full bg-[#2C2F3E] hover:bg-[#252839] transition-colors cursor-pointer">
                     <PenSquare className="w-5 h-5 text-[#9b87f5] group-hover:text-[#D6BCFA]" />
                   </div>
                 </AccordionTrigger>
