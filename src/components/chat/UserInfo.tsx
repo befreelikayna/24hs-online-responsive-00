@@ -43,15 +43,12 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
             onClick={handleFollowToggle}
             className={`flex items-center gap-2 ${
               isFollowing 
-                ? 'bg-red-500/10 hover:bg-red-500/20 text-red-500' 
+                ? 'bg-red-500/10 hover:bg-red-500/20 text-red-500 px-3' 
                 : 'bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]'
             }`}
           >
             {isFollowing ? (
-              <>
-                <UserMinus className="w-4 h-4" />
-                Deixar de Seguir
-              </>
+              <UserMinus className="w-4 h-4" />
             ) : (
               <>
                 <UserPlus className="w-4 h-4" />
