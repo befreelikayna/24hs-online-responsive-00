@@ -28,9 +28,9 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 255 80% 74%;
-    --input: 255 80% 74%;
-    --ring: 255 80% 74%;
+    --border: 255 80% 84%;
+    --input: 255 80% 84%;
+    --ring: 255 80% 84%;
 
     --radius: 0.75rem;
   }
@@ -38,7 +38,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border/30;
   }
   body {
     @apply bg-background text-foreground;

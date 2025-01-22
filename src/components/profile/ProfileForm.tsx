@@ -40,8 +40,8 @@ export const ProfileForm = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg">
-      <div className="flex items-center justify-between p-3 sm:px-4 sm:py-3 border-b border-[#9b87f5]/10">
+    <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/5 backdrop-blur-lg">
+      <div className="flex items-center justify-between p-3 sm:px-4 sm:py-3 border-b border-[#9b87f5]/5">
         <h2 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
           <User className="w-4 h-4 text-[#9b87f5]" />
           <span>Personalizar Perfil</span>
@@ -51,7 +51,7 @@ export const ProfileForm = () => {
       <div className="p-3 sm:p-4">
         <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           <Accordion type="single" collapsible className="space-y-2">
-            <AccordionItem value="personal" className="border-[#9b87f5]/10">
+            <AccordionItem value="personal" className="border-[#9b87f5]/5">
               <AccordionTrigger className="text-xs sm:text-sm hover:no-underline py-2 sm:py-3">
                 Informações Pessoais
               </AccordionTrigger>
@@ -65,10 +65,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
                       placeholder="Seu nome completo"
                     />
-                    <User className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
+                    <User className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
                   </div>
                 </div>
 
@@ -81,10 +81,10 @@ export const ProfileForm = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
                       placeholder="seu@email.com"
                     />
-                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
+                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
                   </div>
                 </div>
 
@@ -97,16 +97,16 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.username}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
                       placeholder="@donossosistema"
                     />
-                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
+                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
                   </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="social" className="border-[#9b87f5]/10">
+            <AccordionItem value="social" className="border-[#9b87f5]/5">
               <AccordionTrigger className="text-xs sm:text-sm hover:no-underline py-2 sm:py-3">
                 Redes Sociais
               </AccordionTrigger>
@@ -120,10 +120,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.facebook}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
                       placeholder="Seu perfil do Facebook"
                     />
-                    <Facebook className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
+                    <Facebook className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
                   </div>
                 </div>
 
@@ -136,10 +136,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.instagram}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
                       placeholder="Seu perfil do Instagram"
                     />
-                    <Instagram className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
+                    <Instagram className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
                   </div>
                 </div>
 
@@ -152,17 +152,17 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.discord}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
                       placeholder="Seu perfil do Discord"
                     />
-                    <Link className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]" />
+                    <Link className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
                   </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
 
-          <Button type="submit" className="w-full h-8 sm:h-9 text-xs sm:text-sm">
+          <Button type="submit" className="w-full h-8 sm:h-9 text-xs sm:text-sm bg-[#9b87f5]/20 hover:bg-[#9b87f5]/30 border border-[#9b87f5]/20">
             <Save className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
             Salvar Alterações
           </Button>
