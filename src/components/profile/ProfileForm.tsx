@@ -41,6 +41,43 @@ export const ProfileForm = () => {
     });
   };
 
+  const TikTokIcon = () => (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-3 w-3 sm:h-4 sm:w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9 12A6 6 0 1 0 9 0a6 6 0 0 0 0 12z" />
+      <path d="M12.5 4.5v15M15 7v9" />
+    </svg>
+  );
+
+  const KwaiIcon = () => (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-3 w-3 sm:h-4 sm:w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+    </svg>
+  );
+
+  const socialIcons = [
+    { name: "facebook", Icon: Facebook, label: "Facebook", placeholder: "Seu perfil do Facebook" },
+    { name: "instagram", Icon: Instagram, label: "Instagram", placeholder: "Seu perfil do Instagram" },
+    { name: "tiktok", Icon: TikTokIcon, label: "TikTok", placeholder: "Seu perfil do TikTok" },
+    { name: "kwai", Icon: KwaiIcon, label: "Kwai", placeholder: "Seu perfil do Kwai" },
+    { name: "discord", Icon: Link, label: "Discord", placeholder: "Seu perfil do Discord" }
+  ];
+
   return (
     <section className="bg-gradient-to-br from-[#2C2F3E]/90 to-[#1A1F2C]/90 rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/5 backdrop-blur-lg transition-all duration-300">
       <div className="flex items-center justify-between p-3 sm:px-4 sm:py-3 border-b border-[#9b87f5]/5">
@@ -113,38 +150,7 @@ export const ProfileForm = () => {
                 Redes Sociais
               </AccordionTrigger>
               <AccordionContent className="space-y-3 pt-4 px-2 animate-accordion-down">
-                {[
-                  { name: "facebook", icon: Facebook, label: "Facebook", placeholder: "Seu perfil do Facebook" },
-                  { name: "instagram", icon: Instagram, label: "Instagram", placeholder: "Seu perfil do Instagram" },
-                  { name: "tiktok", icon: () => (
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 sm:h-4 sm:w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9 12A6 6 0 1 0 9 0a6 6 0 0 0 0 12z" />
-                      <path d="M12.5 4.5v15M15 7v9" />
-                    </svg>
-                  ), label: "TikTok", placeholder: "Seu perfil do TikTok" },
-                  { name: "kwai", icon: () => (
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 sm:h-4 sm:w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                  ), label: "Kwai", placeholder: "Seu perfil do Kwai" },
-                  { name: "discord", icon: Link, label: "Discord", placeholder: "Seu perfil do Discord" }
-                ].map((social) => (
+                {socialIcons.map((social) => (
                   <div key={social.name} className="space-y-1.5 transform transition-all duration-300 hover:translate-x-1">
                     <Label htmlFor={social.name} className="text-[10px] sm:text-xs text-[#9b87f5]">{social.label}</Label>
                     <div className="relative group">
@@ -157,13 +163,9 @@ export const ProfileForm = () => {
                         className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                         placeholder={social.placeholder}
                       />
-                      {typeof social.icon === 'function' ? (
-                        <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300">
-                          <social.icon />
-                        </div>
-                      ) : (
-                        <social.icon className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
-                      )}
+                      <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300">
+                        <social.Icon />
+                      </div>
                     </div>
                   </div>
                 ))}
