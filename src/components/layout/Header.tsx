@@ -18,7 +18,7 @@ interface HeaderProps {
 export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
   return (
     <header className="bg-gradient-to-r from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] border-b border-[#9b87f5]/10 px-4 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="w-full px-6 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-3">
           <div className="relative group">
