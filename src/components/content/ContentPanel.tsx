@@ -1,4 +1,4 @@
-import { MessageSquare, Users, Video, Music, Filter, Scroll } from "lucide-react";
+import { MessageSquare, Users, Video, Music, Filter, Scroll, Maximize2, Minimize2 } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
@@ -12,6 +12,7 @@ interface ContentPanelProps {
 export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }: ContentPanelProps) => {
   const [filterUserMessages, setFilterUserMessages] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const scrollToBottom = () => {
     const chatContainer = document.querySelector('.scrollbar-hide');
@@ -20,12 +21,16 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     }
   };
 
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
   if (!isLoggedIn) {
     return <AuthPanel onDemoLogin={onDemoLogin} />;
   }
 
   return (
-    <section className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 mb-[-60px]">
+    <section className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 mb-[-60px] transition-all duration-300 ${isFullscreen ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}>
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <h2 className="text-xl font-bold text-white">
           {activeSection === 'chat' && (
@@ -57,20 +62,33 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           )}
         </h2>
         {activeSection === 'chat' && (
-          <div className="relative">
-            <Scroll
-              className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
-              onClick={scrollToBottom}
-            />
-            {unreadCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                {unreadCount}
-              </span>
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <Scroll
+                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+                onClick={scrollToBottom}
+              />
+              {unreadCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  {unreadCount}
+                </span>
+              )}
+            </div>
+            {isFullscreen ? (
+              <Minimize2
+                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+                onClick={toggleFullscreen}
+              />
+            ) : (
+              <Maximize2
+                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+                onClick={toggleFullscreen}
+              />
             )}
           </div>
         )}
       </div>
-      <div className="h-[calc(100%-4rem)] overflow-y-auto">
+      <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''}`}>
         {activeSection === 'chat' ? (
           <LiveChat 
             filterUserMessages={filterUserMessages} 
