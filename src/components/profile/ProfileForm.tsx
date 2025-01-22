@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { User, Link, Save, Facebook, Instagram, AtSign, Calendar, Mail, Camera, Users } from "lucide-react";
+import { User, Link, Save, Facebook, Instagram, AtSign, Calendar, Mail, Camera, Users, PenSquare } from "lucide-react";
 
 export const ProfileForm = () => {
   const { toast } = useToast();
@@ -75,8 +75,10 @@ export const ProfileForm = () => {
 
         <Accordion type="single" collapsible className="mt-6">
           <AccordionItem value="profile-info" className="border-[#9b87f5]/10">
-            <AccordionTrigger className="text-[#9b87f5] hover:text-[#D6BCFA] hover:no-underline">
-              Informações do Perfil
+            <AccordionTrigger className="group">
+              <div className="flex justify-end w-full">
+                <PenSquare className="w-5 h-5 text-[#9b87f5] group-hover:text-[#D6BCFA] transition-colors" />
+              </div>
             </AccordionTrigger>
             <AccordionContent className="space-y-4">
               <div className="space-y-2">
