@@ -70,7 +70,7 @@ export const ProfileForm = () => {
                       className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                       placeholder="Seu nome completo"
                     />
-                    <User className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
+                    <User className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@ export const ProfileForm = () => {
                       className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                       placeholder="seu@email.com"
                     />
-                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
+                    <AtSign className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
                   </div>
                 </div>
 
@@ -102,7 +102,7 @@ export const ProfileForm = () => {
                       className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                       placeholder="@donossosistema"
                     />
-                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
+                    <AtSign className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
                   </div>
                 </div>
               </AccordionContent>
@@ -157,8 +157,12 @@ export const ProfileForm = () => {
                         className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                         placeholder={social.placeholder}
                       />
-                      {typeof social.icon === 'function' && (
-                        <social.icon className="absolute left-2 top-2 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
+                      {typeof social.icon === 'function' ? (
+                        <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300">
+                          <social.icon />
+                        </div>
+                      ) : (
+                        <social.icon className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
                       )}
                     </div>
                   </div>
