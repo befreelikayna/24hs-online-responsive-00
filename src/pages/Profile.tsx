@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ProfileForm } from "@/components/profile/ProfileForm";
+import { ProfileStats } from "@/components/profile/ProfileStats";
 
 const Profile = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -16,7 +17,11 @@ const Profile = () => {
 
       <main className="flex-1 w-full overflow-hidden">
         <div className="h-full flex flex-col lg:flex-row gap-4 p-4">
-          <div className="w-full max-w-3xl mx-auto">
+          <div className="w-full lg:w-2/3 flex flex-col gap-4 lg:overflow-y-auto">
+            <ProfileStats />
+          </div>
+
+          <div className="w-full lg:w-1/3 h-full overflow-y-auto">
             <ProfileForm />
           </div>
         </div>
