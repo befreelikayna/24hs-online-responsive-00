@@ -144,15 +144,15 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
               <p className="text-sm text-white font-semibold">45</p>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-[#E5DEFF] to-[#7E69AB] p-4 rounded-xl shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(126,105,171,0.3)] relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#221F26] to-[#1A1F2C] p-4 rounded-xl shadow-lg border border-[#7E69AB]/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(126,105,171,0.3)] relative overflow-hidden">
             <div className="flex flex-col items-center relative z-10">
-              <div className="bg-white/20 p-2 rounded-lg mb-2 backdrop-blur-sm">
-                <Users className="w-5 h-5 text-white" />
+              <div className="bg-[#7E69AB]/20 p-2 rounded-lg mb-2 backdrop-blur-sm">
+                <Users className="w-5 h-5 text-[#E5DEFF]" />
               </div>
-              <p className="text-xs text-white mb-1 font-medium">Seguidores</p>
-              <p className="text-sm text-white font-bold">{followersCount}</p>
+              <p className="text-xs text-[#E5DEFF] mb-1 font-medium">Seguidores</p>
+              <p className="text-sm text-[#E5DEFF] font-bold">{followersCount}</p>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#7E69AB]/10 to-transparent animate-shimmer"></div>
           </div>
         </div>
 
