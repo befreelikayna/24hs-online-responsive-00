@@ -35,6 +35,57 @@ export const ProfileForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-lg p-6 shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10">
         <div className="flex flex-col items-center relative">
+          <div className="absolute -top-2 -right-2 z-10">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="profile-info" className="border-none">
+                <AccordionTrigger className="group p-0 hover:no-underline [&[data-state=open]>div]:bg-[#252839]">
+                  <div className="p-2 rounded-full bg-[#2C2F3E] hover:bg-[#252839] transition-colors">
+                    <PenSquare className="w-5 h-5 text-[#9b87f5] group-hover:text-[#D6BCFA]" />
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="absolute top-12 right-0 w-full min-w-[280px] bg-[#2C2F3E] rounded-lg p-4 border border-[#9b87f5]/10 shadow-lg space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-[#9b87f5]">Nome</Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="username" className="text-[#9b87f5]">Username</Label>
+                    <Input
+                      id="username"
+                      value={formData.username}
+                      onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                      className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-[#9b87f5]">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
+                    <Input
+                      id="bio"
+                      value={formData.bio}
+                      onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+                      className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                    />
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+
           <div className="relative group">
             <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#9b87f5] to-[#D6BCFA] p-1">
               <div className="w-full h-full rounded-full bg-[#1A1F2C] flex items-center justify-center relative overflow-hidden">
@@ -72,55 +123,6 @@ export const ProfileForm = () => {
             </Button>
           </div>
         </div>
-
-        <Accordion type="single" collapsible className="mt-6">
-          <AccordionItem value="profile-info" className="border-[#9b87f5]/10">
-            <AccordionTrigger className="group">
-              <div className="flex justify-end w-full">
-                <PenSquare className="w-5 h-5 text-[#9b87f5] group-hover:text-[#D6BCFA] transition-colors" />
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-[#9b87f5]">Nome</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="username" className="text-[#9b87f5]">Username</Label>
-                <Input
-                  id="username"
-                  value={formData.username}
-                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-[#9b87f5]">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
-                <Input
-                  id="bio"
-                  value={formData.bio}
-                  onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                />
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
 
         <div className="flex justify-end mt-6">
           <Button type="submit" className="bg-[#9b87f5] hover:bg-[#8b77e5] text-white">

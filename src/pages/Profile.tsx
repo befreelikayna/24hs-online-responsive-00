@@ -21,12 +21,11 @@ const Profile = () => {
 
       <main className="flex-1 overflow-y-auto mt-[60px] mb-[48px] scrollbar-hide">
         <div className="w-full max-w-[1400px] mx-auto px-4 py-6">
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="w-full lg:w-1/3">
+          <div className="flex flex-col gap-6">
+            <div className="w-full">
               <ProfileForm />
             </div>
-
-            <div className="w-full lg:w-2/3">
+            <div className="w-full">
               <ProfileStats />
             </div>
           </div>
