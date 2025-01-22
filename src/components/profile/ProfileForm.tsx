@@ -75,9 +75,10 @@ export const ProfileForm = () => {
 
         <Accordion type="single" collapsible className="mt-6">
           <AccordionItem value="profile-info" className="border-[#9b87f5]/10">
-            <AccordionTrigger className="group">
-              <div className="flex justify-end w-full">
-                <PenSquare className="w-5 h-5 text-[#9b87f5] group-hover:text-[#D6BCFA] transition-colors" />
+            <AccordionTrigger>
+              <div className="flex items-center gap-2">
+                <PenSquare className="w-5 h-5 text-[#9b87f5]" />
+                <span className="text-sm text-[#9b87f5]">Editar Perfil</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="space-y-4">
@@ -118,16 +119,19 @@ export const ProfileForm = () => {
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                 />
               </div>
+              <div className="pt-4">
+                <Button 
+                  type="submit" 
+                  variant="outline"
+                  className="w-full bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  Salvar Alterações
+                </Button>
+              </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-
-        <div className="flex justify-end mt-6">
-          <Button type="submit" className="bg-[#9b87f5] hover:bg-[#8b77e5] text-white">
-            <Save className="w-4 h-4 mr-2" />
-            Salvar Alterações
-          </Button>
-        </div>
       </div>
     </form>
   );
