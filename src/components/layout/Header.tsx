@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut, Search } from "lucide-react";
+import { Bell, MessageSquare, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -26,35 +26,23 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
           <span className="text-white font-bold text-lg">LiveApp</span>
         </div>
 
-        {/* Middle Section */}
-        <div className="hidden md:flex items-center max-w-md w-full mx-4">
-          <div className="relative w-full">
-            <input
-              type="text"
-              placeholder="Pesquisar conteúdo..."
-              className="w-full bg-[#2C2F3E]/50 border border-[#9b87f5]/20 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-[#9b87f5]/50 transition-all"
-            />
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          </div>
-        </div>
-
         {/* Right Section */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           {isLoggedIn ? (
             <>
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110 p-1.5"
+                className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110"
               >
-                <Bell className="h-5 w-5 stroke-[1.5]" />
+                <Bell className="h-5 w-5 stroke-[1.5] transition-transform duration-300 hover:rotate-12" />
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110 p-1.5"
+                className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110"
               >
-                <MessageSquare className="h-5 w-5 stroke-[1.5]" />
+                <MessageSquare className="h-5 w-5 stroke-[1.5] transition-transform duration-300 hover:-translate-y-1" />
               </Button>
 
               <DropdownMenu>
@@ -62,20 +50,23 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110 p-1.5"
+                    className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110 relative group"
                   >
-                    <User className="h-5 w-5 stroke-[1.5]" />
+                    <User className="h-5 w-5 stroke-[1.5] transition-transform duration-300 group-hover:rotate-6" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56 bg-[#2C2F3E] border-[#9b87f5]/20 text-white">
-                  <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
+                <DropdownMenuContent className="w-56 bg-[#2C2F3E] border-[#9b87f5]/20 text-white animate-scale-in">
+                  <DropdownMenuLabel className="font-bold">Minha Conta</DropdownMenuLabel>
                   <DropdownMenuSeparator className="bg-[#9b87f5]/10" />
-                  <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
+                  <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
+                    <User className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                     <span>Perfil</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={onLogout} className="hover:bg-[#9b87f5]/10 cursor-pointer">
-                    <LogOut className="mr-2 h-4 w-4" />
+                  <DropdownMenuItem 
+                    onClick={onLogout} 
+                    className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group text-red-400"
+                  >
+                    <LogOut className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                     <span>Sair</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -85,7 +76,7 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
             <Button
               variant="ghost"
               size="sm"
-              className="text-white hover:bg-[#9b87f5]/20 transition-colors"
+              className="text-white hover:bg-[#9b87f5]/20 transition-all duration-300 hover:scale-105"
             >
               Login
             </Button>
