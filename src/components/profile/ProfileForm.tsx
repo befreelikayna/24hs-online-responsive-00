@@ -44,7 +44,7 @@ export const ProfileForm = () => {
   const TikTokIcon = () => (
     <svg
       viewBox="0 0 24 24"
-      className="h-3 w-3 sm:h-4 sm:w-4"
+      className="h-4 w-4"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -59,7 +59,7 @@ export const ProfileForm = () => {
   const KwaiIcon = () => (
     <svg
       viewBox="0 0 24 24"
-      className="h-3 w-3 sm:h-4 sm:w-4"
+      className="h-4 w-4"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -104,10 +104,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
+                      className="pl-9 h-9 text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                       placeholder="Seu nome completo"
                     />
-                    <User className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
+                    <User className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
                   </div>
                 </div>
 
@@ -120,10 +120,10 @@ export const ProfileForm = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
+                      className="pl-9 h-9 text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                       placeholder="seu@email.com"
                     />
-                    <AtSign className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
+                    <AtSign className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
                   </div>
                 </div>
 
@@ -136,10 +136,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.username}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
+                      className="pl-9 h-9 text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                       placeholder="@donossosistema"
                     />
-                    <AtSign className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
+                    <AtSign className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300" />
                   </div>
                 </div>
               </AccordionContent>
@@ -160,11 +160,11 @@ export const ProfileForm = () => {
                         type="text"
                         value={formData[social.name as keyof typeof formData]}
                         onChange={handleChange}
-                        className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
+                        className="pl-9 h-9 text-sm bg-background/30 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20 transition-all duration-300"
                         placeholder={social.placeholder}
                       />
-                      <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300">
-                        <social.Icon />
+                      <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#9b87f5]/30 group-hover:text-[#9b87f5]/50 transition-colors duration-300">
+                        <social.Icon className="h-4 w-4" />
                       </div>
                     </div>
                   </div>
@@ -175,9 +175,9 @@ export const ProfileForm = () => {
 
           <Button 
             type="submit" 
-            className="w-full h-8 sm:h-9 text-xs sm:text-sm bg-[#9b87f5]/20 hover:bg-[#9b87f5]/30 border border-[#9b87f5]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            className="w-full h-9 text-sm bg-[#9b87f5]/20 hover:bg-[#9b87f5]/30 border border-[#9b87f5]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Save className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+            <Save className="w-4 h-4 mr-2" />
             Salvar Alterações
           </Button>
         </form>
