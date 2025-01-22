@@ -58,57 +58,57 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           </Button>
         </div>
 
-        <div className="flex justify-end gap-2">
-          <Button 
-            variant="ghost" 
-            size="icon"
-            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+      <div className="flex justify-end gap-2">
+        <Button 
+          variant="ghost" 
+          size="icon"
+          className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+        >
+          <Facebook className="w-4 h-4" />
+        </Button>
+        <Button 
+          variant="ghost" 
+          size="icon"
+          className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+        >
+          <Instagram className="w-4 h-4" />
+        </Button>
+        <Button 
+          variant="ghost" 
+          size="icon"
+          className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+        >
+          <svg 
+            viewBox="0 0 24 24" 
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <Facebook className="w-4 h-4" />
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="icon"
-            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+            <path d="M9 12A6 6 0 1 0 9 0a6 6 0 0 0 0 12z" />
+            <path d="M12.5 4.5v15M15 7v9" />
+          </svg>
+        </Button>
+        <Button 
+          variant="ghost" 
+          size="icon"
+          className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
+        >
+          <svg 
+            viewBox="0 0 24 24" 
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <svg 
-              viewBox="0 0 24 24" 
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M9 12A6 6 0 1 0 9 0a6 6 0 0 0 0 12z" />
-              <path d="M12.5 4.5v15M15 7v9" />
-            </svg>
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="icon"
-            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
-          >
-            <Instagram className="w-4 h-4" />
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="icon"
-            className="bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 text-[#9b87f5]"
-          >
-            <svg 
-              viewBox="0 0 24 24" 
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
-          </Button>
-        </div>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </Button>
+      </div>
 
         <div className="flex items-center justify-center gap-2 bg-[#2C2F3E] p-3 rounded-lg">
           <Calendar className="w-5 h-5 text-[#7E69AB]" />

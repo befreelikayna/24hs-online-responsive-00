@@ -20,6 +20,8 @@ export const ProfileForm = () => {
     facebook: "",
     instagram: "",
     discord: "",
+    tiktok: "",
+    kwai: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,10 +67,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
                       placeholder="Seu nome completo"
                     />
-                    <User className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
+                    <User className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50" />
                   </div>
                 </div>
 
@@ -81,10 +83,10 @@ export const ProfileForm = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
                       placeholder="seu@email.com"
                     />
-                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
+                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50" />
                   </div>
                 </div>
 
@@ -97,10 +99,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.username}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
                       placeholder="@donossosistema"
                     />
-                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
+                    <AtSign className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50" />
                   </div>
                 </div>
               </AccordionContent>
@@ -120,10 +122,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.facebook}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
                       placeholder="Seu perfil do Facebook"
                     />
-                    <Facebook className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
+                    <Facebook className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50" />
                   </div>
                 </div>
 
@@ -136,10 +138,63 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.instagram}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
                       placeholder="Seu perfil do Instagram"
                     />
-                    <Instagram className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
+                    <Instagram className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50" />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="tiktok" className="text-[10px] sm:text-xs">TikTok</Label>
+                  <div className="relative">
+                    <Input
+                      id="tiktok"
+                      name="tiktok"
+                      type="text"
+                      value={formData.tiktok}
+                      onChange={handleChange}
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
+                      placeholder="Seu perfil do TikTok"
+                    />
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M9 12A6 6 0 1 0 9 0a6 6 0 0 0 0 12z" />
+                      <path d="M12.5 4.5v15M15 7v9" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="kwai" className="text-[10px] sm:text-xs">Kwai</Label>
+                  <div className="relative">
+                    <Input
+                      id="kwai"
+                      name="kwai"
+                      type="text"
+                      value={formData.kwai}
+                      onChange={handleChange}
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
+                      placeholder="Seu perfil do Kwai"
+                    />
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
                   </div>
                 </div>
 
@@ -152,10 +207,10 @@ export const ProfileForm = () => {
                       type="text"
                       value={formData.discord}
                       onChange={handleChange}
-                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/20 focus-visible:ring-[#9b87f5]/30 focus-visible:border-[#9b87f5]/30"
+                      className="pl-7 sm:pl-8 h-8 sm:h-9 text-xs sm:text-sm bg-background/50 border-[#9b87f5]/10 focus-visible:ring-[#9b87f5]/20 focus-visible:border-[#9b87f5]/20"
                       placeholder="Seu perfil do Discord"
                     />
-                    <Link className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/70" />
+                    <Link className="absolute left-2 top-2 h-3 w-3 sm:h-4 sm:w-4 text-[#9b87f5]/50" />
                   </div>
                 </div>
               </AccordionContent>
