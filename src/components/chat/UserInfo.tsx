@@ -100,10 +100,12 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           </div>
         </div>
 
-        <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
-          <Calendar className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
-          <p className="text-xs text-gray-400">Entrou em</p>
-          <p className="text-sm text-white font-medium">Janeiro 2024</p>
+        <div className="bg-[#2C2F3E] p-3 rounded-lg">
+          <div className="flex items-center justify-center gap-2">
+            <Calendar className="w-5 h-5 text-[#9b87f5]" />
+            <p className="text-xs text-gray-400">Entrou em</p>
+            <p className="text-sm text-white font-medium">Janeiro 2024</p>
+          </div>
         </div>
 
         <div className="bg-[#2C2F3E] p-3 rounded-lg">
