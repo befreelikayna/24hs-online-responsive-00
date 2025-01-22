@@ -7,6 +7,15 @@ import { PenSquare, Share2, Save } from "lucide-react";
 import { ProfileImage } from "./ProfileImage";
 import { ProfileSocialButtons } from "./ProfileSocialButtons";
 
+export type SocialLinksType = {
+  facebook: string;
+  instagram: string;
+  youtube: string;
+  twitter: string;
+  tiktok: string;
+  kawi: string;
+};
+
 export const ProfileForm = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -14,19 +23,30 @@ export const ProfileForm = () => {
     username: "@johndoe",
     email: "john@example.com",
     bio: "Frontend Developer",
-    facebook: "",
-    instagram: "",
-    youtube: "",
-    twitter: "",
-    tiktok: "",
-    kawi: "",
     joinDate: "Janeiro 2024"
+  });
+
+  const [socialLinks, setSocialLinks] = useState<SocialLinksType>({
+    facebook: "",
+    instagram: "@usuario",
+    youtube: "https://youtube.com/channel",
+    twitter: "@usuario",
+    tiktok: "@usuario",
+    kawi: ""
   });
 
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Save to localStorage
+    if (activeSection === 'social-media') {
+      localStorage.setItem('socialLinks', JSON.stringify(socialLinks));
+    } else {
+      localStorage.setItem('profileData', JSON.stringify(formData));
+    }
+    
     toast({
       title: "Perfil atualizado!",
       description: "Suas alterações foram salvas com sucesso.",
@@ -52,7 +72,7 @@ export const ProfileForm = () => {
             <p className="text-sm text-[#9b87f5]">{formData.username}</p>
           </div>
 
-          <ProfileSocialButtons />
+          <ProfileSocialButtons socialLinks={socialLinks} />
 
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
@@ -136,8 +156,8 @@ export const ProfileForm = () => {
                 <Label htmlFor="facebook" className="text-[#9b87f5]">Facebook</Label>
                 <Input
                   id="facebook"
-                  value={formData.facebook}
-                  onChange={(e) => setFormData({ ...formData, facebook: e.target.value })}
+                  value={socialLinks.facebook}
+                  onChange={(e) => setSocialLinks({ ...socialLinks, facebook: e.target.value })}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                   placeholder="URL do Facebook"
                 />
@@ -146,8 +166,8 @@ export const ProfileForm = () => {
                 <Label htmlFor="instagram" className="text-[#9b87f5]">Instagram</Label>
                 <Input
                   id="instagram"
-                  value={formData.instagram}
-                  onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                  value={socialLinks.instagram}
+                  onChange={(e) => setSocialLinks({ ...socialLinks, instagram: e.target.value })}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                   placeholder="@usuario"
                 />
@@ -156,8 +176,8 @@ export const ProfileForm = () => {
                 <Label htmlFor="youtube" className="text-[#9b87f5]">YouTube</Label>
                 <Input
                   id="youtube"
-                  value={formData.youtube}
-                  onChange={(e) => setFormData({ ...formData, youtube: e.target.value })}
+                  value={socialLinks.youtube}
+                  onChange={(e) => setSocialLinks({ ...socialLinks, youtube: e.target.value })}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                   placeholder="URL do canal"
                 />
@@ -166,8 +186,8 @@ export const ProfileForm = () => {
                 <Label htmlFor="twitter" className="text-[#9b87f5]">Twitter/X</Label>
                 <Input
                   id="twitter"
-                  value={formData.twitter}
-                  onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
+                  value={socialLinks.twitter}
+                  onChange={(e) => setSocialLinks({ ...socialLinks, twitter: e.target.value })}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                   placeholder="@usuario"
                 />
@@ -176,8 +196,8 @@ export const ProfileForm = () => {
                 <Label htmlFor="tiktok" className="text-[#9b87f5]">TikTok</Label>
                 <Input
                   id="tiktok"
-                  value={formData.tiktok}
-                  onChange={(e) => setFormData({ ...formData, tiktok: e.target.value })}
+                  value={socialLinks.tiktok}
+                  onChange={(e) => setSocialLinks({ ...socialLinks, tiktok: e.target.value })}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                   placeholder="@usuario"
                 />
@@ -186,8 +206,8 @@ export const ProfileForm = () => {
                 <Label htmlFor="kawi" className="text-[#9b87f5]">Kwai</Label>
                 <Input
                   id="kawi"
-                  value={formData.kawi}
-                  onChange={(e) => setFormData({ ...formData, kawi: e.target.value })}
+                  value={socialLinks.kawi}
+                  onChange={(e) => setSocialLinks({ ...socialLinks, kawi: e.target.value })}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                   placeholder="@usuario"
                 />

@@ -1,17 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
-import { useState } from "react";
+import type { SocialLinksType } from "./ProfileForm";
 
-export const ProfileSocialButtons = () => {
-  const [socialLinks] = useState({
-    facebook: "",
-    instagram: "@usuario",
-    youtube: "https://youtube.com/channel",
-    twitter: "@usuario",
-    tiktok: "@usuario",
-    kwai: ""
-  });
+interface ProfileSocialButtonsProps {
+  socialLinks: SocialLinksType;
+}
 
+export const ProfileSocialButtons = ({ socialLinks }: ProfileSocialButtonsProps) => {
   const renderSocialButtons = () => {
     const buttons = [];
 
@@ -80,7 +75,7 @@ export const ProfileSocialButtons = () => {
       );
     }
 
-    if (socialLinks.kwai) {
+    if (socialLinks.kawi) {
       buttons.push(
         <Button 
           key="kwai"
