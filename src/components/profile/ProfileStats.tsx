@@ -17,7 +17,7 @@ export const ProfileStats = () => {
 
   return (
     <div className="space-y-4">
-      <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-lg shadow-[0_0_20px_rgba(155,135,245,0.1)] border border-[#9b87f5]/10 backdrop-blur-lg">
+      <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-lg shadow-[0_0_20px_rgba(155,135,245,0.1)] border border-[#9b87f5]/10">
         <CardHeader className="p-3 sm:p-4">
           <CardTitle className="text-[#9b87f5] text-base sm:text-lg flex items-center gap-2">
             <MessageSquare className="w-4 h-4" />
@@ -71,10 +71,10 @@ export const ProfileStats = () => {
       </Card>
 
       <div className="grid grid-cols-2 gap-3">
-        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 backdrop-blur-lg hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg backdrop-blur-xl">
+              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg">
                 <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-[#9b87f5]" />
               </div>
               <div>
@@ -85,10 +85,10 @@ export const ProfileStats = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 backdrop-blur-lg hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg backdrop-blur-xl">
+              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg">
                 <ThumbsUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#9b87f5]" />
               </div>
               <div>
@@ -99,10 +99,10 @@ export const ProfileStats = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 backdrop-blur-lg hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg backdrop-blur-xl">
+              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg">
                 <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-[#9b87f5]" />
               </div>
               <div>
@@ -113,11 +113,11 @@ export const ProfileStats = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 backdrop-blur-lg hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.08)] border border-[#9b87f5]/10 hover:shadow-[0_0_25px_rgba(155,135,245,0.15)] transition-all duration-300">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg backdrop-blur-xl">
-                <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#E5DEFF]" />
+              <div className="bg-[#9b87f5]/10 p-1.5 sm:p-2 rounded-lg">
+                <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#9b87f5]" />
               </div>
               <div>
                 <p className="text-[10px] sm:text-xs text-[#E5DEFF] mb-0.5">Seguidores</p>
