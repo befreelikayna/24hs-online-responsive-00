@@ -23,7 +23,7 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
           <div className="bg-gradient-to-br from-[#9b87f5] to-[#1EAEDB] p-2 rounded-lg group transition-all duration-300 hover:scale-105">
             <Play className="w-6 h-6 text-white transition-transform duration-300 group-hover:translate-x-0.5" fill="white" />
           </div>
-          <span className="text-white font-bold text-lg">24hs.Online</span>
+          <span className="text-[#D6BCFA] font-bold text-lg">24hs.Online</span>
         </div>
 
         {/* Right Section */}
@@ -33,14 +33,14 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110"
+                className="text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300 transform hover:scale-110"
               >
                 <Bell className="h-5 w-5 stroke-[1.5] transition-transform duration-300 hover:rotate-12" />
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110"
+                className="text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300 transform hover:scale-110"
               >
                 <MessageSquare className="h-5 w-5 stroke-[1.5] transition-transform duration-300 hover:-translate-y-1" />
               </Button>
@@ -50,12 +50,12 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-110 relative group"
+                    className="text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300 transform hover:scale-110 relative group"
                   >
                     <User className="h-5 w-5 stroke-[1.5] transition-transform duration-300 group-hover:rotate-6" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56 bg-[#2C2F3E] border-[#9b87f5]/20 text-white animate-scale-in">
+                <DropdownMenuContent className="w-56 bg-[#2C2F3E] border-[#9b87f5]/20 text-[#D6BCFA] animate-scale-in">
                   <DropdownMenuLabel className="font-bold">Minha Conta</DropdownMenuLabel>
                   <DropdownMenuSeparator className="bg-[#9b87f5]/10" />
                   <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
@@ -76,7 +76,7 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
             <Button
               variant="ghost"
               size="sm"
-              className="text-white hover:bg-[#9b87f5]/20 transition-all duration-300 hover:scale-105"
+              className="text-[#D6BCFA] hover:bg-[#9b87f5]/20 transition-all duration-300 hover:scale-105"
             >
               Login
             </Button>
