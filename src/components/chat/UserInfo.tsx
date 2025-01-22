@@ -144,14 +144,15 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
               <p className="text-sm text-white font-semibold">45</p>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] p-4 rounded-xl shadow-lg border border-[#9b87f5]/10 transition-transform hover:scale-105">
-            <div className="flex flex-col items-center">
-              <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
-                <Users className="w-5 h-5 text-[#9b87f5]" />
+          <div className="bg-gradient-to-br from-[#9b87f5] to-[#D6BCFA] p-4 rounded-xl shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(155,135,245,0.3)] relative overflow-hidden">
+            <div className="flex flex-col items-center relative z-10">
+              <div className="bg-white/20 p-2 rounded-lg mb-2 backdrop-blur-sm">
+                <Users className="w-5 h-5 text-white" />
               </div>
-              <p className="text-xs text-gray-400 mb-1">Seguidores</p>
-              <p className="text-sm text-white font-semibold">{followersCount}</p>
+              <p className="text-xs text-white mb-1 font-medium">Seguidores</p>
+              <p className="text-sm text-white font-bold">{followersCount}</p>
             </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
           </div>
         </div>
 
