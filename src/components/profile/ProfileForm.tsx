@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { User, Link, Save, Facebook, Instagram, AtSign, Calendar, Mail, Camera, Users, PenSquare } from "lucide-react";
+import { User, Link, Save, Facebook, Instagram, AtSign, Calendar, Mail, Camera, Users, PenSquare, Share2, Youtube, Twitter } from "lucide-react";
 
 export const ProfileForm = () => {
   const { toast } = useToast();
@@ -20,6 +20,10 @@ export const ProfileForm = () => {
     bio: "Frontend Developer",
     facebook: "",
     instagram: "",
+    youtube: "",
+    twitter: "",
+    tiktok: "",
+    kawi: "",
     joinDate: "Janeiro 2024"
   });
 
@@ -73,13 +77,10 @@ export const ProfileForm = () => {
           </div>
         </div>
 
-        <Accordion type="single" collapsible className="mt-6">
+        <Accordion type="multiple" className="mt-6">
           <AccordionItem value="profile-info" className="border-[#9b87f5]/10">
             <AccordionTrigger>
-              <div className="flex items-center gap-2">
-                <PenSquare className="w-5 h-5 text-[#9b87f5]" />
-                <span className="text-sm text-[#9b87f5]">Editar Perfil</span>
-              </div>
+              <PenSquare className="w-5 h-5 text-[#9b87f5]" />
             </AccordionTrigger>
             <AccordionContent className="space-y-4">
               <div className="space-y-2">
@@ -127,6 +128,84 @@ export const ProfileForm = () => {
                 >
                   <Save className="w-4 h-4 mr-2" />
                   Salvar Alterações
+                </Button>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="social-media" className="border-[#9b87f5]/10">
+            <AccordionTrigger>
+              <Share2 className="w-5 h-5 text-[#9b87f5]" />
+            </AccordionTrigger>
+            <AccordionContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="facebook" className="text-[#9b87f5]">Facebook</Label>
+                <Input
+                  id="facebook"
+                  value={formData.facebook}
+                  onChange={(e) => setFormData({ ...formData, facebook: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="URL do Facebook"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="instagram" className="text-[#9b87f5]">Instagram</Label>
+                <Input
+                  id="instagram"
+                  value={formData.instagram}
+                  onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="youtube" className="text-[#9b87f5]">YouTube</Label>
+                <Input
+                  id="youtube"
+                  value={formData.youtube}
+                  onChange={(e) => setFormData({ ...formData, youtube: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="URL do canal"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="twitter" className="text-[#9b87f5]">Twitter/X</Label>
+                <Input
+                  id="twitter"
+                  value={formData.twitter}
+                  onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="tiktok" className="text-[#9b87f5]">TikTok</Label>
+                <Input
+                  id="tiktok"
+                  value={formData.tiktok}
+                  onChange={(e) => setFormData({ ...formData, tiktok: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="kawi" className="text-[#9b87f5]">Kwai</Label>
+                <Input
+                  id="kawi"
+                  value={formData.kawi}
+                  onChange={(e) => setFormData({ ...formData, kawi: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <div className="pt-4">
+                <Button 
+                  type="submit" 
+                  variant="outline"
+                  className="w-full bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  Salvar Redes Sociais
                 </Button>
               </div>
             </AccordionContent>
