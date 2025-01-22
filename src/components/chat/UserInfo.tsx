@@ -114,26 +114,42 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-4 gap-2">
-          <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
-            <MessageSquare className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
-            <p className="text-xs text-gray-400">Mensagens</p>
-            <p className="text-sm text-white font-medium">127</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] p-4 rounded-xl shadow-lg border border-[#9b87f5]/10 transition-transform hover:scale-105">
+            <div className="flex flex-col items-center">
+              <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
+                <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
+              </div>
+              <p className="text-xs text-gray-400 mb-1">Mensagens</p>
+              <p className="text-sm text-white font-semibold">127</p>
+            </div>
           </div>
-          <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
-            <ThumbsUp className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
-            <p className="text-xs text-gray-400">Curtidas</p>
-            <p className="text-sm text-white font-medium">324</p>
+          <div className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] p-4 rounded-xl shadow-lg border border-[#9b87f5]/10 transition-transform hover:scale-105">
+            <div className="flex flex-col items-center">
+              <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
+                <ThumbsUp className="w-5 h-5 text-[#9b87f5]" />
+              </div>
+              <p className="text-xs text-gray-400 mb-1">Curtidas</p>
+              <p className="text-sm text-white font-semibold">324</p>
+            </div>
           </div>
-          <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
-            <Heart className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
-            <p className="text-xs text-gray-400">Reações</p>
-            <p className="text-sm text-white font-medium">45</p>
+          <div className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] p-4 rounded-xl shadow-lg border border-[#9b87f5]/10 transition-transform hover:scale-105">
+            <div className="flex flex-col items-center">
+              <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
+                <Heart className="w-5 h-5 text-[#9b87f5]" />
+              </div>
+              <p className="text-xs text-gray-400 mb-1">Reações</p>
+              <p className="text-sm text-white font-semibold">45</p>
+            </div>
           </div>
-          <div className="bg-[#2C2F3E] p-3 rounded-lg text-center">
-            <Users className="w-5 h-5 text-[#9b87f5] mx-auto mb-1" />
-            <p className="text-xs text-gray-400">Seguidores</p>
-            <p className="text-sm text-white font-medium">{followersCount}</p>
+          <div className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] p-4 rounded-xl shadow-lg border border-[#9b87f5]/10 transition-transform hover:scale-105">
+            <div className="flex flex-col items-center">
+              <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
+                <Users className="w-5 h-5 text-[#9b87f5]" />
+              </div>
+              <p className="text-xs text-gray-400 mb-1">Seguidores</p>
+              <p className="text-sm text-white font-semibold">{followersCount}</p>
+            </div>
           </div>
         </div>
 
