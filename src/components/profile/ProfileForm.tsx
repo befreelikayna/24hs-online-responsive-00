@@ -49,13 +49,13 @@ export const ProfileForm = () => {
               </div>
             </div>
             
-            <div className="absolute -left-4 top-1/2 -translate-y-1/2 transform flex items-center gap-2 bg-gradient-to-r from-[#2C2F3E]/95 to-[#1A1F2C]/95 px-4 py-2 rounded-full border border-[#9b87f5]/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#9b87f5]/20">
-              <Users className="w-5 h-5 text-[#9b87f5]" />
+            <div className="absolute left-28 top-4 flex items-center gap-2 bg-gradient-to-r from-[#2C2F3E]/95 to-[#1A1F2C]/95 px-3 py-1.5 rounded-lg border border-[#9b87f5]/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#9b87f5]/20">
+              <Users className="w-4 h-4 text-[#9b87f5]" />
               <div className="flex flex-col">
-                <span className="text-lg font-bold [text-shadow:_0_0_10px_rgb(155_135_245_/_30%)] text-[#9b87f5]">
+                <span className="text-base font-bold [text-shadow:_0_0_10px_rgb(155_135_245_/_30%)] text-[#9b87f5]">
                   42
                 </span>
-                <span className="text-xs text-[#9b87f5]/70 -mt-1">
+                <span className="text-[10px] text-[#9b87f5]/70 -mt-1">
                   Seguidores
                 </span>
               </div>
