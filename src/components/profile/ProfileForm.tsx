@@ -3,7 +3,10 @@ import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Link, Save, Facebook, Instagram, AtSign, Calendar, Mail, Camera, Users, PenSquare, Share2, Youtube, Twitter } from "lucide-react";
+import { PenSquare, Share2, Save } from "lucide-react";
+import { ProfileImage } from "./ProfileImage";
+import { FollowersCount } from "./FollowersCount";
+import { ProfileSocialButtons } from "./ProfileSocialButtons";
 
 export const ProfileForm = () => {
   const { toast } = useToast();
@@ -39,24 +42,12 @@ export const ProfileForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-lg p-6 shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10">
         <div className="flex flex-col items-center relative">
-          <div className="absolute -left-16 top-4 flex items-center gap-2 bg-gradient-to-r from-[#2C2F3E]/95 to-[#1A1F2C]/95 px-3 py-1.5 rounded-lg border border-[#9b87f5]/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#9b87f5]/20">
-            <Users className="w-4 h-4 text-[#9b87f5]" />
-            <div className="flex flex-col">
-              <span className="text-base font-bold [text-shadow:_0_0_10px_rgb(155_135_245_/_30%)] text-[#9b87f5]">
-                42
-              </span>
-              <span className="text-[10px] text-[#9b87f5]/70 -mt-1">
-                Seguidores
-              </span>
-            </div>
-          </div>
-
-          <div className="relative group">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#9b87f5] to-[#D6BCFA] p-1">
-              <div className="w-full h-full rounded-full bg-[#1A1F2C] flex items-center justify-center relative overflow-hidden">
-                <User className="w-12 h-12 text-[#9b87f5]" />
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
-                  <Camera className="w-6 h-6 text-white" />
+          <div className="flex items-start w-full mb-4">
+            <div className="flex-1 flex justify-center">
+              <div className="relative">
+                <ProfileImage />
+                <div className="absolute -left-32 bottom-0">
+                  <FollowersCount />
                 </div>
               </div>
             </div>
@@ -67,16 +58,7 @@ export const ProfileForm = () => {
             <p className="text-sm text-[#9b87f5]">{formData.username}</p>
           </div>
 
-          <div className="w-full max-w-sm grid grid-cols-2 gap-4 mt-4">
-            <Button variant="outline" className="bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10">
-              <Facebook className="w-4 h-4 mr-2" />
-              Facebook
-            </Button>
-            <Button variant="outline" className="bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10">
-              <Instagram className="w-4 h-4 mr-2" />
-              Instagram
-            </Button>
-          </div>
+          <ProfileSocialButtons />
 
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
