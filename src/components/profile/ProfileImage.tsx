@@ -1,8 +1,10 @@
 import { User, Camera } from "lucide-react";
+import { FollowersCount } from "./FollowersCount";
 
 export const ProfileImage = () => {
   return (
     <div className="relative group">
+      <FollowersCount />
       <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#9b87f5] to-[#D6BCFA] p-1">
         <div className="w-full h-full rounded-full bg-[#1A1F2C] flex items-center justify-center relative overflow-hidden">
           <User className="w-12 h-12 text-[#9b87f5]" />

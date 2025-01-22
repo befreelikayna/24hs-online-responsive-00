@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PenSquare, Share2, Save } from "lucide-react";
 import { ProfileImage } from "./ProfileImage";
-import { FollowersCount } from "./FollowersCount";
 import { ProfileSocialButtons } from "./ProfileSocialButtons";
 
 export const ProfileForm = () => {
@@ -44,12 +43,7 @@ export const ProfileForm = () => {
         <div className="flex flex-col items-center relative">
           <div className="flex items-start w-full mb-4">
             <div className="flex-1 flex justify-center">
-              <div className="relative flex flex-col items-center">
-                <ProfileImage />
-                <div className="w-full mt-4">
-                  <FollowersCount />
-                </div>
-              </div>
+              <ProfileImage />
             </div>
           </div>
 

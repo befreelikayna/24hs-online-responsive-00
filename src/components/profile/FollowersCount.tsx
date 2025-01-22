@@ -2,13 +2,13 @@ import { Users } from "lucide-react";
 
 export const FollowersCount = () => {
   return (
-    <div className="flex items-center gap-2 bg-gradient-to-r from-[#2C2F3E]/95 to-[#1A1F2C]/95 px-4 py-2.5 rounded-lg border border-[#9b87f5]/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#9b87f5]/20 mx-4 my-3 sm:mx-6">
-      <Users className="w-5 h-5 text-[#9b87f5]" />
+    <div className="absolute -left-2 -top-2 flex items-center gap-2 bg-gradient-to-br from-[#2C2F3E]/80 to-[#1A1F2C]/80 px-3 py-1.5 rounded-lg border border-[#D6BCFA]/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#D6BCFA]/10">
+      <Users className="w-4 h-4 text-[#D6BCFA]" />
       <div className="flex flex-col">
-        <span className="text-lg font-bold [text-shadow:_0_0_10px_rgb(155_135_245_/_30%)] text-[#9b87f5]">
+        <span className="text-sm font-semibold text-[#D6BCFA]">
           42
         </span>
-        <span className="text-xs text-[#9b87f5]/70 -mt-0.5">
+        <span className="text-[10px] text-[#D6BCFA]/70 -mt-0.5">
           Seguidores
         </span>
       </div>
