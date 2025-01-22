@@ -8,7 +8,6 @@ interface UserInfoProps {
 }
 
 export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
-  // Simulate follow state - in a real app this would come from a backend
   const [isFollowing, setIsFollowing] = useState(false);
   const [followersCount, setFollowersCount] = useState(42);
 
@@ -114,6 +113,12 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
           </Button>
         </div>
 
+        <div className="flex items-center justify-center gap-2 bg-[#2C2F3E] p-3 rounded-lg">
+          <Calendar className="w-5 h-5 text-[#9b87f5]" />
+          <p className="text-xs text-gray-400">Entrou em</p>
+          <p className="text-sm text-white font-medium">Janeiro 2024</p>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="bg-gradient-to-br from-[#2C2F3E] to-[#252839] p-4 rounded-xl shadow-lg border border-[#9b87f5]/10 transition-transform hover:scale-105">
             <div className="flex flex-col items-center">
@@ -151,12 +156,6 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
               <p className="text-sm text-white font-semibold">{followersCount}</p>
             </div>
           </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-2 bg-[#2C2F3E] p-3 rounded-lg">
-          <Calendar className="w-5 h-5 text-[#9b87f5]" />
-          <p className="text-xs text-gray-400">Entrou em</p>
-          <p className="text-sm text-white font-medium">Janeiro 2024</p>
         </div>
 
         <div className="bg-[#2C2F3E] p-3 rounded-lg">
