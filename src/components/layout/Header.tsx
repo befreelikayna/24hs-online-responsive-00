@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut, Play } from "lucide-react";
+import { Bell, MessageSquare, User, LogOut, CirclePlay } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,8 +20,11 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-to-br from-[#9b87f5] to-[#1EAEDB] p-2 rounded-lg group transition-all duration-300 hover:scale-105">
-            <Play className="w-6 h-6 text-white transition-transform duration-300 group-hover:translate-x-0.5" fill="white" />
+          <div className="relative group">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#9b87f5] via-[#1EAEDB] to-[#9b87f5] rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div className="relative bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] p-2 rounded-lg group transition-all duration-300 hover:scale-105">
+              <CirclePlay className="w-6 h-6 text-[#D6BCFA] transition-all duration-300 group-hover:text-white group-hover:rotate-[360deg]" />
+            </div>
           </div>
           <span className="text-[#D6BCFA] font-bold text-lg">24hs.Online</span>
         </div>
