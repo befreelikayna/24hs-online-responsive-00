@@ -63,9 +63,9 @@ export const ChatMessage = ({
     }
   };
 
-  const handleUserNameClick = () => {
+  const handleUserNameClick = (clickedUserName: string) => {
     if (onUserSelect) {
-      onUserSelect(userName);
+      onUserSelect(clickedUserName);
     }
   };
 
@@ -75,7 +75,7 @@ export const ChatMessage = ({
         <div className="flex items-center gap-2 min-w-fit">
           <span 
             className="font-semibold text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
-            onClick={handleUserNameClick}
+            onClick={() => handleUserNameClick(userName)}
           >
             {userName}:
           </span>
@@ -169,7 +169,12 @@ export const ChatMessage = ({
             <div key={reply.id} className="bg-[#7E69AB]/20 rounded-md p-1">
               <div className="flex items-center gap-2 justify-between">
                 <div className="flex items-center gap-1">
-                  <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}:</span>
+                  <span 
+                    className="font-semibold text-[#9b87f5] text-sm cursor-pointer hover:text-[#D6BCFA] transition-colors"
+                    onClick={() => handleUserNameClick(reply.userName)}
+                  >
+                    {reply.userName}:
+                  </span>
                   <p className="text-white/90 text-sm">{reply.text}</p>
                 </div>
                 <span className="text-xs text-gray-400">{formatTime(reply.timestamp)}</span>
