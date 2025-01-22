@@ -1,4 +1,4 @@
-import { X, User, Calendar, MessageSquare, Heart } from "lucide-react";
+import { X, User, Calendar, MessageSquare, Heart, Facebook, Instagram } from "lucide-react";
 
 interface UserInfoProps {
   userName: string;
@@ -27,6 +27,42 @@ export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
             <h4 className="text-base font-semibold text-white">{userName}</h4>
             <p className="text-sm text-gray-400">Membro desde 2024</p>
           </div>
+        </div>
+
+        <div className="flex justify-center gap-4 py-2">
+          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
+            <Facebook className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
+            <svg 
+              viewBox="0 0 24 24" 
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M9 12A6 6 0 1 0 9 0a6 6 0 0 0 0 12z" />
+              <path d="M12.5 4.5v15M15 7v9" />
+            </svg>
+          </a>
+          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
+            <Instagram className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-[#9b87f5] transition-colors">
+            <svg 
+              viewBox="0 0 24 24" 
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </a>
         </div>
 
         <div className="grid grid-cols-3 gap-2">
