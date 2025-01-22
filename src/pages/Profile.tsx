@@ -19,7 +19,7 @@ const Profile = () => {
         <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} />
       </div>
 
-      <main className="flex-1 overflow-y-auto mt-[60px] mb-[48px]">
+      <main className="flex-1 overflow-y-auto mt-[60px] mb-[48px] scrollbar-hide">
         <div className="w-full max-w-[1400px] mx-auto px-4 py-6">
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="w-full lg:w-2/3">
