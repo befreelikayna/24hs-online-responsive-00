@@ -7,7 +7,7 @@ interface UserInfoProps {
 
 export const UserInfo = ({ userName, onClose }: UserInfoProps) => {
   return (
-    <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-4 bg-[#1A1F2C]/95 rounded-lg">
+    <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-4 bg-[#1A1F2C]/95 rounded-lg scrollbar-hide">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-xl font-bold text-[#9b87f5]">Informações do Usuário</h3>
         <button
