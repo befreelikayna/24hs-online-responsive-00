@@ -27,12 +27,18 @@ export const ProfileForm = () => {
     joinDate: "Janeiro 2024"
   });
 
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Perfil atualizado!",
       description: "Suas alterações foram salvas com sucesso.",
     });
+  };
+
+  const handleSectionClick = (section: string) => {
+    setActiveSection(activeSection === section ? null : section);
   };
 
   return (
@@ -75,148 +81,156 @@ export const ProfileForm = () => {
               Instagram
             </Button>
           </div>
-        </div>
 
-        <Accordion type="multiple" className="mt-6">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <AccordionItem value="profile-info" className="border-none">
-              <AccordionTrigger className="py-0 [&[data-state=open]>div>svg]:text-white">
-                <div className="p-2 rounded-lg hover:bg-[#252839] transition-colors">
-                  <PenSquare className="w-5 h-5 text-[#9b87f5]" />
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-[#9b87f5]">Nome</Label>
-                  <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="username" className="text-[#9b87f5]">Username</Label>
-                  <Input
-                    id="username"
-                    value={formData.username}
-                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-[#9b87f5]">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
-                  <Input
-                    id="bio"
-                    value={formData.bio}
-                    onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                  />
-                </div>
-                <div className="pt-4">
-                  <Button 
-                    type="submit" 
-                    variant="outline"
-                    className="w-full bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
-                  >
-                    <Save className="w-4 h-4 mr-2" />
-                    Salvar Alterações
-                  </Button>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              type="button"
+              onClick={() => handleSectionClick('profile-info')}
+              className={`p-2 rounded-lg transition-colors ${
+                activeSection === 'profile-info' 
+                  ? 'bg-[#252839] text-white' 
+                  : 'text-[#9b87f5] hover:bg-[#252839] hover:text-white'
+              }`}
+            >
+              <PenSquare className="w-5 h-5" />
+            </button>
 
-            <AccordionItem value="social-media" className="border-none">
-              <AccordionTrigger className="py-0 [&[data-state=open]>div>svg]:text-white">
-                <div className="p-2 rounded-lg hover:bg-[#252839] transition-colors">
-                  <Share2 className="w-5 h-5 text-[#9b87f5]" />
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="facebook" className="text-[#9b87f5]">Facebook</Label>
-                  <Input
-                    id="facebook"
-                    value={formData.facebook}
-                    onChange={(e) => setFormData({ ...formData, facebook: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                    placeholder="URL do Facebook"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="instagram" className="text-[#9b87f5]">Instagram</Label>
-                  <Input
-                    id="instagram"
-                    value={formData.instagram}
-                    onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                    placeholder="@usuario"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="youtube" className="text-[#9b87f5]">YouTube</Label>
-                  <Input
-                    id="youtube"
-                    value={formData.youtube}
-                    onChange={(e) => setFormData({ ...formData, youtube: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                    placeholder="URL do canal"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="twitter" className="text-[#9b87f5]">Twitter/X</Label>
-                  <Input
-                    id="twitter"
-                    value={formData.twitter}
-                    onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                    placeholder="@usuario"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="tiktok" className="text-[#9b87f5]">TikTok</Label>
-                  <Input
-                    id="tiktok"
-                    value={formData.tiktok}
-                    onChange={(e) => setFormData({ ...formData, tiktok: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                    placeholder="@usuario"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="kawi" className="text-[#9b87f5]">Kwai</Label>
-                  <Input
-                    id="kawi"
-                    value={formData.kawi}
-                    onChange={(e) => setFormData({ ...formData, kawi: e.target.value })}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                    placeholder="@usuario"
-                  />
-                </div>
-                <div className="pt-4">
-                  <Button 
-                    type="submit" 
-                    variant="outline"
-                    className="w-full bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
-                  >
-                    <Save className="w-4 h-4 mr-2" />
-                    Salvar Redes Sociais
-                  </Button>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+            <button
+              type="button"
+              onClick={() => handleSectionClick('social-media')}
+              className={`p-2 rounded-lg transition-colors ${
+                activeSection === 'social-media' 
+                  ? 'bg-[#252839] text-white' 
+                  : 'text-[#9b87f5] hover:bg-[#252839] hover:text-white'
+              }`}
+            >
+              <Share2 className="w-5 h-5" />
+            </button>
           </div>
-        </Accordion>
+
+          {activeSection === 'profile-info' && (
+            <div className="w-full space-y-4 mt-4">
+              <div className="space-y-2">
+                <Label htmlFor="name" className="text-[#9b87f5]">Nome</Label>
+                <Input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="username" className="text-[#9b87f5]">Username</Label>
+                <Input
+                  id="username"
+                  value={formData.username}
+                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-[#9b87f5]">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
+                <Input
+                  id="bio"
+                  value={formData.bio}
+                  onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                variant="outline"
+                className="w-full bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
+              >
+                <Save className="w-4 h-4 mr-2" />
+                Salvar Alterações
+              </Button>
+            </div>
+          )}
+
+          {activeSection === 'social-media' && (
+            <div className="w-full space-y-4 mt-4">
+              <div className="space-y-2">
+                <Label htmlFor="facebook" className="text-[#9b87f5]">Facebook</Label>
+                <Input
+                  id="facebook"
+                  value={formData.facebook}
+                  onChange={(e) => setFormData({ ...formData, facebook: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="URL do Facebook"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="instagram" className="text-[#9b87f5]">Instagram</Label>
+                <Input
+                  id="instagram"
+                  value={formData.instagram}
+                  onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="youtube" className="text-[#9b87f5]">YouTube</Label>
+                <Input
+                  id="youtube"
+                  value={formData.youtube}
+                  onChange={(e) => setFormData({ ...formData, youtube: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="URL do canal"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="twitter" className="text-[#9b87f5]">Twitter/X</Label>
+                <Input
+                  id="twitter"
+                  value={formData.twitter}
+                  onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="tiktok" className="text-[#9b87f5]">TikTok</Label>
+                <Input
+                  id="tiktok"
+                  value={formData.tiktok}
+                  onChange={(e) => setFormData({ ...formData, tiktok: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="kawi" className="text-[#9b87f5]">Kwai</Label>
+                <Input
+                  id="kawi"
+                  value={formData.kawi}
+                  onChange={(e) => setFormData({ ...formData, kawi: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  placeholder="@usuario"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                variant="outline"
+                className="w-full bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
+              >
+                <Save className="w-4 h-4 mr-2" />
+                Salvar Redes Sociais
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </form>
   );
