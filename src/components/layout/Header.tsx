@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut } from "lucide-react";
+import { Bell, MessageSquare, User, LogOut, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,10 +20,10 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-to-br from-[#9b87f5] to-[#1EAEDB] p-2 rounded-lg">
-            <img src="/placeholder.svg" alt="Logo" className="w-6 h-6" />
+          <div className="bg-gradient-to-br from-[#9b87f5] to-[#1EAEDB] p-2 rounded-lg group transition-all duration-300 hover:scale-105">
+            <Play className="w-6 h-6 text-white transition-transform duration-300 group-hover:translate-x-0.5" fill="white" />
           </div>
-          <span className="text-white font-bold text-lg">LiveApp</span>
+          <span className="text-white font-bold text-lg">24hs.Online</span>
         </div>
 
         {/* Right Section */}
