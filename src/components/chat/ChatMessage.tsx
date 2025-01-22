@@ -63,11 +63,11 @@ export const ChatMessage = ({
 
   return (
     <div className="bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1">
-      <div className="flex items-start gap-2">
+      <div className="flex items-center gap-2">
         <div className="flex items-center gap-2 min-w-fit">
           <span className="font-semibold text-[#9b87f5]">{userName}:</span>
         </div>
-        <p className="text-white/90 text-sm leading-tight flex-1">{text}</p>
+        <p className="text-white/90 text-sm flex-1">{text}</p>
         <span className="text-xs text-gray-400 whitespace-nowrap">{formatTime(timestamp)}</span>
       </div>
       
@@ -157,7 +157,7 @@ export const ChatMessage = ({
               <div className="flex items-center gap-2 justify-between">
                 <div className="flex items-center gap-1">
                   <span className="font-semibold text-[#9b87f5] text-sm">{reply.userName}:</span>
-                  <p className="text-white/90 text-sm leading-snug">{reply.text}</p>
+                  <p className="text-white/90 text-sm">{reply.text}</p>
                 </div>
                 <span className="text-xs text-gray-400">{formatTime(reply.timestamp)}</span>
               </div>
