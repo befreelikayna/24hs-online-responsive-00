@@ -28,16 +28,16 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
 
       {/* Bio Section */}
       <div className="w-full">
-        <div className="w-full min-h-[140px] md:min-h-[180px] bg-gradient-to-br from-[#2C2F3E]/90 to-[#1A1F2C] rounded-xl p-5 md:p-6 shadow-lg backdrop-blur-sm">
+        <div className="w-full bg-[#2C2F3E] rounded-xl p-5 md:p-6">
           <div className="h-full flex flex-col">
             <div className="flex items-center gap-2 mb-3">
               <AlignJustify className="w-4 h-4 text-[#9b87f5]/70" />
               <span className="text-xs uppercase tracking-wider text-[#9b87f5]/70">Bio</span>
             </div>
-            <div className="flex-1 flex items-center">
-              <p className="text-[15px] md:text-base text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide">
+            <div className="flex-1">
+              <p className="text-[11px] md:text-[12px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide line-clamp-7">
                 {formData.bio || (
-                  <span className="text-white/40 italic text-sm">
+                  <span className="text-white/40 italic">
                     Nenhuma bio adicionada ainda...
                   </span>
                 )}
