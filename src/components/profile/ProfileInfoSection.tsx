@@ -19,6 +19,14 @@ interface ProfileInfoSectionProps {
   onSubmit: () => void;
 }
 
+const formatMarkdown = (text: string) => {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__(.*?)__/g, '<em>$1</em>')
+    .replace(/\^\^(.*?)\^\^/g, '<sup>$1</sup>')
+    .replace(/~~(.*?)~~/g, '<del>$1</del>');
+};
+
 export const ProfileInfoSection = ({
   formData,
   onFormDataChange,
@@ -76,15 +84,27 @@ export const ProfileInfoSection = ({
       <div className="space-y-2">
         <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
         <div className="relative">
-          <Textarea
-            id="bio"
-            value={formData.bio}
-            onChange={handleBioChange}
-            className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] max-h-[180px] resize-y whitespace-pre-wrap scrollbar-hide pr-10"
-            placeholder="Escreva sua bio aqui... (suporta markdown e quebra de linha)"
-            maxLength={120}
-            rows={7}
-          />
+          <div className="relative">
+            <Textarea
+              id="bio"
+              value={formData.bio}
+              onChange={handleBioChange}
+              className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] max-h-[180px] resize-y whitespace-pre-wrap scrollbar-hide pr-10"
+              placeholder="Escreva sua bio aqui... (suporta markdown e quebra de linha)"
+              maxLength={120}
+              rows={7}
+            />
+            <div 
+              className="absolute inset-0 pointer-events-none bg-[#2C2F3E] border border-[#E5DEFF]/30 rounded-md px-3 py-2 overflow-auto scrollbar-hide"
+              dangerouslySetInnerHTML={{
+                __html: formatMarkdown(formData.bio || '<span class="text-white/40">Escreva sua bio aqui... (suporta markdown e quebra de linha)</span>')
+              }}
+              style={{
+                zIndex: -1,
+                opacity: formData.bio ? 0.4 : 0.2
+              }}
+            />
+          </div>
           <Dialog>
             <DialogTrigger asChild>
               <Button 
