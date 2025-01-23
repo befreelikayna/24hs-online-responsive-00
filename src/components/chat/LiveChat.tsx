@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChatMessage } from "./ChatMessage";
+import { useState, useEffect, useRef } from "react";
+import { MessagesList } from "./message/MessagesList";
 import { ChatInput } from "./ChatInput";
 import { UserInfo } from "./UserInfo";
 
@@ -71,6 +71,11 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
   const [newMessage, setNewMessage] = useState("");
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const [selectedMessageId, setSelectedMessageId] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -88,9 +93,12 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       read: true
     };
 
-    setMessages([...messages, message]);
+    setMessages(prev => [...prev, message]);
     setNewMessage("");
-    setSelectedMessageId(null); // Close any open message when sending a new one
+    setSelectedMessageId(null);
+    
+    // Use setTimeout to ensure the DOM has updated before scrolling
+    setTimeout(scrollToBottom, 100);
   };
 
   const handleReaction = (messageId: string, reactionType: 'liked' | 'disliked' | 'hearted') => {
@@ -132,7 +140,6 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       }
       return message;
     }));
-    // Removed setSelectedMessageId(null) to keep the message open
   };
 
   const handleUserSelect = (userName: string) => {
@@ -167,10 +174,6 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     return () => chatContainer.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleMessageSelect = (messageId: string | null) => {
-    setSelectedMessageId(messageId);
-  };
-
   const filteredMessages = filterUserMessages
     ? messages.filter(message => message.userName === "Você")
     : messages;
@@ -180,20 +183,17 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       {selectedUser ? (
         <UserInfo userName={selectedUser} onClose={() => setSelectedUser(null)} />
       ) : (
-        <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
-          {filteredMessages.map((message) => (
-            <ChatMessage
-              key={message.id}
-              {...message}
-              onReaction={handleReaction}
-              onReply={handleReply}
-              onUserSelect={handleUserSelect}
-              isSelected={selectedMessageId === message.id}
-              onSelect={handleMessageSelect}
-              hidden={selectedMessageId !== null && selectedMessageId !== message.id}
-            />
-          ))}
-        </div>
+        <>
+          <MessagesList
+            messages={filteredMessages}
+            selectedMessageId={selectedMessageId}
+            onMessageSelect={setSelectedMessageId}
+            onReaction={handleReaction}
+            onReply={handleReply}
+            onUserSelect={handleUserSelect}
+          />
+          <div ref={messagesEndRef} />
+        </>
       )}
       <div className="absolute bottom-0 left-0 right-0">
         <ChatInput
