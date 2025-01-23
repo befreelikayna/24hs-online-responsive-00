@@ -64,9 +64,9 @@ export const ProfileForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-lg p-6 shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10">
-        <div className="flex flex-col items-center relative">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-lg p-4 shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10">
+        <div className="flex flex-col items-center relative space-y-2">
           <ProfileHeader formData={formData} socialLinks={socialLinks} />
           
           <ProfileSectionButtons 
