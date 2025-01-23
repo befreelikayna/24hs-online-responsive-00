@@ -42,11 +42,10 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     left: 0,
     right: 0,
     top: 'auto',
-    height: isChatMinimized ? '60px' : 'calc(100vh - 56.25vw - 4rem - 2rem - 10px)',
+    height: 'calc(100vh - 56.25vw - 4rem - 2rem - 10px)',
     margin: 0,
     borderRadius: '1rem 1rem 0 0',
     zIndex: 50,
-    transition: 'height 0.3s ease-in-out',
   } as const : {};
 
   return (
@@ -60,17 +59,17 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
                 <MessageSquare 
-                  className={`w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer ${isChatMinimized ? 'rotate-180' : ''}`}
+                  className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
                   onClick={toggleChatMinimize}
                 />
                 {isChatMinimized ? (
                   <ChevronUp 
-                    className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                    className="w-4 h-4 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
                     onClick={toggleChatMinimize}
                   />
                 ) : (
                   <ChevronDown 
-                    className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                    className="w-4 h-4 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
                     onClick={toggleChatMinimize}
                   />
                 )}
@@ -100,7 +99,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             </div>
           )}
         </h2>
-        {activeSection === 'chat' && !isChatMinimized && (
+        {activeSection === 'chat' && (
           <div className="flex items-center gap-4">
             <div className="relative">
               <Scroll
@@ -128,9 +127,13 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
         )}
       </div>
       <div 
-        className={`transition-all duration-300 ease-in-out ${
-          isChatMinimized ? 'h-0 overflow-hidden' : isFullscreen ? 'h-[calc(100vh-4rem)]' : 'h-[calc(100%-4rem)]'
-        }`}
+        className={`relative transition-all duration-300 ease-in-out ${
+          isChatMinimized 
+            ? 'h-[60px]' 
+            : isFullscreen 
+              ? 'h-[calc(100vh-4rem)]' 
+              : 'h-[calc(100%-4rem)]'
+        } overflow-hidden`}
       >
         {activeSection === 'chat' ? (
           <LiveChat 
