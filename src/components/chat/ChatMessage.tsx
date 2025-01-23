@@ -88,7 +88,7 @@ export const ChatMessage = ({
       >
         <div className="flex items-center gap-2 min-w-fit">
           <span 
-            className="font-semibold text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors leading-[1px]"
+            className="font-semibold text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors leading-[2px]"
             onClick={(e) => {
               e.stopPropagation();
               handleUserNameClick(userName);
@@ -97,8 +97,8 @@ export const ChatMessage = ({
             {userName}:
           </span>
         </div>
-        <p className="text-white/90 text-sm flex-1 leading-[1px]">{text}</p>
-        <span className="text-xs text-gray-400 whitespace-nowrap leading-[1px]">{formatTime(timestamp)}</span>
+        <p className="text-white/90 text-sm flex-1 leading-[2px]">{text}</p>
+        <span className="text-xs text-gray-400 whitespace-nowrap leading-[2px]">{formatTime(timestamp)}</span>
       </div>
       
       <div className={cn(
@@ -181,14 +181,14 @@ export const ChatMessage = ({
                 <div className="flex items-center gap-2 justify-between">
                   <div className="flex items-center gap-1">
                     <span 
-                      className="font-semibold text-[#9b87f5] text-sm cursor-pointer hover:text-[#D6BCFA] transition-colors leading-[1px]"
+                      className="font-semibold text-[#9b87f5] text-sm cursor-pointer hover:text-[#D6BCFA] transition-colors leading-[2px]"
                       onClick={() => handleUserNameClick(reply.userName)}
                     >
                       {reply.userName}:
                     </span>
-                    <p className="text-white/90 text-sm leading-[1px]">{reply.text}</p>
+                    <p className="text-white/90 text-sm leading-[2px]">{reply.text}</p>
                   </div>
-                  <span className="text-xs text-gray-400 leading-[1px]">{formatTime(reply.timestamp)}</span>
+                  <span className="text-xs text-gray-400 leading-[2px]">{formatTime(reply.timestamp)}</span>
                 </div>
               </div>
             ))}
