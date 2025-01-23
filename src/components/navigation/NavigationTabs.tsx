@@ -1,93 +1,67 @@
-import { MessageSquare, Users, Video, Music } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { MessageSquare, Minus, Users, Video, Music } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 interface NavigationTabsProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
   setActiveSection: (section: 'chat' | 'community' | 'lives' | 'music') => void;
-  isLoggedIn?: boolean;
+  isLoggedIn: boolean;
 }
 
-export const NavigationTabs = ({ activeSection, setActiveSection, isLoggedIn = false }: NavigationTabsProps) => {
-  const { toast } = useToast();
+export const NavigationTabs = ({ activeSection, setActiveSection, isLoggedIn }: NavigationTabsProps) => {
+  const [isChatCollapsed, setIsChatCollapsed] = useState(false);
 
-  const handleSectionClick = (section: 'chat' | 'community' | 'lives' | 'music') => {
-    if (!isLoggedIn) {
-      toast({
-        title: "Ops! 🔒",
-        description: "Ei! Faz um login rapidinho pra gente continuar juntos nessa!",
-        className: "group transform data-[state=open]:animate-contentShow bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] text-white border border-[#9b87f5]/20 shadow-[0_0_30px_rgba(155,135,245,0.15)] backdrop-blur-lg",
-        duration: 3000,
-      });
-      return;
+  const handleChatClick = () => {
+    setIsChatCollapsed(!isChatCollapsed);
+    if (activeSection !== 'chat') {
+      setActiveSection('chat');
     }
-    setActiveSection(section);
   };
 
   return (
-    <section className="grid grid-cols-4 gap-2">
-      <button
-        onClick={() => handleSectionClick('chat')}
-        className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
-          activeSection === 'chat'
-            ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-            : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
-        }`}
-      >
-        <div className="p-2.5 flex items-center justify-center gap-2">
-          <MessageSquare className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-          <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'chat' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-            CHAT
-          </span>
-        </div>
-      </button>
-
-      <button
-        onClick={() => handleSectionClick('community')}
-        className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
-          activeSection === 'community'
-            ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-            : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
-        }`}
-      >
-        <div className="p-2.5 flex items-center justify-center gap-2">
-          <Users className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-          <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'community' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-            COMUNIDADE
-          </span>
-        </div>
-      </button>
-
-      <button
-        onClick={() => handleSectionClick('lives')}
-        className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
-          activeSection === 'lives'
-            ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-            : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
-        }`}
-      >
-        <div className="p-2.5 flex items-center justify-center gap-2">
-          <Video className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-          <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'lives' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-            LIVES
-          </span>
-        </div>
-      </button>
-
-      <button
-        onClick={() => handleSectionClick('music')}
-        className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
-          activeSection === 'music'
-            ? 'bg-[#9b87f5]/20 shadow-sm shadow-[#9b87f5]/10'
-            : 'bg-[#2C2F3E]/50 hover:bg-[#9b87f5]/10'
-        }`}
-      >
-        <div className="p-2.5 flex items-center justify-center gap-2">
-          <Music className={`h-4 w-4 md:h-5 md:w-5 ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`} />
-          <span className={`hidden md:inline text-xs md:text-sm font-medium ${activeSection === 'music' ? 'text-[#9b87f5]' : 'text-[#D6BCFA]/70'}`}>
-            MÚSICA
-          </span>
-        </div>
-      </button>
-    </section>
+    <div className="flex items-center justify-between px-4 py-2 bg-[#2C2F3E] rounded-xl">
+      <Tabs value={activeSection} className="w-full">
+        <TabsList className="w-full justify-start bg-transparent gap-2">
+          <TabsTrigger
+            value="chat"
+            onClick={handleChatClick}
+            className="data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-[#9b87f5] hover:text-[#9b87f5] transition-colors"
+          >
+            {isChatCollapsed ? <Minus className="w-4 h-4" /> : <MessageSquare className="w-4 h-4" />}
+            <span className="ml-2">Chat</span>
+          </TabsTrigger>
+          
+          {isLoggedIn && (
+            <>
+              <TabsTrigger
+                value="community"
+                onClick={() => setActiveSection('community')}
+                className="data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-[#9b87f5] hover:text-[#9b87f5] transition-colors"
+              >
+                <Users className="w-4 h-4" />
+                <span className="ml-2">Comunidade</span>
+              </TabsTrigger>
+              <TabsTrigger
+                value="lives"
+                onClick={() => setActiveSection('lives')}
+                className="data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-[#9b87f5] hover:text-[#9b87f5] transition-colors"
+              >
+                <Video className="w-4 h-4" />
+                <span className="ml-2">Lives</span>
+              </TabsTrigger>
+              <TabsTrigger
+                value="music"
+                onClick={() => setActiveSection('music')}
+                className="data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-[#9b87f5] hover:text-[#9b87f5] transition-colors"
+              >
+                <Music className="w-4 h-4" />
+                <span className="ml-2">Música</span>
+              </TabsTrigger>
+            </>
+          )}
+        </TabsList>
+      </Tabs>
+    </div>
   );
 };
