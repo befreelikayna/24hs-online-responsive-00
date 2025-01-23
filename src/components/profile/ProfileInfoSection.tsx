@@ -73,37 +73,46 @@ export const ProfileInfoSection = ({
         />
       </div>
       <div className="space-y-2">
-        <div className="flex justify-between items-center">
-          <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button 
-                variant="ghost" 
-                size="icon"
-                className="h-8 w-8 text-[#9b87f5] hover:text-white hover:bg-[#2C2F3E]"
-              >
-                <Smile className="h-5 w-5" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-full p-0 border-none">
-              <EmojiPicker
-                onEmojiClick={onEmojiClick}
-                width="100%"
-                height={400}
-              />
-            </PopoverContent>
-          </Popover>
-        </div>
+        <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
         <div className="relative">
           <Textarea
             id="bio"
             value={formData.bio}
             onChange={handleBioChange}
-            className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] max-h-[180px] resize-y whitespace-pre-wrap scrollbar-hide"
+            className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] max-h-[180px] resize-y whitespace-pre-wrap scrollbar-hide pr-10"
             placeholder="Escreva sua bio aqui... (suporta markdown e quebra de linha)"
             maxLength={120}
             rows={7}
           />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="icon"
+                className="absolute top-2 right-2 h-8 w-8 text-[#9b87f5] hover:text-white hover:bg-[#2C2F3E]/50 rounded-full"
+              >
+                <Smile className="h-4 w-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent 
+              className="w-full p-0 border-none" 
+              side="right" 
+              align="start"
+              sideOffset={5}
+            >
+              <EmojiPicker
+                onEmojiClick={onEmojiClick}
+                width="100%"
+                height={350}
+                lazyLoadEmojis={true}
+                skinTonesDisabled
+                searchDisabled
+                previewConfig={{
+                  showPreview: false
+                }}
+              />
+            </PopoverContent>
+          </Popover>
           <span className="absolute bottom-2 right-2 text-xs text-[#9b87f5]">
             {formData.bio.length}/120
           </span>
