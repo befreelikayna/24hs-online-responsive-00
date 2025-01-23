@@ -19,8 +19,8 @@ export const ChatInput = ({ value, onChange, onSend }: ChatInputProps) => {
   };
 
   return (
-    <div className="sticky bottom-0 left-0 right-0 bg-background">
-      <div className="flex gap-2 items-end p-3 border-t border-[#9b87f5]/10">
+    <div className="absolute bottom-0 left-0 right-0 bg-background border-t border-[#9b87f5]/10">
+      <div className="flex gap-2 items-end p-3">
         <Textarea
           ref={textareaRef}
           value={value}
