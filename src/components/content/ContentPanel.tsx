@@ -13,8 +13,8 @@ interface ContentPanelProps {
 export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }: ContentPanelProps) => {
   const [filterUserMessages, setFilterUserMessages] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const isMobile = useIsMobile();
 
   const scrollToBottom = () => {
@@ -26,10 +26,12 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
+    setIsMinimized(false); // Ensure chat is not minimized when going fullscreen
   };
 
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized);
+    setIsFullscreen(false); // Ensure chat is not fullscreen when minimizing
   };
 
   if (!isLoggedIn) {
@@ -41,10 +43,10 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     bottom: 0,
     left: 0,
     right: 0,
-    top: isMinimized ? 'auto' : 'calc(56.25vw + 4rem + 56px)', // Adjusted to account for navigation height
-    height: isMinimized ? '3rem' : `calc(100vh - 56.25vw - 4rem - 56px)`, // Adjusted calculation
+    top: isMinimized ? 'auto' : isFullscreen ? '0' : 'calc(56.25vw + 4rem + 56px)',
+    height: isMinimized ? '3rem' : isFullscreen ? '100vh' : 'calc(100vh - 56.25vw - 4rem - 56px)',
     margin: 0,
-    borderRadius: '1rem 1rem 0 0',
+    borderRadius: isFullscreen ? '0' : '1rem 1rem 0 0',
     zIndex: 50,
     transition: 'all 0.3s ease-in-out',
   } as const : {};
@@ -89,7 +91,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             </div>
           )}
         </h2>
-        {activeSection === 'chat' && !isMinimized && !isMobile && (
+        {activeSection === 'chat' && !isMinimized && (
           <div className="flex items-center gap-4">
             {isFullscreen ? (
               <Minimize2
