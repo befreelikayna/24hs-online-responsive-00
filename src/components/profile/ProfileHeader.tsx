@@ -38,9 +38,9 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
       <div className="w-full">
         <div className="w-full bg-[#2C2F3E] rounded-xl p-5 md:p-6">
           <div className="h-full flex flex-col">
-            <div className="flex items-center gap-2 mb-3">
-              <AlignJustify className="w-4 h-4 text-[#9b87f5]/70" />
-              <span className="text-xs uppercase tracking-wider text-[#9b87f5]/70">Bio</span>
+            <div className="flex items-center gap-2 mb-3 group">
+              <AlignJustify className="w-4 h-4 text-[#9b87f5]/70 transition-all duration-300 group-hover:rotate-3 group-hover:scale-110" />
+              <span className="text-xs uppercase tracking-wider text-[#9b87f5]/70 transition-all duration-300 group-hover:text-[#9b87f5]">Bio</span>
             </div>
             <div className="flex-1">
               <p 
