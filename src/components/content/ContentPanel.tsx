@@ -2,6 +2,7 @@ import { MessageSquare, Users, Video, Music, Filter, Scroll, Maximize2, Minimize
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ContentPanelProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
@@ -13,6 +14,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   const [filterUserMessages, setFilterUserMessages] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const isMobile = useIsMobile();
 
   const scrollToBottom = () => {
     const chatContainer = document.querySelector('.scrollbar-hide');
@@ -29,8 +31,23 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     return <AuthPanel onDemoLogin={onDemoLogin} />;
   }
 
+  const mobileStyles = isMobile ? {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: 'auto',
+    height: 'calc(100vh - 4rem)',
+    margin: 0,
+    borderRadius: '1rem 1rem 0 0',
+    zIndex: 50,
+  } as const : {};
+
   return (
-    <section className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 mb-[-60px] transition-all duration-300 ${isFullscreen ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}>
+    <section 
+      className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ${isFullscreen ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
+      style={!isFullscreen ? mobileStyles : {}}
+    >
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <h2 className="text-xl font-bold text-white">
           {activeSection === 'chat' && (
