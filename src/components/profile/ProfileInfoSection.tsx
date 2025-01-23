@@ -24,7 +24,7 @@ const formatMarkdown = (text: string) => {
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/__(.*?)__/g, '<em>$1</em>')
     .replace(/\^\^(.*?)\^\^/g, '<sup>$1</sup>')
-    .replace(/~~(.*?)~~/g, '<del>$1</del>');
+    .replace(/~~(.*?)~~/, '<del>$1</del>');
 };
 
 export const ProfileInfoSection = ({
@@ -55,8 +55,8 @@ export const ProfileInfoSection = ({
   };
 
   return (
-    <div className="w-full space-y-3 mt-3">
-      <div className="space-y-2">
+    <div className="w-full space-y-2 mt-2">
+      <div className="space-y-1.5">
         <Label htmlFor="name" className="text-[#9b87f5]">Nome</Label>
         <Input
           id="name"
@@ -65,7 +65,7 @@ export const ProfileInfoSection = ({
           className="bg-[#2C2F3E] border-[#9b87f5]/10"
         />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <Label htmlFor="username" className="text-[#9b87f5]">@seuperfil</Label>
         <Input
           id="username"
@@ -78,7 +78,7 @@ export const ProfileInfoSection = ({
           className="bg-[#2C2F3E] border-[#9b87f5]/10"
         />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <Label htmlFor="email" className="text-[#9b87f5]">Email</Label>
         <Input
           id="email"
@@ -88,7 +88,7 @@ export const ProfileInfoSection = ({
           className="bg-[#2C2F3E]/50 border-[#9b87f5]/10 cursor-not-allowed opacity-70"
         />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
         <div className="relative">
           <div className="relative">
@@ -146,7 +146,7 @@ export const ProfileInfoSection = ({
       <Button 
         onClick={onSubmit}
         variant="outline"
-        className="w-full bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
+        className="w-full mt-2 bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
       >
         <Save className="w-4 h-4 mr-2" />
         Salvar Alterações
