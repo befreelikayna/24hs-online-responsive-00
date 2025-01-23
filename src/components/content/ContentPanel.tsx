@@ -24,14 +24,30 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     }
   };
 
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
-    setIsMinimized(false);
+  const handleStateToggle = () => {
+    if (!isFullscreen && !isMinimized) {
+      // If in normal state, go to fullscreen
+      setIsFullscreen(true);
+      setIsMinimized(false);
+    } else if (isFullscreen) {
+      // If in fullscreen, go to minimized
+      setIsFullscreen(false);
+      setIsMinimized(true);
+    } else {
+      // If minimized, go back to normal
+      setIsMinimized(false);
+      setIsFullscreen(false);
+    }
   };
 
-  const toggleMinimize = () => {
-    setIsMinimized(!isMinimized);
-    setIsFullscreen(false);
+  const getStateIcon = () => {
+    if (isFullscreen) {
+      return <Minimize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />;
+    } else if (isMinimized) {
+      return <Maximize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />;
+    } else {
+      return <Maximize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />;
+    }
   };
 
   if (!isLoggedIn) {
@@ -65,7 +81,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
               <div className="flex items-center gap-2">
                 <MessageSquare 
                   className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                  onClick={() => isMobile && toggleMinimize()}
+                  onClick={() => isMobile && handleStateToggle()}
                 />
               </div>
               <Filter 
@@ -93,19 +109,9 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             </div>
           )}
         </h2>
-        {activeSection === 'chat' && !isMinimized && (
-          <div className="flex items-center gap-4">
-            {isFullscreen ? (
-              <Minimize2
-                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
-                onClick={toggleFullscreen}
-              />
-            ) : (
-              <Maximize2
-                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
-                onClick={toggleFullscreen}
-              />
-            )}
+        {activeSection === 'chat' && (
+          <div className="flex items-center gap-4" onClick={handleStateToggle}>
+            {getStateIcon()}
           </div>
         )}
       </div>
