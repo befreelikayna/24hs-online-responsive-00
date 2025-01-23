@@ -1,5 +1,6 @@
 import { ProfileImage } from "./ProfileImage";
 import { ProfileSocialButtons } from "./ProfileSocialButtons";
+import { AlignJustify } from "lucide-react";
 import type { SocialLinksType } from "./ProfileForm";
 
 interface ProfileHeaderProps {
@@ -28,15 +29,21 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
 
         {/* Right Column - Bio */}
         <div className="flex items-center justify-center px-4 md:px-6">
-          <div className="w-full min-h-[160px] md:min-h-[200px] bg-gradient-to-br from-[#2C2F3E]/80 to-[#1A1F2C] rounded-xl p-6 border border-[#9b87f5]/20 shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-[#9b87f5]/30">
-            <div className="h-full flex items-center justify-center">
-              <p className="text-base md:text-lg text-white/90 whitespace-pre-wrap break-words leading-relaxed">
-                {formData.bio || (
-                  <span className="text-white/50 italic">
-                    Nenhuma bio adicionada ainda...
-                  </span>
-                )}
-              </p>
+          <div className="w-full min-h-[140px] md:min-h-[180px] bg-gradient-to-br from-[#2C2F3E]/90 to-[#1A1F2C] rounded-xl p-5 md:p-6 border border-[#9b87f5]/20 shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-[#9b87f5]/30 hover:shadow-xl">
+            <div className="h-full flex flex-col">
+              <div className="flex items-center gap-2 mb-3">
+                <AlignJustify className="w-4 h-4 text-[#9b87f5]/70" />
+                <span className="text-xs uppercase tracking-wider text-[#9b87f5]/70">Bio</span>
+              </div>
+              <div className="flex-1 flex items-center">
+                <p className="text-[15px] md:text-base text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide">
+                  {formData.bio || (
+                    <span className="text-white/40 italic text-sm">
+                      Nenhuma bio adicionada ainda...
+                    </span>
+                  )}
+                </p>
+              </div>
             </div>
           </div>
         </div>
