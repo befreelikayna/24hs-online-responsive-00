@@ -41,8 +41,8 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     bottom: 0,
     left: 0,
     right: 0,
-    top: isMinimized ? 'auto' : 'calc(56.25vw + 4rem + 10px)',
-    height: isMinimized ? '3rem' : 'calc(100vh - 56.25vw - 4rem - 10px)',
+    top: isMinimized ? 'auto' : 'calc(56.25vw + 4rem + 56px)', // Adjusted to account for navigation height
+    height: isMinimized ? '3rem' : `calc(100vh - 56.25vw - 4rem - 56px)`, // Adjusted calculation
     margin: 0,
     borderRadius: '1rem 1rem 0 0',
     zIndex: 50,
