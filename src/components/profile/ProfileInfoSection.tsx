@@ -3,10 +3,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Save, Smile } from "lucide-react";
+import { Save, Smile, Lock } from "lucide-react";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ProfileInfoSectionProps {
   formData: {
@@ -33,6 +34,7 @@ export const ProfileInfoSection = ({
   onSubmit
 }: ProfileInfoSectionProps) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const { toast } = useToast();
 
   const handleBioChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
@@ -52,6 +54,13 @@ export const ProfileInfoSection = ({
     if (lines.length <= 7 && formData.bio.length < 120) {
       onFormDataChange('bio', formData.bio + emoji.native);
     }
+  };
+
+  const handleChangePassword = () => {
+    toast({
+      title: "Alterar senha",
+      description: "Um email foi enviado com instruções para alterar sua senha.",
+    });
   };
 
   return (
@@ -80,13 +89,24 @@ export const ProfileInfoSection = ({
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="email" className="text-[#9b87f5]">Email</Label>
-        <Input
-          id="email"
-          type="email"
-          value={formData.email}
-          readOnly
-          className="bg-[#2C2F3E]/50 border-[#9b87f5]/10 cursor-not-allowed opacity-70"
-        />
+        <div className="flex gap-2">
+          <Input
+            id="email"
+            type="email"
+            value={formData.email}
+            readOnly
+            className="bg-[#2C2F3E]/50 border-[#9b87f5]/10 cursor-not-allowed opacity-70"
+          />
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleChangePassword}
+            className="bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors whitespace-nowrap"
+          >
+            <Lock className="w-4 h-4 mr-2" />
+            Trocar Senha
+          </Button>
+        </div>
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
