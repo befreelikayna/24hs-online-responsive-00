@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { PenSquare, Share2, Save, Smile, SmilePlus, Frown, Angry, Meh, Laugh } from "lucide-react";
+import { PenSquare, Share2, Save } from "lucide-react";
 import { ProfileImage } from "./ProfileImage";
 import { ProfileSocialButtons } from "./ProfileSocialButtons";
 
@@ -21,7 +20,7 @@ export const ProfileForm = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "John Doe",
-    username: "@seuperfil",
+    username: "@johndoe",
     email: "john@example.com",
     bio: "Frontend Developer",
     joinDate: "Janeiro 2024"
@@ -37,28 +36,11 @@ export const ProfileForm = () => {
   });
 
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
-
-  const emojis = [
-    { icon: Smile, label: "Feliz" },
-    { icon: SmilePlus, label: "Muito Feliz" },
-    { icon: Laugh, label: "Rindo" },
-    { icon: Frown, label: "Triste" },
-    { icon: Angry, label: "Bravo" },
-    { icon: Meh, label: "Neutro" }
-  ];
-
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value;
-    if (!value.startsWith('@')) {
-      value = '@' + value;
-    }
-    setFormData({ ...formData, username: value });
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Save to localStorage
     if (activeSection === 'social-media') {
       localStorage.setItem('socialLinks', JSON.stringify(socialLinks));
     } else {
@@ -73,11 +55,6 @@ export const ProfileForm = () => {
 
   const handleSectionClick = (section: string) => {
     setActiveSection(activeSection === section ? null : section);
-  };
-
-  const addEmojiToBio = (emoji: string) => {
-    setFormData({ ...formData, bio: formData.bio + " " + emoji });
-    setSelectedEmoji(emoji);
   };
 
   return (
@@ -139,9 +116,8 @@ export const ProfileForm = () => {
                 <Input
                   id="username"
                   value={formData.username}
-                  onChange={handleUsernameChange}
+                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                  placeholder="@seuperfil"
                 />
               </div>
               <div className="space-y-2">
@@ -150,34 +126,17 @@ export const ProfileForm = () => {
                   id="email"
                   type="email"
                   value={formData.email}
-                  readOnly
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10 opacity-50 cursor-not-allowed"
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
-                <div className="flex gap-2 mb-2">
-                  {emojis.map((emoji, index) => (
-                    <Button
-                      key={index}
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => addEmojiToBio(emoji.label)}
-                      className={`bg-[#2C2F3E] hover:bg-[#252839] ${
-                        selectedEmoji === emoji.label ? 'ring-2 ring-[#9b87f5]' : ''
-                      }`}
-                    >
-                      <emoji.icon className="w-4 h-4 text-[#9b87f5]" />
-                    </Button>
-                  ))}
-                </div>
-                <Textarea
+                <Input
                   id="bio"
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10 min-h-[120px] resize-y"
-                  placeholder="Conte um pouco sobre você..."
+                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
                 />
               </div>
               <Button 
