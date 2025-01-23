@@ -34,10 +34,12 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <h2 className="text-xl font-bold text-white">
           {activeSection === 'chat' && (
-            <div className="flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <MessageSquare className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors" />
+              </div>
               <Filter 
-                className={`w-5 h-5 cursor-pointer transition-colors ${filterUserMessages ? 'text-[#1EAEDB]' : 'text-[#1EAEDB]/60'}`}
+                className={`w-5 h-5 cursor-pointer transition-colors hover:text-[#D6BCFA] ${filterUserMessages ? 'text-[#9b87f5]' : 'text-[#9b87f5]/60'}`}
                 onClick={() => setFilterUserMessages(!filterUserMessages)}
               />
             </div>
@@ -62,26 +64,26 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           )}
         </h2>
         {activeSection === 'chat' && (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div className="relative">
               <Scroll
-                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
                 onClick={scrollToBottom}
               />
               {unreadCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#D946EF] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse">
                   {unreadCount}
                 </span>
               )}
             </div>
             {isFullscreen ? (
               <Minimize2
-                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
                 onClick={toggleFullscreen}
               />
             ) : (
               <Maximize2
-                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#1EAEDB] transition-colors"
+                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
                 onClick={toggleFullscreen}
               />
             )}
