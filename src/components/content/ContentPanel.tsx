@@ -1,7 +1,7 @@
-import { MessageSquare, Users, Video, Music, Filter, Maximize2, Minimize2, Minus } from "lucide-react";
+import { MessageSquare, Users, Video, Music, Filter, MessageSquareOff } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ContentPanelProps {
@@ -14,9 +14,21 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   const [filterUserMessages, setFilterUserMessages] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [contentHeight, setContentHeight] = useState<number | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
+  useEffect(() => {
+    if (contentRef.current && !isMinimized) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, [isMinimized]);
+
   const handleChatToggle = () => {
+    if (!isMinimized && contentRef.current) {
+      // Store the height before minimizing
+      setContentHeight(contentRef.current.scrollHeight);
+    }
     setIsMinimized(!isMinimized);
   };
 
@@ -30,7 +42,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     left: 0,
     right: 0,
     top: isMinimized ? 'auto' : 'calc(56.25vw + 4rem + 56px)',
-    height: isMinimized ? '3rem' : 'calc(100vh - 56.25vw - 4rem - 56px)',
+    height: isMinimized ? '3rem' : contentHeight ? `${contentHeight}px` : 'auto',
     margin: 0,
     borderRadius: '1rem 1rem 0 0',
     zIndex: 50,
@@ -41,6 +53,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   return (
     <section 
+      ref={contentRef}
       className="bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out"
       style={mobileStyles}
     >
@@ -50,7 +63,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
                 {isMinimized ? (
-                  <Minus
+                  <MessageSquareOff
                     className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
                     onClick={handleChatToggle}
                   />
