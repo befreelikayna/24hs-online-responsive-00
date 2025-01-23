@@ -104,13 +104,13 @@ export const ChatMessage = ({
 
       {isSelected && (
         <div className="space-y-2 mt-2">
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <div className="flex-1">
               <Textarea
                 value={replyText}
                 onChange={(e) => setReplyText(e.target.value)}
                 placeholder="Digite sua resposta..."
-                className="min-h-[32px] max-h-[120px] bg-[#9b87f5]/5 border-0 focus-visible:ring-1 focus-visible:ring-[#9b87f5]/40 focus-visible:ring-offset-0 resize-none text-sm py-1.5"
+                className="min-h-[32px] max-h-[32px] bg-[#9b87f5]/5 border-0 focus-visible:ring-1 focus-visible:ring-[#9b87f5]/40 focus-visible:ring-offset-0 resize-none text-sm py-1 px-3"
               />
             </div>
             <Button
