@@ -23,20 +23,29 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
   if (replies.length === 0) return null;
 
   const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
     e.stopPropagation();
+  };
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleUserSelect = (e: React.MouseEvent, userName: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onUserSelect?.(userName);
   };
 
   return (
     <div 
-      className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto"
+      className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto max-h-[200px] touch-pan-y"
       onClick={handleInteraction}
       onTouchStart={handleInteraction}
       onTouchMove={handleInteraction}
       onTouchEnd={handleInteraction}
-      onScroll={(e) => {
-        e.stopPropagation();
-        console.log('Scrolling replies container');
-      }}
+      onScroll={handleScroll}
     >
       {replies.map((reply) => (
         <div 
@@ -51,10 +60,7 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
             <div className="flex items-center gap-1">
               <span 
                 className="font-semibold text-[#9b87f5] text-sm cursor-pointer hover:text-[#D6BCFA] transition-colors"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onUserSelect?.(reply.userName);
-                }}
+                onClick={(e) => handleUserSelect(e, reply.userName)}
               >
                 {reply.userName}:
               </span>
