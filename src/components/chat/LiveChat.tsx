@@ -56,7 +56,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       ) : (
         <div 
           ref={scrollRef} 
-          className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto scrollbar-hide pb-2"
+          className="absolute top-0 left-0 right-0 bottom-[56px] overflow-y-auto"
           onScroll={() => handleScroll()}
         >
           <MessagesList
@@ -69,7 +69,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
           />
         </div>
       )}
-      <div className="absolute bottom-0 left-0 right-0 bg-[#2C2F3E]">
+      <div className="absolute bottom-0 left-0 right-0 bg-[#2C2F3E] rounded-b-xl">
         <ChatInput
           value={newMessage}
           onChange={setNewMessage}
