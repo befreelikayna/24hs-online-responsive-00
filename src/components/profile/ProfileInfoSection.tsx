@@ -94,12 +94,12 @@ export const ProfileInfoSection = ({
                 <Smile className="h-4 w-4" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="p-0 border-none bg-transparent shadow-2xl">
+            <DialogContent className="p-0 border-none bg-transparent shadow-2xl w-[280px] sm:w-[320px] max-w-[95vw]">
               <div className="bg-[#2C2F3E] rounded-lg overflow-hidden border border-[#9b87f5]/10">
                 <EmojiPicker
                   onEmojiClick={onEmojiClick}
                   width="100%"
-                  height={350}
+                  height={300}
                   lazyLoadEmojis={true}
                   skinTonesDisabled
                   searchDisabled
