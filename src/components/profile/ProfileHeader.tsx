@@ -42,9 +42,9 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
               <AlignJustify className="w-5 h-5 text-[#9b87f5] transition-all duration-300" />
               <span className="text-sm font-medium uppercase tracking-wider text-[#9b87f5]">Bio</span>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 overflow-hidden">
               <p 
-                className="text-[14px] md:text-[15px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide"
+                className="text-[14px] md:text-[15px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide overflow-wrap-anywhere"
                 dangerouslySetInnerHTML={{
                   __html: formData.bio ? formatMarkdown(formData.bio) : '<span class="text-white/40 italic">Nenhuma bio adicionada ainda...</span>'
                 }}
