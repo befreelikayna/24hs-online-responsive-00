@@ -42,7 +42,6 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     left: 0,
     right: 0,
     top: 'auto',
-    // Ajustando a altura para considerar o vídeo (56.25vw) + altura dos botões (4rem) + padding + gap de 10px
     height: 'calc(100vh - 56.25vw - 4rem - 2rem - 10px)',
     margin: 0,
     borderRadius: '1rem 1rem 0 0',
@@ -127,7 +126,15 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           </div>
         )}
       </div>
-      <div className={`h-[calc(100%-4rem)] overflow-y-auto transition-all duration-300 ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''} ${isChatMinimized ? 'max-h-[60px]' : ''}`}>
+      <div 
+        className={`relative transition-all duration-300 ease-in-out ${
+          isChatMinimized 
+            ? 'h-[60px]' 
+            : isFullscreen 
+              ? 'h-[calc(100vh-4rem)]' 
+              : 'h-[calc(100%-4rem)]'
+        } overflow-hidden`}
+      >
         {activeSection === 'chat' ? (
           <LiveChat 
             filterUserMessages={filterUserMessages} 
