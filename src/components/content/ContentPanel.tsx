@@ -1,4 +1,4 @@
-import { MessageSquare, Users, Video, Music, Filter, Scroll, Maximize2, Minimize2, ChevronDown, ChevronUp } from "lucide-react";
+import { MessageSquare, Users, Video, Music, Filter, Scroll, Maximize2, Minimize2 } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
@@ -14,7 +14,6 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   const [filterUserMessages, setFilterUserMessages] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isChatMinimized, setIsChatMinimized] = useState(false);
   const isMobile = useIsMobile();
 
   const scrollToBottom = () => {
@@ -28,10 +27,6 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     setIsFullscreen(!isFullscreen);
   };
 
-  const toggleChatMinimize = () => {
-    setIsChatMinimized(!isChatMinimized);
-  };
-
   if (!isLoggedIn) {
     return <AuthPanel onDemoLogin={onDemoLogin} />;
   }
@@ -42,6 +37,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     left: 0,
     right: 0,
     top: 'auto',
+    // Ajustando a altura para considerar o vídeo (56.25vw) + altura dos botões (4rem) + padding + gap de 10px
     height: 'calc(100vh - 56.25vw - 4rem - 2rem - 10px)',
     margin: 0,
     borderRadius: '1rem 1rem 0 0',
@@ -58,21 +54,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           {activeSection === 'chat' && (
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                <MessageSquare 
-                  className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                  onClick={toggleChatMinimize}
-                />
-                {isChatMinimized ? (
-                  <ChevronUp 
-                    className="w-4 h-4 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                    onClick={toggleChatMinimize}
-                  />
-                ) : (
-                  <ChevronDown 
-                    className="w-4 h-4 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                    onClick={toggleChatMinimize}
-                  />
-                )}
+                <MessageSquare className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors" />
               </div>
               <Filter 
                 className={`w-5 h-5 cursor-pointer transition-colors hover:text-[#D6BCFA] ${filterUserMessages ? 'text-[#9b87f5]' : 'text-[#9b87f5]/60'}`}
@@ -126,15 +108,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           </div>
         )}
       </div>
-      <div 
-        className={`relative transition-all duration-300 ease-in-out ${
-          isChatMinimized 
-            ? 'h-[60px]' 
-            : isFullscreen 
-              ? 'h-[calc(100vh-4rem)]' 
-              : 'h-[calc(100%-4rem)]'
-        } overflow-hidden`}
-      >
+      <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''}`}>
         {activeSection === 'chat' ? (
           <LiveChat 
             filterUserMessages={filterUserMessages} 
