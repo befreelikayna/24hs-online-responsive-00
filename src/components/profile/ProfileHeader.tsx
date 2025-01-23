@@ -28,8 +28,8 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
         </div>
 
         {/* Right Column - Bio */}
-        <div className="flex items-center justify-center px-4 md:px-6">
-          <div className="w-full min-h-[140px] md:min-h-[180px] bg-gradient-to-br from-[#2C2F3E]/90 to-[#1A1F2C] rounded-xl p-5 md:p-6 border border-[#9b87f5]/20 shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-[#9b87f5]/30 hover:shadow-xl">
+        <div className="flex items-center justify-center w-full px-0 md:px-6">
+          <div className="w-full min-h-[140px] md:min-h-[180px] bg-gradient-to-br from-[#2C2F3E]/90 to-[#1A1F2C] rounded-xl p-5 md:p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-xl">
             <div className="h-full flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <AlignJustify className="w-4 h-4 text-[#9b87f5]/70" />
