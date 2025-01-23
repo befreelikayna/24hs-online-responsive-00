@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { PenSquare, Share2, Save } from "lucide-react";
+import { PenSquare, Share2, Save, User } from "lucide-react";
 import { ProfileImage } from "./ProfileImage";
 import { ProfileSocialButtons } from "./ProfileSocialButtons";
 
@@ -41,7 +41,6 @@ export const ProfileForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Save to localStorage
     if (activeSection === 'social-media') {
       localStorage.setItem('socialLinks', JSON.stringify(socialLinks));
     } else {
@@ -105,6 +104,18 @@ export const ProfileForm = () => {
               }`}
             >
               <Share2 className="w-5 h-5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleSectionClick('user-info')}
+              className={`p-2 rounded-lg transition-colors ${
+                activeSection === 'user-info' 
+                  ? 'bg-[#252839] text-white' 
+                  : 'text-[#9b87f5] hover:bg-[#252839] hover:text-white'
+              }`}
+            >
+              <User className="w-5 h-5" />
             </button>
           </div>
 
@@ -239,6 +250,15 @@ export const ProfileForm = () => {
                 <Save className="w-4 h-4 mr-2" />
                 Salvar Redes Sociais
               </Button>
+            </div>
+          )}
+
+          {activeSection === 'user-info' && (
+            <div className="w-full space-y-3 mt-3">
+              {/* This section will be populated with content later as requested */}
+              <div className="text-center text-[#9b87f5] p-4">
+                Seção em desenvolvimento...
+              </div>
             </div>
           )}
         </div>
