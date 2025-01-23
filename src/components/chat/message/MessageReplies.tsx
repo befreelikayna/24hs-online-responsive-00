@@ -38,9 +38,12 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
     onUserSelect?.(userName);
   };
 
+  // Calculate dynamic max height based on number of replies
+  const maxHeight = Math.min(replies.length * 60, isMobile ? 300 : 400);
+  
   const containerStyle = isMobile 
-    ? "mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto touch-pan-y scrollbar-hide h-[calc(100vh-400px)]"
-    : "mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto touch-pan-y scrollbar-hide h-full";
+    ? `mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto touch-pan-y scrollbar-hide max-h-[${maxHeight}px]`
+    : `mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto touch-pan-y scrollbar-hide max-h-[${maxHeight}px]`;
 
   return (
     <div 
@@ -51,6 +54,7 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
       onTouchMove={handleInteraction}
       onTouchEnd={handleInteraction}
       onScroll={() => handleScroll()}
+      style={{ maxHeight }}
     >
       {replies.map((reply) => (
         <div 
