@@ -36,15 +36,15 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
 
       {/* Bio Section */}
       <div className="w-full">
-        <div className="w-full bg-[#2C2F3E]/30 backdrop-blur-sm rounded-xl p-5 md:p-6 border border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(155,135,245,0.1)] hover:border-[#9b87f5]/10">
-          <div className="flex items-start gap-3">
-            <div className="flex items-center gap-2 min-w-fit">
-              <AlignJustify className="w-4 h-4 text-[#9b87f5]/70 transition-all duration-300 group-hover:text-[#9b87f5]" />
-              <span className="text-xs uppercase tracking-wider text-[#9b87f5]/70 transition-all duration-300 group-hover:text-[#9b87f5]">Bio</span>
+        <div className="w-full rounded-xl p-5 md:p-6">
+          <div className="flex items-start gap-4">
+            <div className="flex items-center gap-2.5 min-w-fit">
+              <AlignJustify className="w-5 h-5 text-[#9b87f5] transition-all duration-300" />
+              <span className="text-sm font-medium uppercase tracking-wider text-[#9b87f5]">Bio</span>
             </div>
             <div className="flex-1">
               <p 
-                className="text-[13px] md:text-[14px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide"
+                className="text-[14px] md:text-[15px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide"
                 dangerouslySetInnerHTML={{
                   __html: formData.bio ? formatMarkdown(formData.bio) : '<span class="text-white/40 italic">Nenhuma bio adicionada ainda...</span>'
                 }}
