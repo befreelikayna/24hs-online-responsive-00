@@ -36,11 +36,11 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
 
       {/* Bio Section */}
       <div className="w-full">
-        <div className="w-full bg-gradient-to-br from-[#2C2F3E]/80 to-[#1A1F2C]/80 rounded-xl p-5 md:p-6 border border-[#D6BCFA]/20 backdrop-blur-sm hover:scale-[1.01] transition-all duration-300 shadow-lg hover:shadow-[#D6BCFA]/10">
-          <div className="flex gap-3">
-            <div className="flex items-center gap-2 bg-[#2C2F3E]/50 px-2.5 py-1 rounded-lg border border-[#D6BCFA]/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#D6BCFA]/10">
-              <AlignJustify className="w-3.5 h-3.5 text-[#D6BCFA]" />
-              <span className="text-[10px] uppercase tracking-wider text-[#D6BCFA]">Bio</span>
+        <div className="w-full bg-[#2C2F3E] rounded-xl p-5 md:p-6">
+          <div className="h-full flex flex-col">
+            <div className="flex items-center gap-2 mb-3 group">
+              <AlignJustify className="w-4 h-4 text-[#9b87f5]/70 transition-all duration-300 group-hover:rotate-3 group-hover:scale-110" />
+              <span className="text-xs uppercase tracking-wider text-[#9b87f5]/70 transition-all duration-300 group-hover:text-[#9b87f5]">Bio</span>
             </div>
             <div className="flex-1">
               <p 
