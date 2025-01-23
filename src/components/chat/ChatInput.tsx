@@ -37,7 +37,7 @@ export const ChatInput = ({ value, onChange, onSend }: ChatInputProps) => {
         <Button
           onClick={handleSend}
           size="icon"
-          className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 h-10 w-10 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-[#9b87f5]/20 p-0"
+          className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 h-10 w-10 rounded-full hover:shadow-lg hover:shadow-[#9b87f5]/20 p-0"
         >
           <Send className="h-4 w-4" />
         </Button>

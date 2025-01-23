@@ -36,7 +36,6 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     
     setNewMessage("");
     
-    // Apenas rola para baixo se não estiver em scroll manual
     if (!isUserScrolling) {
       setTimeout(scrollToBottom, 100);
     }
