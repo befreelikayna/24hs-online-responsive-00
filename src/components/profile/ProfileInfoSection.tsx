@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Save, Smile } from "lucide-react";
 import { useState } from "react";
-import EmojiPicker from 'emoji-picker-react';
+import EmojiPicker, { Theme } from 'emoji-picker-react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface ProfileInfoSectionProps {
@@ -103,7 +103,7 @@ export const ProfileInfoSection = ({
                   lazyLoadEmojis={true}
                   skinTonesDisabled
                   searchDisabled
-                  theme="dark"
+                  theme={Theme.DARK}
                   previewConfig={{
                     showPreview: false
                   }}
