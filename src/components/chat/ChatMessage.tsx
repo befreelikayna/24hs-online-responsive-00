@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { MessageHeader } from "./message/MessageHeader";
 import { MessageReactions } from "./message/MessageReactions";
 import { MessageReplies } from "./message/MessageReplies";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 interface MessageReactions {
   liked: boolean;
@@ -51,17 +50,12 @@ export const ChatMessage = ({
   onSelect,
   hidden
 }: ChatMessageProps) => {
-  const isMobile = useIsMobile();
-
   if (hidden) {
     return null;
   }
 
   return (
-    <div className={cn(
-      "bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1",
-      isMobile && isSelected && "fixed inset-0 z-50 m-0 overflow-hidden bg-[#1A1F2C] pb-[60px]"
-    )}>
+    <div className="bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1">
       <MessageHeader
         userName={userName}
         text={text}
@@ -71,16 +65,10 @@ export const ChatMessage = ({
       />
       
       <div className={cn(
-        "transition-all duration-300",
-        isSelected 
-          ? "opacity-100" 
-          : "max-h-0 opacity-0 overflow-hidden",
-        isMobile && isSelected && "h-[calc(100vh-180px)] flex flex-col"
+        "transition-all duration-200",
+        isSelected ? "opacity-100" : "max-h-0 opacity-0 overflow-hidden"
       )}>
-        <div className={cn(
-          "flex flex-col",
-          isMobile && isSelected ? "h-full" : "h-full"
-        )}>
+        <div className="flex flex-col h-full">
           <div className="space-y-2">
             <MessageReactions
               likes={likes}
@@ -92,12 +80,7 @@ export const ChatMessage = ({
             />
           </div>
 
-          <div className={cn(
-            "flex-1 overflow-y-auto scrollbar-hide",
-            isMobile 
-              ? "max-h-[calc(100vh-260px)]" 
-              : "max-h-[calc(100vh-400px)]"
-          )}>
+          <div className="flex-1 overflow-y-auto scrollbar-hide max-h-[calc(100vh-400px)]">
             <MessageReplies
               replies={replies}
               onUserSelect={onUserSelect}
