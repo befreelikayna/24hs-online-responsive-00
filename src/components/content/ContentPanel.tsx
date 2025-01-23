@@ -17,11 +17,8 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   const [isFullscreen, setIsFullscreen] = useState(false);
   const isMobile = useIsMobile();
 
-  const scrollToBottom = () => {
-    const chatContainer = document.querySelector('.scrollbar-hide');
-    if (chatContainer) {
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
+  const handleChatToggle = () => {
+    setIsMinimized(!isMinimized);
   };
 
   const handleStateToggle = () => {
@@ -82,7 +79,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
               <div className="flex items-center gap-2">
                 <MessageSquare 
                   className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                  onClick={() => isMobile && handleStateToggle()}
+                  onClick={handleChatToggle}
                 />
               </div>
               <Filter 
