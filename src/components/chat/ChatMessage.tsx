@@ -60,7 +60,7 @@ export const ChatMessage = ({
   return (
     <div className={cn(
       "bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1",
-      isMobile && isSelected && "fixed inset-0 z-50 m-0 overflow-hidden bg-[#1A1F2C]"
+      isMobile && isSelected && "fixed inset-0 z-50 m-0 overflow-hidden bg-[#1A1F2C] pb-[60px]"
     )}>
       <MessageHeader
         userName={userName}
@@ -75,7 +75,7 @@ export const ChatMessage = ({
         isSelected 
           ? "opacity-100" 
           : "max-h-0 opacity-0 overflow-hidden",
-        isMobile && isSelected && "h-[calc(100vh-120px)] flex flex-col"
+        isMobile && isSelected && "h-[calc(100vh-180px)] flex flex-col"
       )}>
         <div className={cn(
           "flex flex-col",
@@ -95,7 +95,7 @@ export const ChatMessage = ({
           <div className={cn(
             "flex-1 overflow-y-auto scrollbar-hide",
             isMobile 
-              ? "max-h-[calc(100vh-200px)]" 
+              ? "max-h-[calc(100vh-260px)]" 
               : "max-h-[calc(100vh-400px)]"
           )}>
             <MessageReplies
