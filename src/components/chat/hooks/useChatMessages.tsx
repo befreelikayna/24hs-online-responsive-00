@@ -95,7 +95,8 @@ export const useChatMessages = (onUnreadCountChange?: (count: number) => void) =
         
         return {
           ...message,
-          replies: [...message.replies, newReply]
+          replies: [...message.replies, newReply],
+          read: true // Marca a mensagem como lida quando respondida
         };
       }
       return message;
@@ -113,7 +114,7 @@ export const useChatMessages = (onUnreadCountChange?: (count: number) => void) =
       hearts: 0,
       replies: [],
       userReactions: { liked: false, disliked: false, hearted: false },
-      read: true
+      read: true // Mensagens enviadas pelo usuário já começam como lidas
     };
 
     setMessages(prev => [...prev, message]);
@@ -126,7 +127,12 @@ export const useChatMessages = (onUnreadCountChange?: (count: number) => void) =
     })));
   };
 
-  const unreadCount = messages.filter(message => !message.read && message.userName !== "Você").length;
+  // Calcula o número de mensagens não lidas apenas para mensagens que não são do usuário
+  const unreadCount = messages.filter(message => 
+    !message.read && 
+    message.userName !== "Você" && 
+    !message.replies.some(reply => reply.userName === "Você") // Não conta mensagens que já foram respondidas
+  ).length;
 
   useEffect(() => {
     onUnreadCountChange?.(unreadCount);
