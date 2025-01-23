@@ -2,7 +2,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Save } from "lucide-react";
+import { Save, Smile } from "lucide-react";
+import { useState } from "react";
+import EmojiPicker from 'emoji-picker-react';
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface ProfileInfoSectionProps {
   formData: {
@@ -20,10 +23,18 @@ export const ProfileInfoSection = ({
   onFormDataChange,
   onSubmit
 }: ProfileInfoSectionProps) => {
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
   const handleBioChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
-    if (text.length <= 160) {
+    if (text.length <= 120) {
       onFormDataChange('bio', text);
+    }
+  };
+
+  const onEmojiClick = (emojiObject: any) => {
+    if (formData.bio.length < 120) {
+      onFormDataChange('bio', formData.bio + emojiObject.emoji);
     }
   };
 
@@ -62,18 +73,39 @@ export const ProfileInfoSection = ({
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
+        <div className="flex justify-between items-center">
+          <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="icon"
+                className="h-8 w-8 text-[#9b87f5] hover:text-white hover:bg-[#2C2F3E]"
+              >
+                <Smile className="h-5 w-5" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-full p-0 border-none">
+              <EmojiPicker
+                onEmojiClick={onEmojiClick}
+                width="100%"
+                height={400}
+              />
+            </PopoverContent>
+          </Popover>
+        </div>
         <div className="relative">
           <Textarea
             id="bio"
             value={formData.bio}
             onChange={handleBioChange}
-            className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] resize-y whitespace-pre-wrap scrollbar-hide"
+            className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] max-h-[180px] resize-y whitespace-pre-wrap scrollbar-hide"
             placeholder="Escreva sua bio aqui... (suporta markdown e quebra de linha)"
-            maxLength={160}
+            maxLength={120}
+            rows={7}
           />
           <span className="absolute bottom-2 right-2 text-xs text-[#9b87f5]">
-            {formData.bio.length}/160
+            {formData.bio.length}/120
           </span>
         </div>
       </div>
