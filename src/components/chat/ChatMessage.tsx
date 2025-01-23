@@ -28,6 +28,9 @@ interface ChatMessageProps {
   onReaction: (messageId: string, reactionType: 'liked' | 'disliked' | 'hearted') => void;
   onReply: (messageId: string, replyText: string) => void;
   onUserSelect?: (userName: string) => void;
+  isSelected: boolean;
+  onSelect: (messageId: string | null) => void;
+  hidden: boolean;
 }
 
 export const ChatMessage = ({
@@ -42,10 +45,12 @@ export const ChatMessage = ({
   userReactions,
   onReaction,
   onReply,
-  onUserSelect
+  onUserSelect,
+  isSelected,
+  onSelect,
+  hidden
 }: ChatMessageProps) => {
   const [replyText, setReplyText] = useState("");
-  const [isSelected, setIsSelected] = useState(false);
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('pt-BR', { 
@@ -68,8 +73,12 @@ export const ChatMessage = ({
   };
 
   const handleMessageClick = () => {
-    setIsSelected(!isSelected);
+    onSelect(isSelected ? null : id);
   };
+
+  if (hidden) {
+    return null;
+  }
 
   return (
     <div className="bg-[#1A1F2C]/50 rounded-lg p-2 space-y-1">

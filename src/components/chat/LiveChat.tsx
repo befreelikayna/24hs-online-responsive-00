@@ -70,6 +70,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
   ]);
   const [newMessage, setNewMessage] = useState("");
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
+  const [selectedMessageId, setSelectedMessageId] = useState<string | null>(null);
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -89,6 +90,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
 
     setMessages([...messages, message]);
     setNewMessage("");
+    setSelectedMessageId(null); // Close any open message when sending a new one
   };
 
   const handleReaction = (messageId: string, reactionType: 'liked' | 'disliked' | 'hearted') => {
@@ -130,6 +132,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       }
       return message;
     }));
+    setSelectedMessageId(null); // Close the message after replying
   };
 
   const handleUserSelect = (userName: string) => {
@@ -164,6 +167,10 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     return () => chatContainer.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleMessageSelect = (messageId: string | null) => {
+    setSelectedMessageId(messageId);
+  };
+
   const filteredMessages = filterUserMessages
     ? messages.filter(message => message.userName === "Você")
     : messages;
@@ -181,6 +188,9 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
               onReaction={handleReaction}
               onReply={handleReply}
               onUserSelect={handleUserSelect}
+              isSelected={selectedMessageId === message.id}
+              onSelect={handleMessageSelect}
+              hidden={selectedMessageId !== null && selectedMessageId !== message.id}
             />
           ))}
         </div>
