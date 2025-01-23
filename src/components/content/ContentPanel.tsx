@@ -1,4 +1,4 @@
-import { MessageSquare, Users, Video, Music, Filter, Scroll, Maximize2, Minimize2, ChevronDown, ChevronUp } from "lucide-react";
+import { MessageSquare, Users, Video, Music, Filter, Maximize2, Minimize2 } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
@@ -38,13 +38,13 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   const mobileStyles = isMobile ? {
     position: 'fixed',
-    bottom: isMinimized ? '0' : 'auto',
+    bottom: 0,
     left: 0,
     right: 0,
     top: isMinimized ? 'auto' : 'calc(56.25vw + 4rem + 10px)',
-    height: isMinimized ? '3rem' : 'calc(100vh - 56.25vw - 4rem - 2rem - 10px)',
+    height: isMinimized ? '3rem' : 'calc(100vh - 56.25vw - 4rem - 10px)',
     margin: 0,
-    borderRadius: isMinimized ? '1rem 1rem 0 0' : '1rem 1rem 0 0',
+    borderRadius: '1rem 1rem 0 0',
     zIndex: 50,
     transition: 'all 0.3s ease-in-out',
   } as const : {};
@@ -68,15 +68,6 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
                 className={`w-5 h-5 cursor-pointer transition-colors hover:text-[#D6BCFA] ${filterUserMessages ? 'text-[#9b87f5]' : 'text-[#9b87f5]/60'}`}
                 onClick={() => setFilterUserMessages(!filterUserMessages)}
               />
-              {isMobile && (
-                <div onClick={toggleMinimize} className="cursor-pointer">
-                  {isMinimized ? (
-                    <ChevronUp className="w-5 h-5 text-[#9b87f5]" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-[#9b87f5]" />
-                  )}
-                </div>
-              )}
             </div>
           )}
           {activeSection === 'community' && (
@@ -98,19 +89,8 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             </div>
           )}
         </h2>
-        {activeSection === 'chat' && !isMinimized && (
+        {activeSection === 'chat' && !isMinimized && !isMobile && (
           <div className="flex items-center gap-4">
-            <div className="relative">
-              <Scroll
-                className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
-                onClick={scrollToBottom}
-              />
-              {unreadCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#D946EF] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse">
-                  {unreadCount}
-                </span>
-              )}
-            </div>
             {isFullscreen ? (
               <Minimize2
                 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors"
