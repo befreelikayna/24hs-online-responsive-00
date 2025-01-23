@@ -60,7 +60,7 @@ export const ProfileForm = () => {
 
   const handleBioChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
-    if (text.length <= 220) {
+    if (text.length <= 160) {
       setFormData({ ...formData, bio: text });
     }
   };
@@ -149,12 +149,12 @@ export const ProfileForm = () => {
                     id="bio"
                     value={formData.bio}
                     onChange={handleBioChange}
-                    className="bg-[#2C2F3E] border-[#9b87f5]/10 min-h-[120px] resize-y whitespace-pre-wrap"
+                    className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] resize-y whitespace-pre-wrap scrollbar-hide"
                     placeholder="Escreva sua bio aqui... (suporta markdown e quebra de linha)"
-                    maxLength={220}
+                    maxLength={160}
                   />
                   <span className="absolute bottom-2 right-2 text-xs text-[#9b87f5]">
-                    {formData.bio.length}/220
+                    {formData.bio.length}/160
                   </span>
                 </div>
               </div>
