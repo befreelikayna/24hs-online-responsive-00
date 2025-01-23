@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface MessageReplyInputProps {
   replyText: string;
   onChange: (value: string) => void;
