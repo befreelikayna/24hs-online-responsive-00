@@ -37,7 +37,8 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     left: 0,
     right: 0,
     top: 'auto',
-    height: 'calc(100vh - 4rem)',
+    // Ajustando a altura para considerar o vídeo (56.25vw) + altura dos botões (4rem) + padding
+    height: 'calc(100vh - 56.25vw - 4rem - 2rem)',
     margin: 0,
     borderRadius: '1rem 1rem 0 0',
     zIndex: 50,
