@@ -22,13 +22,13 @@ const formatMarkdown = (text: string) => {
 
 export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => {
   return (
-    <div className="w-full space-y-4 md:space-y-6">
+    <div className="w-full space-y-3 md:space-y-6">
       {/* Profile Info */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center space-y-2 md:space-y-3">
         <div className="w-full flex justify-center">
           <ProfileImage />
         </div>
-        <div className="text-center space-y-0.5 mt-2">
+        <div className="text-center space-y-0.5">
           <h2 className="text-xl font-bold text-white">{formData.name}</h2>
           <p className="text-sm text-[#9b87f5]">{formData.username}</p>
         </div>
@@ -36,15 +36,15 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
 
       {/* Bio Section */}
       <div className="w-full">
-        <div className="w-full rounded-xl p-3 md:p-5">
-          <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-4">
-            <div className="flex items-center gap-2.5 min-w-fit">
-              <AlignJustify className="w-5 h-5 text-[#9b87f5] transition-all duration-300" />
-              <span className="text-sm font-medium uppercase tracking-wider text-[#9b87f5]">Bio</span>
+        <div className="w-full rounded-xl p-2 md:p-5">
+          <div className="flex flex-col md:flex-row md:items-start gap-1.5 md:gap-4">
+            <div className="flex items-center gap-2 min-w-fit">
+              <AlignJustify className="w-4 h-4 md:w-5 md:h-5 text-[#9b87f5] transition-all duration-300" />
+              <span className="text-xs md:text-sm font-medium uppercase tracking-wider text-[#9b87f5]">Bio</span>
             </div>
             <div className="flex-1 overflow-hidden">
               <p 
-                className="text-[14px] md:text-[15px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide overflow-wrap-anywhere"
+                className="text-[13px] md:text-[15px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide overflow-wrap-anywhere"
                 dangerouslySetInnerHTML={{
                   __html: formData.bio ? formatMarkdown(formData.bio) : '<span class="text-white/40 italic">Nenhuma bio adicionada ainda...</span>'
                 }}
