@@ -80,23 +80,25 @@ export const ChatMessage = ({
         "transition-all duration-200",
         isSelected ? "opacity-100" : "max-h-0 opacity-0 overflow-hidden"
       )}>
-        <div className="space-y-2">
-          <MessageReplyInput
-            replyText={replyText}
-            onChange={setReplyText}
-            onSubmit={handleReplySubmit}
-          />
+        <div className="flex flex-col h-full">
+          <div className="space-y-2">
+            <MessageReplyInput
+              replyText={replyText}
+              onChange={setReplyText}
+              onSubmit={handleReplySubmit}
+            />
 
-          <MessageReactions
-            likes={likes}
-            dislikes={dislikes}
-            hearts={hearts}
-            replies={replies.length}
-            userReactions={userReactions}
-            onReaction={(type) => onReaction(id, type)}
-          />
+            <MessageReactions
+              likes={likes}
+              dislikes={dislikes}
+              hearts={hearts}
+              replies={replies.length}
+              userReactions={userReactions}
+              onReaction={(type) => onReaction(id, type)}
+            />
+          </div>
 
-          <div className="max-h-[200px] overflow-y-auto scrollbar-hide">
+          <div className="flex-1 overflow-y-auto scrollbar-hide max-h-[calc(100vh-400px)]">
             <MessageReplies
               replies={replies}
               onUserSelect={onUserSelect}
