@@ -22,21 +22,30 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
 
   if (replies.length === 0) return null;
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
   };
 
   return (
     <div 
-      className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10"
-      onClick={handleClick}
-      onScroll={(e) => e.stopPropagation()}
+      className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto"
+      onClick={handleInteraction}
+      onTouchStart={handleInteraction}
+      onTouchMove={handleInteraction}
+      onTouchEnd={handleInteraction}
+      onScroll={(e) => {
+        e.stopPropagation();
+        console.log('Scrolling replies container');
+      }}
     >
       {replies.map((reply) => (
         <div 
           key={reply.id} 
           className="bg-[#7E69AB]/20 rounded-md p-1"
-          onClick={(e) => e.stopPropagation()}
+          onClick={handleInteraction}
+          onTouchStart={handleInteraction}
+          onTouchMove={handleInteraction}
+          onTouchEnd={handleInteraction}
         >
           <div className="flex items-center gap-2 justify-between">
             <div className="flex items-center gap-1">
