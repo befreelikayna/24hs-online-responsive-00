@@ -25,22 +25,23 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   };
 
   const handleStateToggle = () => {
-    if (!isFullscreen && !isMinimized) {
-      // If in normal state, go to fullscreen
-      setIsFullscreen(true);
-      setIsMinimized(false);
-    } else if (isFullscreen) {
-      // If in fullscreen, go to minimized
-      setIsFullscreen(false);
-      setIsMinimized(true);
-    } else {
-      // If minimized, go back to normal
-      setIsMinimized(false);
-      setIsFullscreen(false);
+    if (isMobile) {
+      if (!isFullscreen && !isMinimized) {
+        setIsFullscreen(true);
+        setIsMinimized(false);
+      } else if (isFullscreen) {
+        setIsFullscreen(false);
+        setIsMinimized(true);
+      } else {
+        setIsMinimized(false);
+        setIsFullscreen(false);
+      }
     }
   };
 
   const getStateIcon = () => {
+    if (!isMobile) return null;
+    
     if (isFullscreen) {
       return <Minimize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />;
     } else if (isMinimized) {
@@ -71,7 +72,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   return (
     <section 
-      className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out ${isFullscreen ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
+      className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out ${isFullscreen && isMobile ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
       style={!isFullscreen ? mobileStyles : {}}
     >
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
@@ -109,14 +110,14 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             </div>
           )}
         </h2>
-        {activeSection === 'chat' && (
+        {activeSection === 'chat' && isMobile && (
           <div className="flex items-center gap-4" onClick={handleStateToggle}>
             {getStateIcon()}
           </div>
         )}
       </div>
-      {!isMinimized && (
-        <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''}`}>
+      {(!isMinimized || !isMobile) && (
+        <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen && isMobile ? 'h-[calc(100vh-4rem)]' : ''}`}>
           {activeSection === 'chat' ? (
             <LiveChat 
               filterUserMessages={filterUserMessages} 
