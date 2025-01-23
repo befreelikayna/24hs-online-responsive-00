@@ -111,7 +111,7 @@ export const ChatMessage = ({
             value={replyText}
             onChange={(e) => setReplyText(e.target.value)}
             placeholder="Digite sua resposta..."
-            className="flex-1 bg-[#9b87f5]/5 border-0 rounded-lg text-sm py-1.5 px-3 text-white"
+            className="flex-1 bg-[#9b87f5]/5 border border-[#9b87f5]/20 rounded-lg text-sm h-9 px-3 text-white focus:outline-none focus:border-[#9b87f5]/40 transition-colors"
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 handleReplySubmit();
@@ -120,7 +120,7 @@ export const ChatMessage = ({
           />
           <button
             onClick={handleReplySubmit}
-            className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 px-3 py-1 rounded-lg text-sm text-white"
+            className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 px-3 h-9 rounded-lg text-sm text-white whitespace-nowrap"
           >
             Responder
           </button>
