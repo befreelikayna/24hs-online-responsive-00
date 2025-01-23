@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { PenSquare, Share2, Save } from "lucide-react";
+import { PenSquare, Share2, Save, User } from "lucide-react";
 import { ProfileImage } from "./ProfileImage";
 import { ProfileSocialButtons } from "./ProfileSocialButtons";
 
@@ -95,17 +95,24 @@ export const ProfileForm = () => {
               <PenSquare className="w-5 h-5" />
             </button>
 
-            <button
-              type="button"
-              onClick={() => handleSectionClick('social-media')}
-              className={`p-2 rounded-lg transition-colors ${
-                activeSection === 'social-media' 
-                  ? 'bg-[#252839] text-white' 
-                  : 'text-[#9b87f5] hover:bg-[#252839] hover:text-white'
-              }`}
-            >
-              <Share2 className="w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => handleSectionClick('social-media')}
+                className={`p-2 rounded-lg transition-colors ${
+                  activeSection === 'social-media' 
+                    ? 'bg-[#252839] text-white' 
+                    : 'text-[#9b87f5] hover:bg-[#252839] hover:text-white'
+                }`}
+              >
+                <Share2 className="w-5 h-5" />
+              </button>
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#9b87f5] to-[#D6BCFA] p-0.5">
+                <div className="w-full h-full rounded-full bg-[#1A1F2C] flex items-center justify-center">
+                  <User className="w-4 h-4 text-[#9b87f5]" />
+                </div>
+              </div>
+            </div>
           </div>
 
           {activeSection === 'profile-info' && (
