@@ -40,7 +40,7 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
 
   return (
     <div 
-      className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto h-full touch-pan-y scrollbar-hide"
+      className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto max-h-[200px] touch-pan-y scrollbar-hide"
       onClick={handleInteraction}
       onTouchStart={handleInteraction}
       onTouchMove={handleInteraction}
