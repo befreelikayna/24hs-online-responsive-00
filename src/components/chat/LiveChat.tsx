@@ -132,7 +132,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       }
       return message;
     }));
-    setSelectedMessageId(null); // Close the message after replying
+    // Removed setSelectedMessageId(null) to keep the message open
   };
 
   const handleUserSelect = (userName: string) => {
