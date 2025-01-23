@@ -92,7 +92,7 @@ export const ProfileSocialButtons = ({ socialLinks }: ProfileSocialButtonsProps)
   };
 
   return (
-    <div className="w-full max-w-sm flex justify-center gap-2 mt-4">
+    <div className="w-full max-w-sm flex justify-center gap-1.5 mt-3">
       {renderSocialButtons()}
     </div>
   );

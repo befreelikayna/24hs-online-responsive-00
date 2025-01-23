@@ -75,14 +75,14 @@ export const ProfileForm = () => {
             </div>
           </div>
 
-          <div className="text-center space-y-1">
+          <div className="text-center space-y-0.5 mt-2">
             <h2 className="text-xl font-bold text-white">{formData.name}</h2>
             <p className="text-sm text-[#9b87f5]">{formData.username}</p>
           </div>
 
           <ProfileSocialButtons socialLinks={socialLinks} />
 
-          <div className="flex items-center justify-center gap-4 mt-6">
+          <div className="flex items-center justify-center gap-3 mt-4">
             <button
               type="button"
               onClick={() => handleSectionClick('profile-info')}
@@ -109,7 +109,7 @@ export const ProfileForm = () => {
           </div>
 
           {activeSection === 'profile-info' && (
-            <div className="w-full space-y-4 mt-4">
+            <div className="w-full space-y-3 mt-3">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-[#9b87f5]">Nome</Label>
                 <Input
@@ -170,7 +170,7 @@ export const ProfileForm = () => {
           )}
 
           {activeSection === 'social-media' && (
-            <div className="w-full space-y-4 mt-4">
+            <div className="w-full space-y-3 mt-3">
               <div className="space-y-2">
                 <Label htmlFor="facebook" className="text-[#9b87f5]">Facebook</Label>
                 <Input
