@@ -44,9 +44,7 @@ export const ChatMessage = ({
   onReply,
   onUserSelect
 }: ChatMessageProps) => {
-  const [isReplying, setIsReplying] = useState(false);
   const [replyText, setReplyText] = useState("");
-  const [showReplies, setShowReplies] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
 
   const formatTime = (date: Date) => {
@@ -60,7 +58,6 @@ export const ChatMessage = ({
     if (replyText.trim()) {
       onReply(id, replyText);
       setReplyText("");
-      setIsReplying(false);
     }
   };
 
@@ -99,6 +96,27 @@ export const ChatMessage = ({
         "transition-all duration-200 overflow-hidden",
         isSelected ? "h-auto opacity-100" : "h-0 opacity-0"
       )}>
+        <div className="mt-2 flex gap-2">
+          <input
+            type="text"
+            value={replyText}
+            onChange={(e) => setReplyText(e.target.value)}
+            placeholder="Digite sua resposta..."
+            className="flex-1 bg-[#9b87f5]/5 border-0 rounded-lg text-sm py-1.5 px-3 text-white"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleReplySubmit();
+              }
+            }}
+          />
+          <button
+            onClick={handleReplySubmit}
+            className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 px-3 py-1 rounded-lg text-sm text-white"
+          >
+            Responder
+          </button>
+        </div>
+
         <div className="flex items-center justify-between py-1.5">
           <div className="flex items-center gap-4">
             <button
@@ -140,45 +158,14 @@ export const ChatMessage = ({
               />
               <span className="text-xs">{hearts}</span>
             </button>
-            <button
-              onClick={() => setIsReplying(!isReplying)}
-              className="flex items-center gap-1 text-gray-400 hover:text-[#9b87f5] transition-colors"
-            >
-              <MessageCircle className="w-4 h-4" />
-            </button>
+            <MessageCircle className="w-4 h-4 text-gray-400" />
           </div>
-          <button
-            onClick={() => setShowReplies(!showReplies)}
-            className="text-xs text-gray-400 hover:text-[#9b87f5] transition-colors"
-          >
+          <span className="text-xs text-gray-400">
             {replies.length} comentários
-          </button>
+          </span>
         </div>
-        
-        {isReplying && (
-          <div className="mt-2 flex gap-2">
-            <input
-              type="text"
-              value={replyText}
-              onChange={(e) => setReplyText(e.target.value)}
-              placeholder="Digite sua resposta..."
-              className="flex-1 bg-[#9b87f5]/5 border-0 rounded-lg text-sm py-1.5 px-3 text-white"
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleReplySubmit();
-                }
-              }}
-            />
-            <button
-              onClick={handleReplySubmit}
-              className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 px-3 py-1 rounded-lg text-sm text-white"
-            >
-              Responder
-            </button>
-          </div>
-        )}
 
-        {replies.length > 0 && showReplies && (
+        {replies.length > 0 && (
           <div className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10">
             {replies.map((reply) => (
               <div key={reply.id} className="bg-[#7E69AB]/20 rounded-md p-1">
