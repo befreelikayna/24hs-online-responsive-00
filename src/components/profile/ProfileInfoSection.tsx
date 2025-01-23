@@ -36,13 +36,20 @@ export const ProfileInfoSection = ({
 
   const handleBioChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
-    if (text.length <= 120) {
-      onFormDataChange('bio', text);
+    const lines = text.split('\n');
+    
+    if (lines.length <= 7) {
+      if (text.length <= 120) {
+        onFormDataChange('bio', text);
+      }
+    } else if (e.nativeEvent.inputType === 'insertLineBreak') {
+      e.preventDefault();
     }
   };
 
   const onEmojiSelect = (emoji: any) => {
-    if (formData.bio.length < 120) {
+    const lines = formData.bio.split('\n');
+    if (lines.length <= 7 && formData.bio.length < 120) {
       onFormDataChange('bio', formData.bio + emoji.native);
     }
   };
