@@ -1,5 +1,6 @@
-import { ThumbsUp, ThumbsDown, Heart, MessageCircle } from "lucide-react";
+import { Eye, Heart, MessageCircle, ThumbsDown, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 interface MessageReactionsProps {
   likes: number;
@@ -12,6 +13,11 @@ interface MessageReactionsProps {
     hearted: boolean;
   };
   onReaction: (type: 'liked' | 'disliked' | 'hearted') => void;
+  messageDetails?: {
+    userName: string;
+    text: string;
+    timestamp: Date;
+  };
 }
 
 export const MessageReactions = ({
@@ -20,55 +26,78 @@ export const MessageReactions = ({
   hearts,
   replies,
   userReactions,
-  onReaction
+  onReaction,
+  messageDetails
 }: MessageReactionsProps) => {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('pt-BR', { 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
+  };
+
   return (
-    <div className="flex items-center justify-between py-1.5">
-      <div className="flex items-center gap-4">
+    <div className="relative">
+      <div className="flex items-center gap-3 text-xs text-gray-400">
         <button
+          className={cn(
+            "flex items-center gap-1 hover:text-blue-400 transition-colors",
+            userReactions.liked && "text-blue-400"
+          )}
           onClick={() => onReaction('liked')}
-          className={cn(
-            "flex items-center gap-1 transition-colors",
-            userReactions.liked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-          )}
         >
-          <ThumbsUp 
-            className="w-4 h-4" 
-            fill={userReactions.liked ? "currentColor" : "none"}
-          />
-          <span className="text-xs">{likes}</span>
+          <ThumbsUp size={14} />
+          <span>{likes}</span>
         </button>
+
         <button
+          className={cn(
+            "flex items-center gap-1 hover:text-red-400 transition-colors",
+            userReactions.disliked && "text-red-400"
+          )}
           onClick={() => onReaction('disliked')}
-          className={cn(
-            "flex items-center gap-1 transition-colors",
-            userReactions.disliked ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
-          )}
         >
-          <ThumbsDown 
-            className="w-4 h-4" 
-            fill={userReactions.disliked ? "currentColor" : "none"}
-          />
-          <span className="text-xs">{dislikes}</span>
+          <ThumbsDown size={14} />
+          <span>{dislikes}</span>
         </button>
+
         <button
-          onClick={() => onReaction('hearted')}
           className={cn(
-            "flex items-center gap-1 transition-colors",
-            userReactions.hearted ? "text-[#9b87f5]" : "text-gray-400 hover:text-[#9b87f5]"
+            "flex items-center gap-1 hover:text-pink-400 transition-colors",
+            userReactions.hearted && "text-pink-400"
           )}
+          onClick={() => onReaction('hearted')}
         >
-          <Heart 
-            className="w-4 h-4" 
-            fill={userReactions.hearted ? "currentColor" : "none"}
-          />
-          <span className="text-xs">{hearts}</span>
+          <Heart size={14} />
+          <span>{hearts}</span>
         </button>
-        <MessageCircle className="w-4 h-4 text-gray-400" />
+
+        {messageDetails && (
+          <button
+            className="flex items-center gap-1 hover:text-purple-400 transition-colors"
+            onClick={() => setShowDetails(!showDetails)}
+          >
+            <Eye size={14} />
+          </button>
+        )}
+
+        <div className="flex items-center gap-1">
+          <MessageCircle size={14} />
+          <span>{replies}</span>
+        </div>
       </div>
-      <span className="text-xs text-gray-400">
-        {replies} comentários
-      </span>
+
+      {showDetails && messageDetails && (
+        <div className="absolute bottom-full left-0 mb-2 bg-[#1A1F2C] rounded-lg p-2 shadow-lg min-w-[200px] z-20">
+          <div className="text-sm space-y-1">
+            <p className="text-[#9b87f5]">{messageDetails.userName}</p>
+            <p className="text-white/90">{messageDetails.text}</p>
+            <p className="text-gray-400 text-xs">{formatTime(messageDetails.timestamp)}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

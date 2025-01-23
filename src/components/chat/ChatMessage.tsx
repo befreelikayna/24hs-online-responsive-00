@@ -76,6 +76,11 @@ export const ChatMessage = ({
             replies={replies.length}
             userReactions={userReactions}
             onReaction={(type) => onReaction(id, type)}
+            messageDetails={{
+              userName,
+              text,
+              timestamp
+            }}
           />
         </div>
 
