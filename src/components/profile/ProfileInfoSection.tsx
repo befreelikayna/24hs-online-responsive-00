@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Save, Smile } from "lucide-react";
 import { useState } from "react";
 import EmojiPicker from 'emoji-picker-react';
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface ProfileInfoSectionProps {
   formData: {
@@ -84,8 +84,8 @@ export const ProfileInfoSection = ({
             maxLength={120}
             rows={7}
           />
-          <Popover>
-            <PopoverTrigger asChild>
+          <Dialog>
+            <DialogTrigger asChild>
               <Button 
                 variant="ghost" 
                 size="icon"
@@ -93,26 +93,24 @@ export const ProfileInfoSection = ({
               >
                 <Smile className="h-4 w-4" />
               </Button>
-            </PopoverTrigger>
-            <PopoverContent 
-              className="w-full p-0 border-none" 
-              side="right" 
-              align="start"
-              sideOffset={5}
-            >
-              <EmojiPicker
-                onEmojiClick={onEmojiClick}
-                width="100%"
-                height={350}
-                lazyLoadEmojis={true}
-                skinTonesDisabled
-                searchDisabled
-                previewConfig={{
-                  showPreview: false
-                }}
-              />
-            </PopoverContent>
-          </Popover>
+            </DialogTrigger>
+            <DialogContent className="p-0 border-none bg-transparent shadow-2xl">
+              <div className="bg-[#2C2F3E] rounded-lg overflow-hidden border border-[#9b87f5]/10">
+                <EmojiPicker
+                  onEmojiClick={onEmojiClick}
+                  width="100%"
+                  height={350}
+                  lazyLoadEmojis={true}
+                  skinTonesDisabled
+                  searchDisabled
+                  theme="dark"
+                  previewConfig={{
+                    showPreview: false
+                  }}
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
           <span className="absolute bottom-2 right-2 text-xs text-[#9b87f5]">
             {formData.bio.length}/120
           </span>
