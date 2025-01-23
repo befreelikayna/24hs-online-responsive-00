@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Save, Smile } from "lucide-react";
-import { useState } from "react";
 import EmojiPicker, { Theme } from 'emoji-picker-react';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
@@ -96,18 +96,20 @@ export const ProfileInfoSection = ({
             </DialogTrigger>
             <DialogContent className="p-0 border-none bg-transparent shadow-2xl w-[280px] sm:w-[320px] max-w-[95vw]">
               <div className="bg-[#2C2F3E] rounded-lg overflow-hidden border-4 border-[#9b87f5]/10">
-                <EmojiPicker
-                  onEmojiClick={onEmojiClick}
-                  width="100%"
-                  height={300}
-                  lazyLoadEmojis={true}
-                  skinTonesDisabled
-                  searchDisabled
-                  theme={Theme.DARK}
-                  previewConfig={{
-                    showPreview: false
-                  }}
-                />
+                <div className="[&_.EmojiPickerReact]:!bg-[#2C2F3E] [&_.EmojiPickerReact]:!border-none [&_.epr-body::-webkit-scrollbar]:!bg-transparent [&_.epr-body::-webkit-scrollbar-thumb]:!bg-transparent">
+                  <EmojiPicker
+                    onEmojiClick={onEmojiClick}
+                    width="100%"
+                    height={300}
+                    lazyLoadEmojis={true}
+                    skinTonesDisabled
+                    searchDisabled
+                    theme={Theme.DARK}
+                    previewConfig={{
+                      showPreview: false
+                    }}
+                  />
+                </div>
               </div>
             </DialogContent>
           </Dialog>
