@@ -66,26 +66,24 @@ export const ChatMessage = ({
       
       <div className={cn(
         "transition-all duration-200",
-        isSelected ? "opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        isSelected ? "opacity-100 flex flex-col" : "max-h-0 opacity-0 overflow-hidden"
       )}>
-        <div className="flex flex-col h-full">
-          <div className="space-y-2">
-            <MessageReactions
-              likes={likes}
-              dislikes={dislikes}
-              hearts={hearts}
-              replies={replies.length}
-              userReactions={userReactions}
-              onReaction={(type) => onReaction(id, type)}
-            />
-          </div>
+        <div className="sticky top-0 bg-[#1A1F2C]/50 z-10 py-2">
+          <MessageReactions
+            likes={likes}
+            dislikes={dislikes}
+            hearts={hearts}
+            replies={replies.length}
+            userReactions={userReactions}
+            onReaction={(type) => onReaction(id, type)}
+          />
+        </div>
 
-          <div className="flex-1 overflow-y-auto scrollbar-hide max-h-[calc(100vh-400px)]">
-            <MessageReplies
-              replies={replies}
-              onUserSelect={onUserSelect}
-            />
-          </div>
+        <div className="flex-1 overflow-y-auto scrollbar-hide">
+          <MessageReplies
+            replies={replies}
+            onUserSelect={onUserSelect}
+          />
         </div>
       </div>
     </div>
