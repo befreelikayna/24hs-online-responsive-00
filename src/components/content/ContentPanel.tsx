@@ -26,12 +26,12 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
-    setIsMinimized(false); // Ensure chat is not minimized when going fullscreen
+    setIsMinimized(false);
   };
 
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized);
-    setIsFullscreen(false); // Ensure chat is not fullscreen when minimizing
+    setIsFullscreen(false);
   };
 
   if (!isLoggedIn) {
@@ -48,12 +48,14 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     margin: 0,
     borderRadius: isFullscreen ? '0' : '1rem 1rem 0 0',
     zIndex: 50,
-    transition: 'all 0.3s ease-in-out',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    transform: isMinimized ? 'translateY(calc(100% - 3rem))' : 'translateY(0)',
+    willChange: 'transform, height, top',
   } as const : {};
 
   return (
     <section 
-      className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ${isFullscreen ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
+      className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out ${isFullscreen ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
       style={!isFullscreen ? mobileStyles : {}}
     >
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
