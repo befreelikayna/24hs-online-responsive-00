@@ -95,7 +95,7 @@ export const ProfileInfoSection = ({
               </Button>
             </DialogTrigger>
             <DialogContent className="p-0 border-none bg-transparent shadow-2xl w-[280px] sm:w-[320px] max-w-[95vw]">
-              <div className="bg-[#2C2F3E] rounded-lg overflow-hidden border border-[#9b87f5]/10">
+              <div className="bg-[#2C2F3E] rounded-lg overflow-hidden border-4 border-[#9b87f5]/10">
                 <EmojiPicker
                   onEmojiClick={onEmojiClick}
                   width="100%"
