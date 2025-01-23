@@ -4,7 +4,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Save, Smile } from "lucide-react";
-import EmojiPicker, { Theme } from 'emoji-picker-react';
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface ProfileInfoSectionProps {
@@ -32,9 +33,9 @@ export const ProfileInfoSection = ({
     }
   };
 
-  const onEmojiClick = (emojiObject: any) => {
+  const onEmojiSelect = (emoji: any) => {
     if (formData.bio.length < 120) {
-      onFormDataChange('bio', formData.bio + emojiObject.emoji);
+      onFormDataChange('bio', formData.bio + emoji.native);
     }
   };
 
@@ -95,21 +96,18 @@ export const ProfileInfoSection = ({
               </Button>
             </DialogTrigger>
             <DialogContent className="p-0 border-none bg-transparent shadow-2xl w-[280px] sm:w-[320px] max-w-[95vw]">
-              <div className="bg-[#2C2F3E] rounded-lg overflow-hidden border-4 border-[#9b87f5]/10">
-                <div className="[&_.EmojiPickerReact]:!bg-[#2C2F3E] [&_.EmojiPickerReact]:!border-none [&_.epr-body::-webkit-scrollbar]:!bg-transparent [&_.epr-body::-webkit-scrollbar-thumb]:!bg-transparent">
-                  <EmojiPicker
-                    onEmojiClick={onEmojiClick}
-                    width="100%"
-                    height={300}
-                    lazyLoadEmojis={true}
-                    skinTonesDisabled
-                    searchDisabled
-                    theme={Theme.DARK}
-                    previewConfig={{
-                      showPreview: false
-                    }}
-                  />
-                </div>
+              <div className="bg-[#2C2F3E] rounded-lg overflow-hidden border-4 border-[#9b87f5]/20">
+                <Picker
+                  data={data}
+                  onEmojiSelect={onEmojiSelect}
+                  theme="dark"
+                  skinTonePosition="none"
+                  navPosition="none"
+                  previewPosition="none"
+                  searchPosition="none"
+                  maxFrequentRows={2}
+                  perLine={7}
+                />
               </div>
             </DialogContent>
           </Dialog>
