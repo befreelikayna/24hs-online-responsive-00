@@ -3,6 +3,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { PenSquare, Share2, Save } from "lucide-react";
 import { ProfileImage } from "./ProfileImage";
 import { ProfileSocialButtons } from "./ProfileSocialButtons";
@@ -20,7 +21,7 @@ export const ProfileForm = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "John Doe",
-    username: "@johndoe",
+    username: "@seuperfil",
     email: "john@example.com",
     bio: "Frontend Developer",
     joinDate: "Janeiro 2024"
@@ -55,6 +56,13 @@ export const ProfileForm = () => {
 
   const handleSectionClick = (section: string) => {
     setActiveSection(activeSection === section ? null : section);
+  };
+
+  const handleBioChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target.value;
+    if (text.length <= 220) {
+      setFormData({ ...formData, bio: text });
+    }
   };
 
   return (
@@ -112,11 +120,15 @@ export const ProfileForm = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-[#9b87f5]">Username</Label>
+                <Label htmlFor="username" className="text-[#9b87f5]">@seuperfil</Label>
                 <Input
                   id="username"
                   value={formData.username}
-                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    const formattedValue = value.startsWith('@') ? value : `@${value}`;
+                    setFormData({ ...formData, username: formattedValue });
+                  }}
                   className="bg-[#2C2F3E] border-[#9b87f5]/10"
                 />
               </div>
@@ -126,18 +138,25 @@ export const ProfileForm = () => {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
+                  readOnly
+                  className="bg-[#2C2F3E]/50 border-[#9b87f5]/10 cursor-not-allowed opacity-70"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="bio" className="text-[#9b87f5]">Bio</Label>
-                <Input
-                  id="bio"
-                  value={formData.bio}
-                  onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                  className="bg-[#2C2F3E] border-[#9b87f5]/10"
-                />
+                <div className="relative">
+                  <Textarea
+                    id="bio"
+                    value={formData.bio}
+                    onChange={handleBioChange}
+                    className="bg-[#2C2F3E] border-[#9b87f5]/10 min-h-[120px] resize-y whitespace-pre-wrap"
+                    placeholder="Escreva sua bio aqui... (suporta markdown e quebra de linha)"
+                    maxLength={220}
+                  />
+                  <span className="absolute bottom-2 right-2 text-xs text-[#9b87f5]">
+                    {formData.bio.length}/220
+                  </span>
+                </div>
               </div>
               <Button 
                 type="submit" 
