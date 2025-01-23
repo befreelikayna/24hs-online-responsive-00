@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Reply {
   id: string;
@@ -13,6 +14,8 @@ interface MessageRepliesProps {
 }
 
 export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) => {
+  const isMobile = useIsMobile();
+
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('pt-BR', { 
       hour: '2-digit', 
@@ -38,9 +41,13 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
     onUserSelect?.(userName);
   };
 
+  const containerStyle = isMobile 
+    ? "mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto touch-pan-y scrollbar-hide h-[calc(100vh-400px)]"
+    : "mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto touch-pan-y scrollbar-hide h-full";
+
   return (
     <div 
-      className="mt-2 space-y-1 pl-3 border-l-2 border-[#9b87f5]/10 overflow-y-auto max-h-[200px] touch-pan-y scrollbar-hide"
+      className={containerStyle}
       onClick={handleInteraction}
       onTouchStart={handleInteraction}
       onTouchMove={handleInteraction}
