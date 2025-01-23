@@ -12,6 +12,14 @@ interface ProfileHeaderProps {
   socialLinks: SocialLinksType;
 }
 
+const formatMarkdown = (text: string) => {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__(.*?)__/g, '<em>$1</em>')
+    .replace(/\^\^(.*?)\^\^/g, '<sup>$1</sup>')
+    .replace(/~~(.*?)~~/g, '<del>$1</del>');
+};
+
 export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => {
   return (
     <div className="w-full space-y-6">
@@ -35,13 +43,12 @@ export const ProfileHeader = ({ formData, socialLinks }: ProfileHeaderProps) => 
               <span className="text-xs uppercase tracking-wider text-[#9b87f5]/70">Bio</span>
             </div>
             <div className="flex-1">
-              <p className="text-[11px] md:text-[12px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide line-clamp-7">
-                {formData.bio || (
-                  <span className="text-white/40 italic">
-                    Nenhuma bio adicionada ainda...
-                  </span>
-                )}
-              </p>
+              <p 
+                className="text-[13px] md:text-[14px] text-white/90 whitespace-pre-wrap break-words leading-relaxed tracking-wide line-clamp-7"
+                dangerouslySetInnerHTML={{
+                  __html: formData.bio ? formatMarkdown(formData.bio) : '<span class="text-white/40 italic">Nenhuma bio adicionada ainda...</span>'
+                }}
+              />
             </div>
           </div>
         </div>
