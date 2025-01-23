@@ -1,7 +1,7 @@
 import { MessageSquare, Users, Video, Music, Filter, Maximize2, Minimize2 } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ContentPanelProps {
@@ -15,20 +15,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   const [unreadCount, setUnreadCount] = useState(0);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showInput, setShowInput] = useState(true);
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    if (isMinimized) {
-      setShowInput(false);
-    } else {
-      // Delay showing input until expansion animation is complete
-      const timer = setTimeout(() => {
-        setShowInput(true);
-      }, 300); // Match this with the expansion animation duration
-      return () => clearTimeout(timer);
-    }
-  }, [isMinimized]);
 
   const scrollToBottom = () => {
     const chatContainer = document.querySelector('.scrollbar-hide');
@@ -39,12 +26,15 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   const handleStateToggle = () => {
     if (!isFullscreen && !isMinimized) {
+      // If in normal state, go to fullscreen
       setIsFullscreen(true);
       setIsMinimized(false);
     } else if (isFullscreen) {
+      // If in fullscreen, go to minimized
       setIsFullscreen(false);
       setIsMinimized(true);
     } else {
+      // If minimized, go back to normal
       setIsMinimized(false);
       setIsFullscreen(false);
     }
@@ -126,16 +116,12 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
         )}
       </div>
       {!isMinimized && (
-        <div className={`h-[calc(100%-4rem)] overflow-y-auto transition-all duration-300 ease-in-out transform ${isMinimized ? 'translate-y-full' : 'translate-y-0'} ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''}`}>
+        <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''}`}>
           {activeSection === 'chat' ? (
-            <div className="relative h-full">
-              <div className={`transition-opacity duration-300 ${showInput ? 'opacity-100' : 'opacity-0'}`}>
-                <LiveChat 
-                  filterUserMessages={filterUserMessages} 
-                  onUnreadCountChange={setUnreadCount}
-                />
-              </div>
-            </div>
+            <LiveChat 
+              filterUserMessages={filterUserMessages} 
+              onUnreadCountChange={setUnreadCount}
+            />
           ) : (
             <div className="h-full flex items-center justify-center">
               {activeSection === 'community' && (
