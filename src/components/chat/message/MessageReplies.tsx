@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useScrollSync } from '../hooks/useScrollSync';
 
 interface Reply {
   id: string;
@@ -15,6 +16,7 @@ interface MessageRepliesProps {
 
 export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) => {
   const isMobile = useIsMobile();
+  const { scrollRef, handleScroll } = useScrollSync([replies]);
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('pt-BR', { 
@@ -26,11 +28,6 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
   if (replies.length === 0) return null;
 
   const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
   };
@@ -47,12 +44,13 @@ export const MessageReplies = ({ replies, onUserSelect }: MessageRepliesProps) =
 
   return (
     <div 
+      ref={scrollRef}
       className={containerStyle}
       onClick={handleInteraction}
       onTouchStart={handleInteraction}
       onTouchMove={handleInteraction}
       onTouchEnd={handleInteraction}
-      onScroll={handleScroll}
+      onScroll={() => handleScroll()}
     >
       {replies.map((reply) => (
         <div 

@@ -23,7 +23,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     markAllAsRead
   } = useChatMessages(onUnreadCountChange);
 
-  const { scrollRef, scrollToBottom } = useScrollSync([messages]);
+  const { scrollRef, scrollToBottom, handleScroll, isUserScrolling } = useScrollSync([messages]);
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
@@ -35,7 +35,11 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     }
     
     setNewMessage("");
-    setTimeout(scrollToBottom, 100);
+    
+    // Apenas rola para baixo se não estiver em scroll manual
+    if (!isUserScrolling) {
+      setTimeout(scrollToBottom, 100);
+    }
   };
 
   const handleUserSelect = (userName: string) => {
@@ -51,7 +55,11 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       {selectedUser ? (
         <UserInfo userName={selectedUser} onClose={() => setSelectedUser(null)} />
       ) : (
-        <div ref={scrollRef} className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto scrollbar-hide">
+        <div 
+          ref={scrollRef} 
+          className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto scrollbar-hide"
+          onScroll={() => handleScroll()}
+        >
           <MessagesList
             messages={filteredMessages}
             selectedMessageId={selectedMessageId}
