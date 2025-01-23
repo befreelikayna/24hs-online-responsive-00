@@ -42,7 +42,7 @@ export const ProfileInfoSection = ({
       if (text.length <= 120) {
         onFormDataChange('bio', text);
       }
-    } else if (e.nativeEvent.inputType === 'insertLineBreak') {
+    } else if ((e.nativeEvent as InputEvent).inputType === 'insertLineBreak') {
       e.preventDefault();
     }
   };
