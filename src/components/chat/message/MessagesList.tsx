@@ -40,7 +40,7 @@ export const MessagesList = ({
   onUserSelect
 }: MessagesListProps) => {
   return (
-    <div className="absolute top-0 left-0 right-0 bottom-[60px] overflow-y-auto p-2 space-y-2 scrollbar-hide">
+    <div className="p-2 space-y-2">
       {messages.map((message) => (
         <ChatMessage
           key={message.id}
