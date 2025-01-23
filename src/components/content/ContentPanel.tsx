@@ -116,7 +116,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
         )}
       </div>
       {!isMinimized && (
-        <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''}`}>
+        <div className={`h-[calc(100%-4rem)] overflow-y-auto transition-all duration-300 ease-in-out transform ${isMinimized ? 'translate-y-full' : 'translate-y-0'} ${isFullscreen ? 'h-[calc(100vh-4rem)]' : ''}`}>
           {activeSection === 'chat' ? (
             <LiveChat 
               filterUserMessages={filterUserMessages} 
