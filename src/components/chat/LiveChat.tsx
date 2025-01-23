@@ -80,24 +80,28 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
 
-    const message: Message = {
-      id: Date.now().toString(),
-      userName: "Você",
-      text: newMessage,
-      timestamp: new Date(),
-      likes: 0,
-      dislikes: 0,
-      hearts: 0,
-      replies: [],
-      userReactions: { liked: false, disliked: false, hearted: false },
-      read: true
-    };
+    if (selectedMessageId) {
+      // Handle reply to specific message
+      handleReply(selectedMessageId, newMessage);
+    } else {
+      // Handle new general message
+      const message: Message = {
+        id: Date.now().toString(),
+        userName: "Você",
+        text: newMessage,
+        timestamp: new Date(),
+        likes: 0,
+        dislikes: 0,
+        hearts: 0,
+        replies: [],
+        userReactions: { liked: false, disliked: false, hearted: false },
+        read: true
+      };
 
-    setMessages(prev => [...prev, message]);
-    setNewMessage("");
-    setSelectedMessageId(null);
+      setMessages(prev => [...prev, message]);
+    }
     
-    // Use setTimeout to ensure the DOM has updated before scrolling
+    setNewMessage("");
     setTimeout(scrollToBottom, 100);
   };
 

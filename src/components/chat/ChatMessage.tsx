@@ -1,7 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { MessageHeader } from "./message/MessageHeader";
-import { MessageReplyInput } from "./message/MessageReplyInput";
 import { MessageReactions } from "./message/MessageReactions";
 import { MessageReplies } from "./message/MessageReplies";
 
@@ -47,21 +45,11 @@ export const ChatMessage = ({
   replies,
   userReactions,
   onReaction,
-  onReply,
   onUserSelect,
   isSelected,
   onSelect,
   hidden
 }: ChatMessageProps) => {
-  const [replyText, setReplyText] = useState("");
-
-  const handleReplySubmit = () => {
-    if (replyText.trim()) {
-      onReply(id, replyText);
-      setReplyText("");
-    }
-  };
-
   if (hidden) {
     return null;
   }
@@ -82,12 +70,6 @@ export const ChatMessage = ({
       )}>
         <div className="flex flex-col h-full">
           <div className="space-y-2">
-            <MessageReplyInput
-              replyText={replyText}
-              onChange={setReplyText}
-              onSubmit={handleReplySubmit}
-            />
-
             <MessageReactions
               likes={likes}
               dislikes={dislikes}
