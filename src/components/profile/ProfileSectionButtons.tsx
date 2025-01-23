@@ -1,4 +1,4 @@
-import { PenSquare, Share2, User } from "lucide-react";
+import { PenSquare, Share2 } from "lucide-react";
 
 interface ProfileSectionButtonsProps {
   activeSection: string | null;
@@ -33,18 +33,6 @@ export const ProfileSectionButtons = ({
         }`}
       >
         <Share2 className="w-5 h-5" />
-      </button>
-
-      <button
-        type="button"
-        onClick={() => onSectionClick('user-info')}
-        className={`p-2 rounded-lg transition-colors ${
-          activeSection === 'user-info' 
-            ? 'bg-[#252839] text-white' 
-            : 'text-[#9b87f5] hover:bg-[#252839] hover:text-white'
-        }`}
-      >
-        <User className="w-5 h-5" />
       </button>
     </div>
   );
