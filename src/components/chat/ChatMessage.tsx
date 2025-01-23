@@ -77,8 +77,8 @@ export const ChatMessage = ({
       />
       
       <div className={cn(
-        "transition-all duration-200 overflow-hidden",
-        isSelected ? "h-auto opacity-100" : "h-0 opacity-0"
+        "transition-all duration-200",
+        isSelected ? "max-h-[300px] opacity-100 overflow-y-auto scrollbar-hide" : "max-h-0 opacity-0 overflow-hidden"
       )}>
         <MessageReplyInput
           replyText={replyText}
