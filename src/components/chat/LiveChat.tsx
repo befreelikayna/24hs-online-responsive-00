@@ -30,12 +30,13 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
 
     if (selectedMessageId) {
       handleReply(selectedMessageId, newMessage);
+      // Don't clear selectedMessageId when replying
     } else {
       addMessage(newMessage);
+      setSelectedMessageId(null); // Only clear when sending a new message
     }
     
     setNewMessage("");
-    setSelectedMessageId(null);
     
     if (!isUserScrolling) {
       setTimeout(scrollToBottom, 100);
