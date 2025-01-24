@@ -68,7 +68,7 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
           size="icon"
           className={`relative h-10 w-10 rounded-full p-0 transition-all duration-300 ${
             countdown > 0
-              ? 'bg-[#9b87f5]/20 hover:bg-[#9b87f5]/30'
+              ? 'bg-[#9b87f5]/20 hover:bg-[#9b87f5]/30 before:absolute before:inset-0 before:rounded-full before:border before:border-[#9b87f5] before:animate-pulse before:shadow-[0_0_15px_rgba(155,135,245,0.5)] before:shadow-[#9b87f5]/50'
               : 'bg-[#9b87f5] hover:bg-[#9b87f5]/90 hover:shadow-lg hover:shadow-[#9b87f5]/20'
           }`}
           disabled={isDisabled}
