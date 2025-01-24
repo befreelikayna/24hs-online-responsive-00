@@ -19,7 +19,7 @@ const Admin = () => {
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C]">
       <div className="fixed top-0 left-0 right-0 z-50">
-        <Header isLoggedIn={isLoggedIn} showMenuButton={!isMobile} onMenuClick={toggleSidebar} />
+        <Header isLoggedIn={isLoggedIn} />
       </div>
 
       <div className="flex flex-1 mt-[60px] mb-[48px] overflow-hidden">
