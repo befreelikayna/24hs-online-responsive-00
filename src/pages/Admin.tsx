@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { UnifiedAdminSidebar } from "@/components/admin/UnifiedAdminSidebar";
@@ -15,6 +15,7 @@ const Admin = () => {
   const [isLoggedIn] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const isMobile = useIsMobile();
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -37,11 +38,11 @@ const Admin = () => {
           !isMobile ? (isSidebarCollapsed ? 'ml-[70px]' : 'ml-[240px]') : 'ml-0'
         }`}>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route index element={<Dashboard />} />
+            <Route path="users" element={<Users />} />
+            <Route path="messages" element={<Messages />} />
+            <Route path="reports" element={<Reports />} />
+            <Route path="settings" element={<Settings />} />
           </Routes>
         </main>
       </div>
