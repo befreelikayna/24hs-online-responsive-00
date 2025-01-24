@@ -52,19 +52,25 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     left: 0,
     right: 0,
     top: isMinimized ? 'auto' : isFullscreen ? '0' : 'calc(56.25vw + 4rem + 56px)',
-    height: isMinimized ? '3rem' : isFullscreen ? '100vh' : 'calc(100vh - 56.25vw - 4rem - 56px)',
+    height: isMinimized ? '3rem' : isFullscreen ? '100%' : 'calc(100vh - 56.25vw - 4rem - 56px)',
     margin: 0,
     borderRadius: isFullscreen ? '0' : '1rem 1rem 0 0',
     zIndex: 50,
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     transform: isMinimized ? 'translateY(calc(100% - 3rem))' : 'translateY(0)',
     willChange: 'transform, height, top',
-  } as const : {};
+    display: 'flex',
+    flexDirection: 'column' as const,
+  } : {};
 
   return (
     <section 
       className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out ${isFullscreen && isMobile ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
-      style={!isFullscreen ? mobileStyles : {}}
+      style={!isFullscreen ? mobileStyles : {
+        ...mobileStyles,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <h2 className="text-xl font-bold text-white">
@@ -129,7 +135,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
         )}
       </div>
       {(!isMinimized || !isMobile) && !hideMessages && (
-        <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen && isMobile ? 'h-[calc(100vh-4rem)]' : ''}`}>
+        <div className={`flex-1 overflow-hidden ${isFullscreen && isMobile ? 'h-[calc(100%-4rem)]' : ''}`}>
           {activeSection === 'chat' ? (
             <LiveChat 
               filterUserMessages={filterUserMessages} 
