@@ -18,7 +18,7 @@ const Index = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-hidden">
+    <div className="min-h-screen w-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-hidden">
       <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} />
 
       <main className="flex-1 w-full overflow-hidden">
