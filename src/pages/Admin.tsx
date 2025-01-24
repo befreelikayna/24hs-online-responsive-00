@@ -38,9 +38,9 @@ const Admin = () => {
       </div>
 
       <div className="flex flex-1 mt-[60px] mb-[48px] overflow-hidden">
-        <AdminSidebar isCollapsed={isSidebarCollapsed} />
-        <main className={`flex-1 overflow-y-auto transition-all duration-300 ${
-          !isMobile ? (isSidebarCollapsed ? 'ml-[60px]' : 'ml-[240px]') : 'ml-0'
+        <AdminSidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />
+        <main className={`flex-1 overflow-y-auto p-6 transition-all duration-300 ${
+          !isMobile ? (isSidebarCollapsed ? 'ml-0' : 'ml-[65px]') : 'ml-0'
         }`}>
           <div className="w-full max-w-[1400px] mx-auto">
             {isMobile ? <AdminMobileStats /> : <AdminStats />}
