@@ -66,11 +66,19 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
         <Button
           onClick={handleSend}
           size="icon"
-          className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 h-10 w-10 rounded-full hover:shadow-lg hover:shadow-[#9b87f5]/20 p-0"
+          className={`relative h-10 w-10 rounded-full p-0 transition-all duration-300 ${
+            countdown > 0
+              ? 'bg-[#9b87f5]/20 hover:bg-[#9b87f5]/30'
+              : 'bg-[#9b87f5] hover:bg-[#9b87f5]/90 hover:shadow-lg hover:shadow-[#9b87f5]/20'
+          }`}
           disabled={isDisabled}
         >
           {countdown > 0 ? (
-            <span className="text-lg font-bold">{countdown}</span>
+            <div className="flex items-center justify-center w-full h-full">
+              <span className="text-xl font-bold animate-pulse text-[#9b87f5]">
+                {countdown}
+              </span>
+            </div>
           ) : (
             <Send className="h-4 w-4" />
           )}
