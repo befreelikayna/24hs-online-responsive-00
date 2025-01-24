@@ -10,6 +10,13 @@
   "display_override": ["standalone", "fullscreen"],
   "categories": ["entertainment", "streaming"],
   "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "24hs.Online",
+      "url": "/",
+      "description": "Abrir 24hs.Online"
+    }
+  ],
   "icons": [
     {
       "src": "favicon.ico",

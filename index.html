@@ -11,6 +11,9 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="navigation-color" content="#1A1F2C" />
     <meta name="msapplication-navbutton-color" content="#1A1F2C" />
+    <meta name="theme-color" content="#1A1F2C" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <link rel="manifest" href="/manifest.json" />
     <title>24hs.Online</title>
   </head>
@@ -23,12 +26,21 @@
           navigator.serviceWorker.register('/service-worker.js')
             .then((registration) => {
               console.log('ServiceWorker registration successful');
+              // Força a ativação imediata do service worker
+              if (registration.waiting) {
+                registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+              }
             })
             .catch((err) => {
               console.log('ServiceWorker registration failed: ', err);
             });
         });
       }
+
+      // Adiciona listener para mudanças no modo de exibição
+      window.addEventListener('appinstalled', (evt) => {
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1A1F2C');
+      });
     </script>
   </body>
 </html>
