@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut, CirclePlay } from "lucide-react";
+import { Bell, MessageSquare, User, LogOut, CirclePlay, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useToast } from "@/components/ui/use-toast";
 
 interface HeaderProps {
   isLoggedIn?: boolean;
@@ -17,6 +18,42 @@ interface HeaderProps {
 
 export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleInstallClick = () => {
+    if ('beforeinstallprompt' in window) {
+      // @ts-ignore - beforeinstallprompt is not in the standard types
+      const deferredPrompt = window.deferredPrompt;
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
+          if (choiceResult.outcome === 'accepted') {
+            toast({
+              title: "Instalação iniciada",
+              description: "O app está sendo instalado no seu dispositivo",
+            });
+          }
+          // @ts-ignore
+          window.deferredPrompt = null;
+        });
+      } else {
+        toast({
+          title: "App já instalado",
+          description: "O app já está instalado no seu dispositivo ou não pode ser instalado agora",
+        });
+      }
+    }
+  };
+
+  // Add event listener for beforeinstallprompt
+  if (typeof window !== 'undefined') {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // @ts-ignore
+      window.deferredPrompt = e;
+    });
+  }
 
   return (
     <header className="bg-gradient-to-r from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] border-b border-[#9b87f5]/10 px-2 py-2 md:px-4 md:py-2.5">
@@ -39,6 +76,14 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
         <div className="flex items-center gap-2 md:gap-4">
           {isLoggedIn ? (
             <>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 md:h-9 md:w-9 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300 transform hover:scale-110"
+                onClick={handleInstallClick}
+              >
+                <Download className="h-4 w-4 md:h-5 md:w-5 stroke-[1.5] transition-transform duration-300 hover:-translate-y-1" />
+              </Button>
               <Button
                 variant="ghost"
                 size="icon"
