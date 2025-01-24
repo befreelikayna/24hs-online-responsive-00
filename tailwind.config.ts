@@ -55,12 +55,12 @@ export default {
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(190, 100%, 50%)',
+					primary: 'hsl(190, 85%, 50%)',
 					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(190, 100%, 50%)',
+					accent: 'hsl(190, 85%, 50%)',
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(190, 100%, 50%)',
-					ring: 'hsl(190, 100%, 50%)'
+					border: 'hsl(190, 70%, 55%)',
+					ring: 'hsl(190, 70%, 55%)'
 				}
 			},
 			borderRadius: {
