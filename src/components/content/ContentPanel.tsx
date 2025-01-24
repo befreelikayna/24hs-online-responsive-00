@@ -28,7 +28,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   };
 
   const getStateIcon = () => {
-    if (!isMobile) return null;
+    if (!isMobile || isMinimized) return null;
     
     return isFullscreen ? (
       <Minimize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />
