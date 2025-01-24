@@ -1,4 +1,4 @@
-import { MessageSquare, Users, Video, Music, Filter, Maximize2, Minimize2 } from "lucide-react";
+import { MessageSquare, MessageSquareOff, Users, Video, Music, Filter, Maximize2, Minimize2 } from "lucide-react";
 import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
@@ -66,10 +66,17 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           {activeSection === 'chat' && (
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                <MessageSquare 
-                  className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                  onClick={handleChatToggle}
-                />
+                {isMinimized ? (
+                  <MessageSquareOff 
+                    className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                    onClick={handleChatToggle}
+                  />
+                ) : (
+                  <MessageSquare 
+                    className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                    onClick={handleChatToggle}
+                  />
+                )}
               </div>
               <Filter 
                 className={`w-5 h-5 cursor-pointer transition-colors hover:text-[#D6BCFA] ${filterUserMessages ? 'text-[#9b87f5]' : 'text-[#9b87f5]/60'}`}
