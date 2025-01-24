@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { UnifiedAdminSidebar } from "@/components/admin/UnifiedAdminSidebar";
@@ -15,6 +15,17 @@ const Admin = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [currentContent, setCurrentContent] = useState('dashboard');
   const isMobile = useIsMobile();
+
+  // Previne o redirecionamento indesejado mantendo o estado do componente
+  useEffect(() => {
+    const cleanupFunction = () => {
+      // Cleanup function para garantir que o componente não cause efeitos colaterais
+      return () => {
+        setCurrentContent('dashboard');
+      };
+    };
+    return cleanupFunction();
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
