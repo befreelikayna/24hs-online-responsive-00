@@ -75,7 +75,7 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
         >
           {countdown > 0 ? (
             <div className="flex items-center justify-center w-full h-full">
-              <span className="text-2xl font-bold tracking-wider animate-pulse text-[#9b87f5] font-mono">
+              <span className="text-xl font-bold tracking-wider animate-pulse text-[#9b87f5] font-mono">
                 {countdown}
               </span>
             </div>
