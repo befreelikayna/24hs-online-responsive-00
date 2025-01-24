@@ -3,6 +3,7 @@ import { AuthPanel } from "@/components/auth/AuthPanel";
 import { LiveChat } from "@/components/chat/LiveChat";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { CSSProperties } from "react";
 
 interface ContentPanelProps {
   activeSection: 'chat' | 'community' | 'lives' | 'music';
@@ -46,7 +47,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     return <AuthPanel onDemoLogin={onDemoLogin} />;
   }
 
-  const mobileStyles = isMobile ? {
+  const mobileStyles: CSSProperties = isMobile ? {
     position: 'fixed',
     bottom: 0,
     left: 0,
@@ -60,17 +61,19 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     transform: isMinimized ? 'translateY(calc(100% - 3rem))' : 'translateY(0)',
     willChange: 'transform, height, top',
     display: 'flex',
-    flexDirection: 'column' as const,
+    flexDirection: 'column',
   } : {};
+
+  const fullscreenStyles: CSSProperties = {
+    ...mobileStyles,
+    display: 'flex',
+    flexDirection: 'column',
+  };
 
   return (
     <section 
       className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out ${isFullscreen && isMobile ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
-      style={!isFullscreen ? mobileStyles : {
-        ...mobileStyles,
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      style={!isFullscreen ? mobileStyles : fullscreenStyles}
     >
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
         <h2 className="text-xl font-bold text-white">
