@@ -16,6 +16,8 @@ self.addEventListener('install', (event) => {
         return cache.addAll(urlsToCache);
       })
   );
+  // Immediately activate the service worker
+  self.skipWaiting();
 });
 
 self.addEventListener('fetch', (event) => {
@@ -54,4 +56,6 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
+  // Claim clients immediately
+  clients.claim();
 });
