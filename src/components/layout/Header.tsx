@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/components/ui/use-toast";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   isLoggedIn?: boolean;
@@ -19,41 +20,57 @@ interface HeaderProps {
 export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstallable, setIsInstallable] = useState(false);
 
-  const handleInstallClick = () => {
-    if ('beforeinstallprompt' in window) {
-      // @ts-ignore - beforeinstallprompt is not in the standard types
-      const deferredPrompt = window.deferredPrompt;
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
-          if (choiceResult.outcome === 'accepted') {
-            toast({
-              title: "Instalação iniciada",
-              description: "O app está sendo instalado no seu dispositivo",
-            });
-          }
-          // @ts-ignore
-          window.deferredPrompt = null;
-        });
-      } else {
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setIsInstallable(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    // Verificar se já está instalado
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsInstallable(false);
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) {
+      toast({
+        title: "Instalação",
+        description: "Abra este site no Chrome para Android para instalar o app",
+      });
+      return;
+    }
+
+    try {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
         toast({
-          title: "App já instalado",
-          description: "O app já está instalado no seu dispositivo ou não pode ser instalado agora",
+          title: "Sucesso!",
+          description: "O app está sendo instalado. Procure pelo ícone na sua tela inicial.",
         });
+        setIsInstallable(false);
       }
+      setDeferredPrompt(null);
+    } catch (err) {
+      toast({
+        title: "Erro na instalação",
+        description: "Por favor, tente novamente usando o Chrome para Android",
+        variant: "destructive",
+      });
     }
   };
-
-  // Add event listener for beforeinstallprompt
-  if (typeof window !== 'undefined') {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // @ts-ignore
-      window.deferredPrompt = e;
-    });
-  }
 
   return (
     <header className="bg-gradient-to-r from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] border-b border-[#9b87f5]/10 px-2 py-2 md:px-4 md:py-2.5">
@@ -76,14 +93,20 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
         <div className="flex items-center gap-2 md:gap-4">
           {isLoggedIn ? (
             <>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 md:h-9 md:w-9 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300 transform hover:scale-110"
-                onClick={handleInstallClick}
-              >
-                <Download className="h-4 w-4 md:h-5 md:w-5 stroke-[1.5] transition-transform duration-300 hover:-translate-y-1" />
-              </Button>
+              {isInstallable && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 md:h-9 md:w-9 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300 transform hover:scale-110 relative group"
+                  onClick={handleInstallClick}
+                >
+                  <Download className="h-4 w-4 md:h-5 md:w-5 stroke-[1.5] transition-transform duration-300 hover:-translate-y-1" />
+                  <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D6BCFA] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#9b87f5]"></span>
+                  </span>
+                </Button>
+              )}
               <Button
                 variant="ghost"
                 size="icon"
