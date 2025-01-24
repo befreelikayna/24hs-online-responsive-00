@@ -96,14 +96,16 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
 
   return (
     <aside
-      className={`fixed left-0 top-[60px] h-fit max-h-[360px] bg-gradient-to-b from-[#2C2F3E]/90 to-[#1A1F2C]/90 backdrop-blur-sm border-r border-[#9b87f5]/10 transition-all duration-300 ease-in-out w-[65px]`}
+      className={`fixed left-0 top-[60px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out w-[65px]`}
     >
-      <div className="p-2 flex justify-center">
-        <div className="p-2 rounded-lg bg-[#9b87f5]/20 transition-all duration-300 hover:bg-[#9b87f5]/30">
-          <Settings className="w-5 h-5 text-[#D6BCFA] transition-transform duration-300 hover:rotate-90" />
+      <div className="pt-4">
+        <div className="flex justify-center mb-3">
+          <div className="p-2 rounded-lg bg-[#9b87f5]/20 animate-[glowPulse_2s_ease-in-out_infinite]">
+            <Settings className="w-5 h-5 text-[#D6BCFA] animate-spin-slow" />
+          </div>
         </div>
+        <MenuContent />
       </div>
-      <MenuContent />
     </aside>
   );
 };
