@@ -1,7 +1,7 @@
 {
   "name": "24hs.Online",
   "short_name": "24hs.Online",
-  "description": "24hs.Online - Sua plataforma de streaming",
+  "description": "24hs.Online - Your streaming platform",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1A1F2C",
@@ -14,7 +14,7 @@
     {
       "name": "24hs.Online",
       "url": "/",
-      "description": "Abrir 24hs.Online"
+      "description": "Open 24hs.Online"
     }
   ],
   "icons": [

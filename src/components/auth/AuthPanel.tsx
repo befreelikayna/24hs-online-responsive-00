@@ -57,7 +57,7 @@ export const AuthPanel = ({ onLogin, onSignup, onDemoLogin }: AuthPanelProps) =>
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="pl-10"
-                  placeholder="Seu nome completo"
+                  placeholder="Your full name"
                 />
                 <UserPlus className="absolute left-3 top-2.5 h-5 w-5 text-[#9b87f5]" />
               </div>
@@ -73,7 +73,7 @@ export const AuthPanel = ({ onLogin, onSignup, onDemoLogin }: AuthPanelProps) =>
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-10"
-                placeholder="seu@email.com"
+                placeholder="your@email.com"
               />
               <Mail className="absolute left-3 top-2.5 h-5 w-5 text-[#9b87f5]" />
             </div>
@@ -95,7 +95,7 @@ export const AuthPanel = ({ onLogin, onSignup, onDemoLogin }: AuthPanelProps) =>
           </div>
 
           <Button type="submit" className="w-full">
-            {isLogin ? "Entrar" : "Cadastrar"}
+            {isLogin ? "Sign in" : "Sign up"}
           </Button>
 
           <div className="relative">
@@ -104,7 +104,7 @@ export const AuthPanel = ({ onLogin, onSignup, onDemoLogin }: AuthPanelProps) =>
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-[#1A1F2C] px-2 text-muted-foreground">
-                Ou continue com
+                Or continue with
               </span>
             </div>
           </div>
@@ -116,17 +116,17 @@ export const AuthPanel = ({ onLogin, onSignup, onDemoLogin }: AuthPanelProps) =>
             className="w-full"
           >
             <Gamepad2 className="mr-2 h-4 w-4" />
-            Entrar com Conta Demo
+            Sign in with Demo Account
           </Button>
 
           <p className="text-center text-sm text-[#D6BCFA]/70">
-            {isLogin ? "Ainda não tem uma conta?" : "Já tem uma conta?"}{" "}
+            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
             <button
               type="button"
               onClick={() => setIsLogin(!isLogin)}
               className="text-[#9b87f5] hover:underline"
             >
-              {isLogin ? "Cadastre-se" : "Faça login"}
+              {isLogin ? "Sign up" : "Sign in"}
             </button>
           </p>
         </form>

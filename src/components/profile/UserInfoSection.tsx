@@ -14,7 +14,7 @@ export const UserInfoSection = () => {
           </div>
           <div className="flex-1">
             <h4 className="text-base font-semibold text-white">John Doe</h4>
-            <p className="text-sm text-gray-400">Membro desde 2024</p>
+            <p className="text-sm text-gray-400">Member since 2024</p>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ export const UserInfoSection = () => {
 
         <div className="flex items-center justify-center gap-2 bg-[#2C2F3E] p-3 rounded-lg">
           <Calendar className="w-5 h-5 text-[#7E69AB]" />
-          <p className="text-xs text-gray-400">Entrou em</p>
+          <p className="text-xs text-gray-400">Joined in</p>
           <p className="text-sm text-white font-medium">Janeiro 2024</p>
         </div>
 
@@ -82,7 +82,7 @@ export const UserInfoSection = () => {
               <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
                 <MessageSquare className="w-5 h-5 text-[#9b87f5]" />
               </div>
-              <p className="text-xs text-gray-400 mb-1">Mensagens</p>
+              <p className="text-xs text-gray-400 mb-1">Messages</p>
               <p className="text-sm text-white font-semibold">127</p>
             </div>
           </div>
@@ -91,7 +91,7 @@ export const UserInfoSection = () => {
               <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
                 <ThumbsUp className="w-5 h-5 text-[#9b87f5]" />
               </div>
-              <p className="text-xs text-gray-400 mb-1">Curtidas</p>
+              <p className="text-xs text-gray-400 mb-1">Likes</p>
               <p className="text-sm text-white font-semibold">324</p>
             </div>
           </div>
@@ -100,7 +100,7 @@ export const UserInfoSection = () => {
               <div className="bg-[#9b87f5]/10 p-2 rounded-lg mb-2">
                 <Heart className="w-5 h-5 text-[#9b87f5]" />
               </div>
-              <p className="text-xs text-gray-400 mb-1">Reações</p>
+              <p className="text-xs text-gray-400 mb-1">Reactions</p>
               <p className="text-sm text-white font-semibold">45</p>
             </div>
           </div>
@@ -109,7 +109,7 @@ export const UserInfoSection = () => {
               <div className="bg-[#7E69AB]/20 p-2 rounded-lg mb-2 backdrop-blur-sm">
                 <Users className="w-5 h-5 text-[#E5DEFF]" />
               </div>
-              <p className="text-xs text-[#E5DEFF] mb-1 font-medium">Seguidores</p>
+              <p className="text-xs text-[#E5DEFF] mb-1 font-medium">Followers</p>
               <p className="text-sm text-[#E5DEFF] font-bold">{followersCount}</p>
             </div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#7E69AB]/10 to-transparent animate-shimmer"></div>
@@ -117,9 +117,9 @@ export const UserInfoSection = () => {
         </div>
 
         <div className="bg-[#2C2F3E] p-3 rounded-lg">
-          <h5 className="text-sm text-[#7E69AB] font-medium mb-1">Sobre</h5>
+          <h5 className="text-sm text-[#7E69AB] font-medium mb-1">About</h5>
           <p className="text-xs text-gray-400">
-            Membro ativo da comunidade, sempre participando das discussões e compartilhando conhecimento.
+            Active community member, always participating in discussions and sharing knowledge.
           </p>
         </div>
       </div>

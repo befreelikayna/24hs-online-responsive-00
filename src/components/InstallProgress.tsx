@@ -18,8 +18,8 @@ export const InstallProgress = () => {
       setProgress(100);
       setIsInstalling(false);
       toast({
-        title: "Instalação Concluída! 🎉",
-        description: "O app foi instalado com sucesso! Você já pode começar a usar.",
+        title: "Installation Complete! 🎉",
+        description: "The app has been successfully installed! You can start using it now.",
       });
     };
 
@@ -50,9 +50,9 @@ export const InstallProgress = () => {
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-[#1A1F2C] p-6 rounded-lg shadow-xl w-[90%] max-w-md border border-[#9b87f5]/20">
-        <h3 className="text-[#D6BCFA] text-lg font-semibold mb-4">Instalando 24hs.Online</h3>
+        <h3 className="text-[#D6BCFA] text-lg font-semibold mb-4">Installing 24hs.Online</h3>
         <Progress value={progress} className="h-2 mb-2" />
-        <p className="text-[#D6BCFA]/70 text-sm">{progress}% concluído</p>
+        <p className="text-[#D6BCFA]/70 text-sm">{progress}% completed</p>
       </div>
     </div>
   );

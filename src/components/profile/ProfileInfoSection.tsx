@@ -58,8 +58,8 @@ export const ProfileInfoSection = ({
 
   const handleChangePassword = () => {
     toast({
-      title: "Alterar senha",
-      description: "Um email foi enviado com instruções para alterar sua senha.",
+      title: "Change password",
+      description: "An email has been sent with instructions to change your password.",
     });
   };
 
@@ -104,7 +104,7 @@ export const ProfileInfoSection = ({
             className="bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors whitespace-nowrap"
           >
             <Lock className="w-4 h-4 mr-2" />
-            Trocar Senha
+            Change Password
           </Button>
         </div>
       </div>
@@ -117,7 +117,7 @@ export const ProfileInfoSection = ({
               value={formData.bio}
               onChange={handleBioChange}
               className="bg-[#2C2F3E] border-[#E5DEFF]/30 min-h-[120px] max-h-[180px] resize-y whitespace-pre-wrap scrollbar-hide pr-10"
-              placeholder="Escreva sua bio aqui... (suporta markdown e quebra de linha)"
+              placeholder="Write your bio here... (supports markdown and line breaks)"
               maxLength={120}
               rows={7}
             />
@@ -169,7 +169,7 @@ export const ProfileInfoSection = ({
         className="w-full mt-2 bg-[#2C2F3E] hover:bg-[#252839] border-[#9b87f5]/10 text-[#9b87f5] hover:text-white transition-colors"
       >
         <Save className="w-4 h-4 mr-2" />
-        Salvar Alterações
+        Save Changes
       </Button>
     </div>
   );
