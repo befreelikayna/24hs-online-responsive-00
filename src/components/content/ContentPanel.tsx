@@ -15,10 +15,15 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   const [unreadCount, setUnreadCount] = useState(0);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [hideMessages, setHideMessages] = useState(false);
   const isMobile = useIsMobile();
 
   const handleChatToggle = () => {
-    setIsMinimized(!isMinimized);
+    if (isMobile) {
+      setIsMinimized(!isMinimized);
+    } else {
+      setHideMessages(!hideMessages);
+    }
   };
 
   const handleStateToggle = () => {
@@ -66,16 +71,30 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           {activeSection === 'chat' && (
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                {isMinimized ? (
-                  <MessageSquareOff 
-                    className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                    onClick={handleChatToggle}
-                  />
+                {isMobile ? (
+                  isMinimized ? (
+                    <MessageSquareOff 
+                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      onClick={handleChatToggle}
+                    />
+                  ) : (
+                    <MessageSquare 
+                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      onClick={handleChatToggle}
+                    />
+                  )
                 ) : (
-                  <MessageSquare 
-                    className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
-                    onClick={handleChatToggle}
-                  />
+                  hideMessages ? (
+                    <MessageSquareOff 
+                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      onClick={handleChatToggle}
+                    />
+                  ) : (
+                    <MessageSquare 
+                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      onClick={handleChatToggle}
+                    />
+                  )
                 )}
               </div>
               <Filter 
@@ -109,7 +128,7 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
           </div>
         )}
       </div>
-      {(!isMinimized || !isMobile) && (
+      {(!isMinimized || !isMobile) && !hideMessages && (
         <div className={`h-[calc(100%-4rem)] overflow-y-auto ${isFullscreen && isMobile ? 'h-[calc(100vh-4rem)]' : ''}`}>
           {activeSection === 'chat' ? (
             <LiveChat 
