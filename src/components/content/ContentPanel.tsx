@@ -63,10 +63,10 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   return (
     <section 
-      className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(155,135,245,0.15)] border border-[#9b87f5]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out ${isFullscreen && isMobile ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
+      className={`bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] rounded-xl shadow-[0_0_30px_rgba(0,180,216,0.15)] border border-[#00b4d8]/10 backdrop-blur-lg h-full lg:sticky lg:top-4 md:mb-0 transition-all duration-300 ease-in-out ${isFullscreen && isMobile ? 'fixed inset-0 z-50 m-0 rounded-none' : ''}`}
       style={!isFullscreen ? mobileStyles : {}}
     >
-      <div className="flex items-center justify-between px-6 py-4 border-b border-[#9b87f5]/10">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-[#00b4d8]/10">
         <h2 className="text-xl font-bold text-white">
           {activeSection === 'chat' && (
             <div className="flex items-center gap-4">
@@ -74,50 +74,50 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
                 {isMobile ? (
                   isMinimized ? (
                     <MessageSquareOff 
-                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      className="w-5 h-5 text-[#00b4d8] hover:text-[#90e0ef] transition-colors cursor-pointer"
                       onClick={handleChatToggle}
                     />
                   ) : (
                     <MessageSquare 
-                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      className="w-5 h-5 text-[#00b4d8] hover:text-[#90e0ef] transition-colors cursor-pointer"
                       onClick={handleChatToggle}
                     />
                   )
                 ) : (
                   hideMessages ? (
                     <MessageSquareOff 
-                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      className="w-5 h-5 text-[#00b4d8] hover:text-[#90e0ef] transition-colors cursor-pointer"
                       onClick={handleChatToggle}
                     />
                   ) : (
                     <MessageSquare 
-                      className="w-5 h-5 text-[#9b87f5] hover:text-[#D6BCFA] transition-colors cursor-pointer"
+                      className="w-5 h-5 text-[#00b4d8] hover:text-[#90e0ef] transition-colors cursor-pointer"
                       onClick={handleChatToggle}
                     />
                   )
                 )}
               </div>
               <Filter 
-                className={`w-5 h-5 cursor-pointer transition-colors hover:text-[#D6BCFA] ${filterUserMessages ? 'text-[#9b87f5]' : 'text-[#9b87f5]/60'}`}
+                className={`w-5 h-5 cursor-pointer transition-colors hover:text-[#90e0ef] ${filterUserMessages ? 'text-[#00b4d8]' : 'text-[#00b4d8]/60'}`}
                 onClick={() => setFilterUserMessages(!filterUserMessages)}
               />
             </div>
           )}
           {activeSection === 'community' && (
             <div className="flex items-center gap-2">
-              <Users className="w-5 h-5 text-[#9b87f5]" />
+              <Users className="w-5 h-5 text-[#00b4d8]" />
               <span>Comunidade</span>
             </div>
           )}
           {activeSection === 'lives' && (
             <div className="flex items-center gap-2">
-              <Video className="w-5 h-5 text-[#9b87f5]" />
+              <Video className="w-5 h-5 text-[#00b4d8]" />
               <span>Lives Disponíveis</span>
             </div>
           )}
           {activeSection === 'music' && (
             <div className="flex items-center gap-2">
-              <Music className="w-5 h-5 text-[#9b87f5]" />
+              <Music className="w-5 h-5 text-[#00b4d8]" />
               <span>Playlist</span>
             </div>
           )}
@@ -139,8 +139,8 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
             <div className="h-full flex items-center justify-center">
               {activeSection === 'community' && (
                 <div className="flex flex-col items-center justify-center space-y-4">
-                  <Users className="w-12 h-12 text-[#9b87f5]/30" />
-                  <p className="text-[#D6BCFA]/70 text-center">
+                  <Users className="w-12 h-12 text-[#00b4d8]/30" />
+                  <p className="text-[#90e0ef]/70 text-center">
                     Área da comunidade em desenvolvimento...<br/>
                     Em breve você poderá conectar com a comunidade!
                   </p>
@@ -148,8 +148,8 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
               )}
               {activeSection === 'lives' && (
                 <div className="flex flex-col items-center justify-center space-y-4">
-                  <Video className="w-12 h-12 text-[#9b87f5]/30" />
-                  <p className="text-[#D6BCFA]/70 text-center">
+                  <Video className="w-12 h-12 text-[#00b4d8]/30" />
+                  <p className="text-[#90e0ef]/70 text-center">
                     Área das lives em desenvolvimento...<br/>
                     Em breve você poderá acessar mais conteúdo ao vivo!
                   </p>
@@ -157,8 +157,8 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
               )}
               {activeSection === 'music' && (
                 <div className="flex flex-col items-center justify-center space-y-4">
-                  <Music className="w-12 h-12 text-[#9b87f5]/30" />
-                  <p className="text-[#D6BCFA]/70 text-center">
+                  <Music className="w-12 h-12 text-[#00b4d8]/30" />
+                  <p className="text-[#90e0ef]/70 text-center">
                     Área da música em desenvolvimento...<br/>
                     Em breve você poderá curtir suas músicas favoritas!
                   </p>
