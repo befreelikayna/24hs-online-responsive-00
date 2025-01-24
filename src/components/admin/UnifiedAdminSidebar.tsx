@@ -1,6 +1,7 @@
-import { Home, Users, Settings, BarChart2, MessageSquare } from "lucide-react";
+import { Home, Users, Settings, BarChart2, MessageSquare, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface UnifiedAdminSidebarProps {
@@ -47,11 +48,19 @@ export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSideb
 
   if (isMobile) {
     return (
-      <Sheet defaultOpen={false}>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="fixed right-4 bottom-16 z-50 h-10 w-10 rounded-full bg-[#9b87f5]/20 backdrop-blur-md border border-[#D6BCFA]/20 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-500 animate-[pulse_3s_ease-in-out_infinite] hover:animate-none"
+          >
+            <Menu className="h-5 w-5 text-[#D6BCFA] transition-transform duration-300 hover:rotate-180" />
+          </Button>
+        </SheetTrigger>
         <SheetContent
           side="left"
-          className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 animate-slide-up [&>button]:hidden touch-pan-y"
-          swipeDirection="right"
+          className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 animate-slide-up [&>button]:hidden"
         >
           <style>
             {`
