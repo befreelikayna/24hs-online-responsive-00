@@ -59,7 +59,7 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="w-[65px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl animate-slide-up"
+          className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl animate-slide-up"
         >
           <style>
             {`
