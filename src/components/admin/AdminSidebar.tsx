@@ -59,7 +59,7 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="w-[65px] h-[80%] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl animate-slide-up"
+          className="w-[65px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl animate-slide-up"
         >
           <style>
             {`
@@ -96,9 +96,7 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
 
   return (
     <aside
-      className={`fixed left-0 top-[60px] bottom-[48px] bg-gradient-to-b from-[#2C2F3E]/90 to-[#1A1F2C]/90 backdrop-blur-sm border-r border-[#9b87f5]/10 transition-all duration-300 ease-in-out ${
-        isCollapsed ? 'w-[65px]' : 'w-[240px]'
-      }`}
+      className={`fixed left-0 top-[60px] h-fit max-h-[360px] bg-gradient-to-b from-[#2C2F3E]/90 to-[#1A1F2C]/90 backdrop-blur-sm border-r border-[#9b87f5]/10 transition-all duration-300 ease-in-out w-[65px]`}
     >
       <div className="p-2 flex justify-center">
         <div className="p-2 rounded-lg bg-[#9b87f5]/20 transition-all duration-300 hover:bg-[#9b87f5]/30">
