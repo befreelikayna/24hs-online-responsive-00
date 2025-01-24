@@ -42,6 +42,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
@@ -51,6 +52,9 @@
   }
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-bottom {
+    bottom: env(safe-area-inset-bottom);
   }
 }
 
