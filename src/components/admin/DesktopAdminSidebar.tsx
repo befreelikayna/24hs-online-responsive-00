@@ -28,14 +28,14 @@ export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSideb
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`group flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} gap-3 p-2.5 rounded-lg hover:bg-[#9b87f5]/20 transition-all duration-300`}
+                  className={`group flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} gap-3 p-2.5 rounded-lg hover:bg-[#9b87f5]/20 transition-all duration-500 hover:scale-105`}
                   style={{
                     animation: `fadeSlideIn 0.3s ease-out forwards`,
                     animationDelay: `${index * 0.1}s`,
                   }}
                 >
                   <div className={`flex items-center justify-center ${isCollapsed ? 'min-w-[32px]' : 'min-w-[32px]'}`}>
-                    <item.icon className="w-5 h-5 text-[#D6BCFA] transition-all duration-300 group-hover:scale-110 group-hover:text-white" />
+                    <item.icon className="w-5 h-5 text-[#D6BCFA] transition-all duration-500 group-hover:scale-110 group-hover:text-white group-hover:rotate-180" />
                   </div>
                   {!isCollapsed && (
                     <span className="text-[#D6BCFA] text-sm group-hover:text-white transition-all duration-300 whitespace-nowrap">
@@ -58,13 +58,13 @@ export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSideb
               >
                 <div className={`flex items-center justify-center ${isCollapsed ? 'min-w-[32px]' : 'min-w-[32px]'}`}>
                   {isCollapsed ? (
-                    <PanelLeft className="w-5 h-5 text-[#9b87f5] transition-all duration-500 group-hover:scale-110 group-hover:text-white group-hover:rotate-180" />
+                    <PanelLeft className="w-5 h-5 text-[#D6BCFA] transition-all duration-500 group-hover:scale-110 group-hover:text-white group-hover:rotate-180" />
                   ) : (
-                    <PanelLeftClose className="w-5 h-5 text-[#9b87f5] transition-all duration-500 group-hover:scale-110 group-hover:text-white group-hover:rotate-180" />
+                    <PanelLeftClose className="w-5 h-5 text-[#D6BCFA] transition-all duration-500 group-hover:scale-110 group-hover:text-white group-hover:rotate-180" />
                   )}
                 </div>
                 {!isCollapsed && (
-                  <span className="text-[#9b87f5] text-sm group-hover:text-white transition-all duration-300 whitespace-nowrap">
+                  <span className="text-[#D6BCFA] text-sm group-hover:text-white transition-all duration-300 whitespace-nowrap">
                     Recolher Menu
                   </span>
                 )}
