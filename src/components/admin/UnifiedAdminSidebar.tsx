@@ -4,12 +4,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-interface AdminSidebarProps {
+interface UnifiedAdminSidebarProps {
   isCollapsed: boolean;
   onToggle?: () => void;
 }
 
-export const AdminSidebar = ({ isCollapsed, onToggle }: AdminSidebarProps) => {
+export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSidebarProps) => {
   const isMobile = useIsMobile();
   const menuItems = [
     { icon: Home, path: '/admin', tooltip: 'Dashboard' },
