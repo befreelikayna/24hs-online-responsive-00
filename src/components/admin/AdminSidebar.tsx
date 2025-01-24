@@ -19,31 +19,31 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
   ];
 
   const MenuContent = () => (
-    <nav className="p-4">
-      <div className="space-y-4">
+    <nav className="p-2">
+      <div className="space-y-2">
         {menuItems.map((item) => (
           <Link
             key={item.path}
             to={item.path}
             className="group block"
           >
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-transparent to-transparent hover:from-[#9b87f5]/5 hover:to-transparent transition-all duration-500 relative overflow-hidden">
+            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all duration-300 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/0 via-[#9b87f5]/5 to-[#9b87f5]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="bg-[#9b87f5]/10 p-2.5 rounded-lg group-hover:bg-[#9b87f5]/20 transition-all duration-300">
-                <item.icon className="w-5 h-5 text-[#9b87f5] group-hover:scale-110 transition-all duration-300" />
+              <div className="bg-white/10 p-2 rounded-lg group-hover:bg-[#9b87f5]/20 transition-all duration-300">
+                <item.icon className="w-4 h-4 text-[#9b87f5] group-hover:scale-110 transition-all duration-300" />
               </div>
               
-              <div className="flex-1">
-                <p className="text-[#E5DEFF] font-medium group-hover:text-white transition-colors duration-300">
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white/90 truncate group-hover:text-white transition-colors duration-300">
                   {item.label}
                 </p>
-                <p className="text-xs text-[#E5DEFF]/60 group-hover:text-[#E5DEFF]/80 transition-colors duration-300">
+                <p className="text-[10px] text-white/60 truncate group-hover:text-white/80 transition-colors duration-300">
                   {item.description}
                 </p>
               </div>
               
-              <ChevronRight className="w-4 h-4 text-[#9b87f5]/40 group-hover:text-[#9b87f5] group-hover:translate-x-1 transition-all duration-300" />
+              <ChevronRight className="w-3 h-3 text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
             </div>
           </Link>
         ))}
@@ -58,24 +58,24 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
           <Button
             variant="ghost"
             size="icon"
-            className="fixed right-4 bottom-20 z-50 h-12 w-12 rounded-full bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="fixed right-4 bottom-20 z-50 h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5 text-white" />
           </Button>
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="w-[300px] bg-gradient-to-br from-[#2C2F3E] via-[#252839] to-[#1A1F2C] border-r border-[#9b87f5]/20 p-0 shadow-2xl"
+          className="w-[280px] bg-black/30 backdrop-blur-xl border-r border-white/10 p-0 shadow-2xl"
         >
-          <div className="pt-8">
-            <div className="px-6 mb-8">
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-[#9b87f5]/10 to-transparent">
-                <div className="bg-[#9b87f5]/20 p-2 rounded-lg">
-                  <Settings className="w-5 h-5 text-[#9b87f5]" />
+          <div className="pt-6">
+            <div className="px-4 mb-4">
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 backdrop-blur-sm">
+                <div className="bg-[#9b87f5]/20 p-1.5 rounded-lg">
+                  <Settings className="w-4 h-4 text-[#9b87f5]" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold text-white">Menu Admin</h2>
-                  <p className="text-xs text-[#E5DEFF]/60">Painel de Controle</p>
+                  <h2 className="text-sm font-medium text-white">Menu Admin</h2>
+                  <p className="text-[10px] text-white/60">Painel de Controle</p>
                 </div>
               </div>
             </div>
