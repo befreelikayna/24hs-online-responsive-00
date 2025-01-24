@@ -1,15 +1,19 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { UnifiedAdminSidebar } from "@/components/admin/UnifiedAdminSidebar";
 import { DesktopAdminSidebar } from "@/components/admin/DesktopAdminSidebar";
-import { AdminStats } from "@/components/admin/AdminStats";
-import { AdminMobileStats } from "@/components/admin/AdminMobileStats";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Dashboard from "./admin/Dashboard";
+import Users from "./admin/Users";
+import Messages from "./admin/Messages";
+import Reports from "./admin/Reports";
+import Settings from "./admin/Settings";
 
 const Admin = () => {
   const [isLoggedIn] = useState(true);
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const isMobile = useIsMobile();
 
   const toggleSidebar = () => {
@@ -32,9 +36,13 @@ const Admin = () => {
         <main className={`flex-1 overflow-y-auto p-6 transition-all duration-300 ${
           !isMobile ? (isSidebarCollapsed ? 'ml-[70px]' : 'ml-[240px]') : 'ml-0'
         }`}>
-          <div className="w-full max-w-[1400px] mx-auto">
-            {isMobile ? <AdminMobileStats /> : <AdminStats />}
-          </div>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
         </main>
       </div>
 
