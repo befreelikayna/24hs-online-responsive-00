@@ -76,14 +76,7 @@ export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSideb
               }
             `}
           </style>
-          <div className="pt-4">
-            <div className="flex justify-center mb-3">
-              <div className="p-2 rounded-lg bg-[#9b87f5]/20">
-                <Settings className="w-5 h-5 text-[#D6BCFA]" />
-              </div>
-            </div>
-            <MenuContent />
-          </div>
+          <MenuContent />
         </SheetContent>
       </Sheet>
     );
