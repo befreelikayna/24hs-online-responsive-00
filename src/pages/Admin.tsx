@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { UnifiedAdminSidebar } from "@/components/admin/UnifiedAdminSidebar";
+import { DesktopAdminSidebar } from "@/components/admin/DesktopAdminSidebar";
 import { AdminStats } from "@/components/admin/AdminStats";
 import { AdminMobileStats } from "@/components/admin/AdminMobileStats";
 import { Menu } from "lucide-react";
@@ -38,9 +39,14 @@ const Admin = () => {
       </div>
 
       <div className="flex flex-1 mt-[60px] mb-[48px] overflow-hidden">
-        <UnifiedAdminSidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />
+        {/* Mobile Menu */}
+        {isMobile && <UnifiedAdminSidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />}
+        
+        {/* Desktop Menu */}
+        {!isMobile && <DesktopAdminSidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />}
+        
         <main className={`flex-1 overflow-y-auto p-6 transition-all duration-300 ${
-          !isMobile ? (isSidebarCollapsed ? 'ml-0' : 'ml-[65px]') : 'ml-0'
+          !isMobile ? (isSidebarCollapsed ? 'ml-[70px]' : 'ml-[240px]') : 'ml-0'
         }`}>
           <div className="w-full max-w-[1400px] mx-auto">
             {isMobile ? <AdminMobileStats /> : <AdminStats />}
