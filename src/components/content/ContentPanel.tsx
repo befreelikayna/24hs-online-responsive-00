@@ -69,12 +69,12 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
   }
 
   const mobileStyles: CSSProperties = isMobile ? {
-    position: 'fixed',
+    position: 'fixed' as const,
     bottom: keyboardHeight,
     left: 0,
     right: 0,
     top: isMinimized ? 'auto' : isFullscreen ? '0' : 'calc(56.25vw + 4rem + 56px)',
-    height: isMinimized ? '3rem' : isFullscreen ? `calc(100% - ${keyboardHeight}px)` : `calc(100vh - 56.25vw - 4rem - 56px - ${keyboardHeight}px)`,
+    height: isMinimized ? '3rem' : isFullscreen ? `calc(100vh - ${keyboardHeight}px)` : `calc(100vh - 56.25vw - 4rem - 56px - ${keyboardHeight}px)`,
     margin: 0,
     borderRadius: isFullscreen ? '0' : '1rem 1rem 0 0',
     zIndex: 50,
@@ -82,13 +82,15 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
     transform: isMinimized ? 'translateY(calc(100% - 3rem))' : 'translateY(0)',
     willChange: 'transform, height, top',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column' as const,
+    overflow: 'hidden'
   } : {};
 
   const fullscreenStyles: CSSProperties = {
     ...mobileStyles,
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column' as const,
+    overflow: 'hidden'
   };
 
   return (
