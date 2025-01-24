@@ -17,12 +17,12 @@ export const DesktopAdminSidebar = ({ isCollapsed }: DesktopAdminSidebarProps) =
 
   return (
     <aside
-      className={`hidden md:block fixed left-0 top-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
+      className={`hidden md:block fixed left-0 bottom-[68px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
         isCollapsed ? 'w-[70px]' : 'w-[240px]'
       }`}
     >
       <div className="max-w-[1400px] mx-auto w-full">
-        <nav className="py-4 mt-4 px-2 md:px-3">
+        <nav className="py-4 px-2 md:px-3">
           <ul className="space-y-3">
             {menuItems.map((item, index) => (
               <li key={item.path}>
