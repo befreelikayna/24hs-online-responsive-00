@@ -21,14 +21,16 @@ const Admin = () => {
     <div className="h-screen flex flex-col overflow-hidden bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C]">
       <div className="fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleSidebar}
-            className="ml-4 h-8 w-8 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300"
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
+          {!isMobile && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleSidebar}
+              className="ml-4 h-8 w-8 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          )}
           <div className="flex-1">
             <Header isLoggedIn={isLoggedIn} />
           </div>
@@ -37,7 +39,9 @@ const Admin = () => {
 
       <div className="flex flex-1 mt-[60px] mb-[48px] overflow-hidden">
         <AdminSidebar isCollapsed={isSidebarCollapsed} />
-        <main className={`flex-1 overflow-y-auto transition-all duration-300 ${isSidebarCollapsed ? 'ml-[60px]' : 'ml-[240px]'}`}>
+        <main className={`flex-1 overflow-y-auto transition-all duration-300 ${
+          !isMobile ? (isSidebarCollapsed ? 'ml-[60px]' : 'ml-[240px]') : 'ml-0'
+        }`}>
           <div className="w-full max-w-[1400px] mx-auto">
             {isMobile ? <AdminMobileStats /> : <AdminStats />}
           </div>
