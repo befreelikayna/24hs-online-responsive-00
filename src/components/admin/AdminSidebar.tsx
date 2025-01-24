@@ -59,28 +59,8 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 animate-slide-up [&>button]:hidden"
+          className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 animate-slide-up [&>button]:hidden"
         >
-          <style>
-            {`
-              @keyframes fadeSlideIn {
-                from {
-                  opacity: 0;
-                  transform: translateX(-20px);
-                }
-                to {
-                  opacity: 1;
-                  transform: translateX(0);
-                }
-              }
-              
-              @keyframes glowPulse {
-                0% { box-shadow: 0 0 5px #9b87f5; }
-                50% { box-shadow: 0 0 15px #9b87f5; }
-                100% { box-shadow: 0 0 5px #9b87f5; }
-              }
-            `}
-          </style>
           <div className="pt-4">
             <div className="flex justify-center mb-3">
               <div className="p-2 rounded-lg bg-[#9b87f5]/20 animate-[glowPulse_2s_ease-in-out_infinite]">
@@ -96,7 +76,9 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
 
   return (
     <aside
-      className={`fixed left-0 top-[60px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out w-[65px]`}
+      className={`fixed left-0 top-[60px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
+        isCollapsed ? 'w-0 opacity-0' : 'w-[65px] opacity-100'
+      }`}
     >
       <div className="pt-4">
         <div className="flex justify-center mb-3">
