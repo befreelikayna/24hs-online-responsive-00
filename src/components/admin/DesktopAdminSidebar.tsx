@@ -1,4 +1,4 @@
-import { Home, Users, Settings, BarChart2, MessageSquare } from "lucide-react";
+import { Home, Users, Settings, BarChart2, MessageSquare, PanelLeftClose, PanelLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface DesktopAdminSidebarProps {
@@ -6,7 +6,7 @@ interface DesktopAdminSidebarProps {
   onToggle?: () => void;
 }
 
-export const DesktopAdminSidebar = ({ isCollapsed }: DesktopAdminSidebarProps) => {
+export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSidebarProps) => {
   const menuItems = [
     { icon: Home, path: '/admin', label: 'Dashboard' },
     { icon: Users, path: '/admin/users', label: 'Usuários' },
@@ -45,6 +45,31 @@ export const DesktopAdminSidebar = ({ isCollapsed }: DesktopAdminSidebarProps) =
                 </Link>
               </li>
             ))}
+            
+            {/* Toggle Button */}
+            <li>
+              <button
+                onClick={onToggle}
+                className={`group flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} w-full gap-3 p-2.5 rounded-lg hover:bg-[#9b87f5]/20 transition-all duration-500 hover:scale-105`}
+                style={{
+                  animation: `fadeSlideIn 0.3s ease-out forwards`,
+                  animationDelay: `${menuItems.length * 0.1}s`,
+                }}
+              >
+                <div className={`flex items-center justify-center ${isCollapsed ? 'min-w-[32px]' : 'min-w-[32px]'}`}>
+                  {isCollapsed ? (
+                    <PanelLeft className="w-5 h-5 text-[#9b87f5] transition-all duration-500 group-hover:scale-110 group-hover:text-white group-hover:rotate-180" />
+                  ) : (
+                    <PanelLeftClose className="w-5 h-5 text-[#9b87f5] transition-all duration-500 group-hover:scale-110 group-hover:text-white group-hover:rotate-180" />
+                  )}
+                </div>
+                {!isCollapsed && (
+                  <span className="text-[#9b87f5] text-sm group-hover:text-white transition-all duration-300 whitespace-nowrap">
+                    Recolher Menu
+                  </span>
+                )}
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
