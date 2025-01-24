@@ -21,8 +21,8 @@ export const DesktopAdminSidebar = ({ isCollapsed }: DesktopAdminSidebarProps) =
         isCollapsed ? 'w-[70px]' : 'w-[240px]'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto w-full pt-6">
-        <nav className="p-4">
+      <div className="max-w-[1400px] mx-auto w-full">
+        <nav className="p-4 pt-6 space-y-6">
           <ul className="space-y-4">
             {menuItems.map((item, index) => (
               <li key={item.path}>
