@@ -27,23 +27,23 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
             to={item.path}
             className="group block"
           >
-            <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all duration-300 relative overflow-hidden">
+            <div className="flex items-center gap-2 p-2 rounded-lg hover:bg-[#9b87f5]/5 transition-all duration-300 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/0 via-[#9b87f5]/5 to-[#9b87f5]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="bg-white/10 p-2 rounded-lg group-hover:bg-[#9b87f5]/20 transition-all duration-300">
-                <item.icon className="w-4 h-4 text-[#9b87f5] group-hover:scale-110 transition-all duration-300" />
+              <div className="bg-[#9b87f5]/5 p-2 rounded-lg group-hover:bg-[#9b87f5]/10 transition-all duration-300">
+                <item.icon className="w-4 h-4 text-[#D6BCFA] group-hover:scale-110 transition-all duration-300" />
               </div>
               
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-white/90 truncate group-hover:text-white transition-colors duration-300">
+                <p className="text-sm font-medium text-[#D6BCFA] truncate group-hover:text-white transition-colors duration-300">
                   {item.label}
                 </p>
-                <p className="text-[10px] text-white/60 truncate group-hover:text-white/80 transition-colors duration-300">
+                <p className="text-[10px] text-[#D6BCFA]/60 truncate group-hover:text-[#D6BCFA]/80 transition-colors duration-300">
                   {item.description}
                 </p>
               </div>
               
-              <ChevronRight className="w-3 h-3 text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
+              <ChevronRight className="w-3 h-3 text-[#D6BCFA]/40 group-hover:text-[#D6BCFA] group-hover:translate-x-0.5 transition-all duration-300" />
             </div>
           </Link>
         ))}
@@ -58,24 +58,24 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
           <Button
             variant="ghost"
             size="icon"
-            className="fixed right-4 bottom-20 z-50 h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="fixed right-4 bottom-20 z-50 h-12 w-12 rounded-full bg-[#9b87f5]/10 backdrop-blur-sm border border-[#D6BCFA]/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
-            <Menu className="h-5 w-5 text-white" />
+            <Menu className="h-5 w-5 text-[#D6BCFA]" />
           </Button>
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="w-[280px] bg-black/30 backdrop-blur-xl border-r border-white/10 p-0 shadow-2xl"
+          className="w-[240px] bg-transparent border-r border-[#D6BCFA]/10 p-0 shadow-2xl"
         >
           <div className="pt-6">
             <div className="px-4 mb-4">
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 backdrop-blur-sm">
-                <div className="bg-[#9b87f5]/20 p-1.5 rounded-lg">
-                  <Settings className="w-4 h-4 text-[#9b87f5]" />
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-[#9b87f5]/5">
+                <div className="bg-[#9b87f5]/10 p-1.5 rounded-lg">
+                  <Settings className="w-4 h-4 text-[#D6BCFA]" />
                 </div>
                 <div>
-                  <h2 className="text-sm font-medium text-white">Menu Admin</h2>
-                  <p className="text-[10px] text-white/60">Painel de Controle</p>
+                  <h2 className="text-sm font-medium text-[#D6BCFA]">Menu Admin</h2>
+                  <p className="text-[10px] text-[#D6BCFA]/60">Painel de Controle</p>
                 </div>
               </div>
             </div>
