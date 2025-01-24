@@ -5,6 +5,8 @@ import { UnifiedAdminSidebar } from "@/components/admin/UnifiedAdminSidebar";
 import { DesktopAdminSidebar } from "@/components/admin/DesktopAdminSidebar";
 import { AdminStats } from "@/components/admin/AdminStats";
 import { AdminMobileStats } from "@/components/admin/AdminMobileStats";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Admin = () => {
@@ -19,7 +21,21 @@ const Admin = () => {
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C]">
       <div className="fixed top-0 left-0 right-0 z-50">
-        <Header isLoggedIn={isLoggedIn} />
+        <div className="flex items-center">
+          {!isMobile && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleSidebar}
+              className="ml-4 h-8 w-8 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          )}
+          <div className="flex-1">
+            <Header isLoggedIn={isLoggedIn} />
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-1 mt-[60px] mb-[48px] overflow-hidden">

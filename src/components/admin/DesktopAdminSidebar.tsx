@@ -1,13 +1,12 @@
-import { Home, Users, Settings, BarChart2, MessageSquare, Menu } from "lucide-react";
+import { Home, Users, Settings, BarChart2, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
 interface DesktopAdminSidebarProps {
   isCollapsed: boolean;
   onToggle?: () => void;
 }
 
-export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSidebarProps) => {
+export const DesktopAdminSidebar = ({ isCollapsed }: DesktopAdminSidebarProps) => {
   const menuItems = [
     { icon: Home, path: '/admin', label: 'Dashboard' },
     { icon: Users, path: '/admin/users', label: 'Usuários' },
@@ -18,7 +17,7 @@ export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSideb
 
   return (
     <aside
-      className={`hidden md:flex flex-col justify-between fixed left-0 bottom-[68px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
+      className={`hidden md:block fixed left-0 bottom-[68px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
         isCollapsed ? 'w-[70px]' : 'w-[240px]'
       }`}
     >
@@ -49,20 +48,6 @@ export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSideb
           </ul>
         </nav>
       </div>
-
-      <div className="p-4">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onToggle}
-          className={`w-full h-8 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300 ${
-            isCollapsed ? 'justify-center' : 'justify-start px-2'
-          }`}
-        >
-          <Menu className="h-5 w-5" />
-        </Button>
-      </div>
-
       <style>
         {`
           @keyframes fadeSlideIn {

@@ -1,8 +1,7 @@
-import { Home, Users, Settings, BarChart2, MessageSquare, Menu } from "lucide-react";
+import { Home, Users, Settings, BarChart2, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useState } from "react";
 
 interface UnifiedAdminSidebarProps {
   isCollapsed: boolean;
@@ -11,8 +10,6 @@ interface UnifiedAdminSidebarProps {
 
 export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSidebarProps) => {
   const isMobile = useIsMobile();
-  const [isOpen, setIsOpen] = useState(false);
-  
   const menuItems = [
     { icon: Home, path: '/admin', tooltip: 'Dashboard' },
     { icon: Users, path: '/admin/users', tooltip: 'Usuários' },
@@ -50,41 +47,35 @@ export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSideb
 
   if (isMobile) {
     return (
-      <>
-        {isOpen && (
-          <aside className="fixed left-0 bottom-[68px] h-fit max-h-[360px] w-[65px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 z-50">
-            <style>
-              {`
-                @keyframes fadeSlideIn {
-                  from {
-                    opacity: 0;
-                    transform: translateX(-20px);
-                  }
-                  to {
-                    opacity: 1;
-                    transform: translateX(0);
-                  }
-                }
-              `}
-            </style>
-            <MenuContent />
-          </aside>
-        )}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="fixed bottom-20 right-4 h-10 w-10 rounded-full bg-[#9b87f5]/10 hover:bg-[#9b87f5]/20 z-50"
-          onClick={() => setIsOpen(!isOpen)}
+      <Sheet defaultOpen={false}>
+        <SheetContent
+          side="left"
+          className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 animate-slide-up [&>button]:hidden touch-pan-y"
+          swipeDirection="right"
         >
-          <Menu className="h-5 w-5 text-[#D6BCFA]" />
-        </Button>
-      </>
+          <style>
+            {`
+              @keyframes fadeSlideIn {
+                from {
+                  opacity: 0;
+                  transform: translateX(-20px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateX(0);
+                }
+              }
+            `}
+          </style>
+          <MenuContent />
+        </SheetContent>
+      </Sheet>
     );
   }
 
   return (
     <aside
-      className={`fixed left-0 bottom-[68px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
+      className={`fixed left-0 top-[60px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
         isCollapsed ? 'w-0 opacity-0' : 'w-[65px] opacity-100'
       }`}
     >

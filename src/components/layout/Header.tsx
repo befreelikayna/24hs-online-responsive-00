@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut, CirclePlay, Menu, LayoutDashboard } from "lucide-react";
+import { Bell, MessageSquare, User, LogOut, CirclePlay } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -13,26 +13,14 @@ import {
 interface HeaderProps {
   isLoggedIn?: boolean;
   onLogout?: () => void;
-  showMenuButton?: boolean;
-  onMenuClick?: () => void;
 }
 
-export const Header = ({ isLoggedIn = false, onLogout, showMenuButton = false, onMenuClick }: HeaderProps) => {
+export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
   return (
     <header className="bg-gradient-to-r from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] border-b border-[#9b87f5]/10 px-2 py-2 md:px-4 md:py-2.5">
       <div className="w-full px-4 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-2 md:gap-3">
-          {showMenuButton && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onMenuClick}
-              className="h-8 w-8 text-[#D6BCFA] hover:bg-[#9b87f5]/10 transition-all duration-300"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-          )}
           <div className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#9b87f5] via-[#D6BCFA] to-[#9b87f5] rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] p-1 md:p-1.5 rounded-lg group transition-all duration-300 hover:scale-105">
@@ -84,12 +72,6 @@ export const Header = ({ isLoggedIn = false, onLogout, showMenuButton = false, o
                     <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
                       <User className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                       <span>Perfil</span>
-                    </DropdownMenuItem>
-                  </Link>
-                  <Link to="/admin">
-                    <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
-                      <LayoutDashboard className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
-                      <span>Admin</span>
                     </DropdownMenuItem>
                   </Link>
                   <DropdownMenuItem 
