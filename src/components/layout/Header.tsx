@@ -1,6 +1,6 @@
 import { Bell, MessageSquare, User, LogOut, CirclePlay } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,12 +16,17 @@ interface HeaderProps {
 }
 
 export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
+  const navigate = useNavigate();
+
   return (
     <header className="bg-gradient-to-r from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] border-b border-[#9b87f5]/10 px-2 py-2 md:px-4 md:py-2.5">
       <div className="w-full px-4 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-2 md:gap-3">
-          <div className="relative group">
+          <div 
+            className="relative group cursor-pointer"
+            onClick={() => navigate('/admin')}
+          >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#9b87f5] via-[#D6BCFA] to-[#9b87f5] rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative bg-gradient-to-br from-[#2C2F3E] to-[#1A1F2C] p-1 md:p-1.5 rounded-lg group transition-all duration-300 hover:scale-105">
               <CirclePlay className="w-4 h-4 md:w-5 md:h-5 text-[#D6BCFA] transition-all duration-300 group-hover:text-white group-hover:rotate-[360deg]" />
