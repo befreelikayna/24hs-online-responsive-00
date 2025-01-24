@@ -1,8 +1,12 @@
-import { Home, Users, Settings, BarChart2, MessageSquare, Menu } from "lucide-react";
+import { Home, Users, Settings, BarChart2, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 interface UnifiedAdminSidebarProps {
   isCollapsed: boolean;
@@ -48,20 +52,8 @@ export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSideb
 
   if (isMobile) {
     return (
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="fixed right-4 bottom-16 z-50 h-10 w-10 rounded-full bg-[#9b87f5]/20 backdrop-blur-md border border-[#D6BCFA]/20 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-500 animate-[pulse_3s_ease-in-out_infinite] hover:animate-none"
-          >
-            <Menu className="h-5 w-5 text-[#D6BCFA] transition-transform duration-300 hover:rotate-180" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent
-          side="left"
-          className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 animate-slide-up [&>button]:hidden"
-        >
+      <Drawer direction="right">
+        <DrawerContent className="w-[65px] h-fit max-h-[360px] mt-[60px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10">
           <style>
             {`
               @keyframes fadeSlideIn {
@@ -77,14 +69,14 @@ export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSideb
             `}
           </style>
           <MenuContent />
-        </SheetContent>
-      </Sheet>
+        </DrawerContent>
+      </Drawer>
     );
   }
 
   return (
     <aside
-      className={`fixed left-0 top-[60px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
+      className={`fixed left-0 bottom-[68px] h-fit max-h-[360px] bg-gradient-to-b from-[#1a1f2c]/90 via-[#2C2F3E]/85 to-[#1a1f2c]/90 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl rounded-br-3xl rounded-tr-3xl border-t border-t-[#D6BCFA]/10 transition-all duration-300 ease-in-out ${
         isCollapsed ? 'w-0 opacity-0' : 'w-[65px] opacity-100'
       }`}
     >
