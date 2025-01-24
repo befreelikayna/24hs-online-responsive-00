@@ -19,7 +19,7 @@ export const Header = ({ isLoggedIn = false, onLogout }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 left-0 right-0 safe-top bg-gradient-to-r from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] border-b border-[#9b87f5]/10 px-2 py-2 md:px-4 md:py-2.5 z-50">
+    <header className="bg-gradient-to-r from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] border-b border-[#9b87f5]/10 px-2 py-2 md:px-4 md:py-2.5">
       <div className="w-full px-4 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-2 md:gap-3">
