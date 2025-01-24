@@ -18,12 +18,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen w-screen flex flex-col bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C] overflow-hidden">
-      <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} />
+    <div className="h-screen flex flex-col overflow-hidden bg-gradient-to-b from-[#1A1F2C] via-[#2C2F3E] to-[#1A1F2C]">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} />
+      </div>
 
-      <main className="flex-1 w-full overflow-hidden">
+      <main className="flex-1 overflow-y-auto mt-[60px] mb-[48px] scrollbar-hide">
         <div className="h-full flex flex-col lg:flex-row gap-4 p-4">
-          <div className="w-full lg:w-2/3 flex flex-col gap-4 lg:overflow-y-auto">
+          <div className="w-full lg:w-2/3 flex flex-col gap-4">
             <StreamPlayer />
             <NavigationTabs 
               activeSection={activeSection} 
@@ -32,7 +34,7 @@ const Index = () => {
             />
           </div>
 
-          <div className="w-full lg:w-1/3 h-full">
+          <div className="w-full lg:w-1/3">
             <ContentPanel 
               activeSection={activeSection} 
               isLoggedIn={isLoggedIn}
@@ -42,7 +44,9 @@ const Index = () => {
         </div>
       </main>
 
-      <Footer />
+      <div className="fixed bottom-0 left-0 right-0">
+        <Footer />
+      </div>
     </div>
   );
 };
