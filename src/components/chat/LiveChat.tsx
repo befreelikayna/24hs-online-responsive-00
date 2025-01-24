@@ -35,6 +35,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     }
     
     setNewMessage("");
+    setSelectedMessageId(null);
     
     if (!isUserScrolling) {
       setTimeout(scrollToBottom, 100);
@@ -74,6 +75,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
           value={newMessage}
           onChange={setNewMessage}
           onSend={handleSendMessage}
+          isReply={!!selectedMessageId}
         />
       </div>
     </div>
