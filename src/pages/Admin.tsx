@@ -3,12 +3,15 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminStats } from "@/components/admin/AdminStats";
+import { AdminMobileStats } from "@/components/admin/AdminMobileStats";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Admin = () => {
   const [isLoggedIn] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const isMobile = useIsMobile();
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -35,8 +38,8 @@ const Admin = () => {
       <div className="flex flex-1 mt-[60px] mb-[48px] overflow-hidden">
         <AdminSidebar isCollapsed={isSidebarCollapsed} />
         <main className={`flex-1 overflow-y-auto transition-all duration-300 ${isSidebarCollapsed ? 'ml-[60px]' : 'ml-[240px]'}`}>
-          <div className="w-full max-w-[1400px] mx-auto p-6">
-            <AdminStats />
+          <div className="w-full max-w-[1400px] mx-auto">
+            {isMobile ? <AdminMobileStats /> : <AdminStats />}
           </div>
         </main>
       </div>
