@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { UnifiedAdminSidebar } from "@/components/admin/UnifiedAdminSidebar";
@@ -15,7 +15,6 @@ const Admin = () => {
   const [isLoggedIn] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const isMobile = useIsMobile();
-  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
