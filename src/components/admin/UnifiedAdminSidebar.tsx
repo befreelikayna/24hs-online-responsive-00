@@ -37,7 +37,7 @@ export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSideb
           >
             <div className="flex items-center justify-center p-1.5 rounded-lg hover:bg-[#9b87f5]/20 transition-all duration-500 group-hover:translate-y-[-2px]">
               <div className="p-2 rounded-lg bg-[#9b87f5]/10 group-hover:bg-[#9b87f5]/30 transition-all duration-500 group-hover:rotate-[12deg] hover:shadow-lg hover:shadow-purple-500/20">
-                <item.icon className="w-5 h-5 text-white transition-all duration-500 group-hover:scale-110 group-hover:text-white" />
+                <item.icon className="w-5 h-5 text-[#D6BCFA] transition-all duration-500 group-hover:scale-110 group-hover:text-white" />
               </div>
             </div>
           </Link>
