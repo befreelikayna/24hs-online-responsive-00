@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { UnifiedAdminSidebar } from "@/components/admin/UnifiedAdminSidebar";
@@ -14,10 +13,28 @@ import Settings from "./admin/Settings";
 const Admin = () => {
   const [isLoggedIn] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
+  const [currentContent, setCurrentContent] = useState('dashboard');
   const isMobile = useIsMobile();
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
+
+  const renderContent = () => {
+    switch (currentContent) {
+      case 'dashboard':
+        return <Dashboard />;
+      case 'users':
+        return <Users />;
+      case 'messages':
+        return <Messages />;
+      case 'reports':
+        return <Reports />;
+      case 'settings':
+        return <Settings />;
+      default:
+        return <Dashboard />;
+    }
   };
 
   return (
@@ -27,22 +44,26 @@ const Admin = () => {
       </div>
 
       <div className="flex flex-1 mt-[60px] mb-[48px] overflow-hidden">
-        {/* Mobile Menu */}
-        {isMobile && <UnifiedAdminSidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />}
+        {isMobile && (
+          <UnifiedAdminSidebar 
+            isCollapsed={isSidebarCollapsed} 
+            onToggle={toggleSidebar}
+            onMenuSelect={setCurrentContent}
+          />
+        )}
         
-        {/* Desktop Menu */}
-        {!isMobile && <DesktopAdminSidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />}
+        {!isMobile && (
+          <DesktopAdminSidebar 
+            isCollapsed={isSidebarCollapsed} 
+            onToggle={toggleSidebar}
+            onMenuSelect={setCurrentContent}
+          />
+        )}
         
         <main className={`flex-1 overflow-y-auto p-6 transition-all duration-300 ${
           !isMobile ? (isSidebarCollapsed ? 'ml-[70px]' : 'ml-[240px]') : 'ml-0'
         }`}>
-          <Routes>
-            <Route index element={<Dashboard />} />
-            <Route path="users" element={<Users />} />
-            <Route path="messages" element={<Messages />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="settings" element={<Settings />} />
-          </Routes>
+          {renderContent()}
         </main>
       </div>
 

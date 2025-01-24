@@ -1,18 +1,18 @@
 import { Home, Users, Settings, BarChart2, MessageSquare, PanelLeftClose, PanelLeft } from "lucide-react";
-import { Link } from "react-router-dom";
 
 interface DesktopAdminSidebarProps {
   isCollapsed: boolean;
   onToggle?: () => void;
+  onMenuSelect?: (menu: string) => void;
 }
 
-export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSidebarProps) => {
+export const DesktopAdminSidebar = ({ isCollapsed, onToggle, onMenuSelect }: DesktopAdminSidebarProps) => {
   const menuItems = [
-    { icon: Home, path: '/admin', label: 'Dashboard' },
-    { icon: Users, path: '/admin/users', label: 'Usuários' },
-    { icon: MessageSquare, path: '/admin/messages', label: 'Mensagens' },
-    { icon: BarChart2, path: '/admin/reports', label: 'Relatórios' },
-    { icon: Settings, path: '/admin/settings', label: 'Configurações' },
+    { icon: Home, id: 'dashboard', label: 'Dashboard' },
+    { icon: Users, id: 'users', label: 'Usuários' },
+    { icon: MessageSquare, id: 'messages', label: 'Mensagens' },
+    { icon: BarChart2, id: 'reports', label: 'Relatórios' },
+    { icon: Settings, id: 'settings', label: 'Configurações' },
   ];
 
   return (
@@ -25,10 +25,10 @@ export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSideb
         <nav className="py-4 px-2 md:px-3">
           <ul className="space-y-3">
             {menuItems.map((item, index) => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  className={`group flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} gap-3 p-2.5 rounded-lg hover:bg-[#9b87f5]/20 transition-all duration-500 hover:scale-105`}
+              <li key={item.id}>
+                <button
+                  onClick={() => onMenuSelect?.(item.id)}
+                  className={`group flex items-center w-full ${isCollapsed ? 'justify-center' : 'justify-start'} gap-3 p-2.5 rounded-lg hover:bg-[#9b87f5]/20 transition-all duration-500 hover:scale-105`}
                   style={{
                     animation: `fadeSlideIn 0.3s ease-out forwards`,
                     animationDelay: `${index * 0.1}s`,
@@ -42,11 +42,10 @@ export const DesktopAdminSidebar = ({ isCollapsed, onToggle }: DesktopAdminSideb
                       {item.label}
                     </span>
                   )}
-                </Link>
+                </button>
               </li>
             ))}
             
-            {/* Toggle Button */}
             <li>
               <button
                 onClick={onToggle}

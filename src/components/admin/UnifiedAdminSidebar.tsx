@@ -1,5 +1,4 @@
 import { Home, Users, Settings, BarChart2, MessageSquare, Menu } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -7,26 +6,27 @@ import { useIsMobile } from "@/hooks/use-mobile";
 interface UnifiedAdminSidebarProps {
   isCollapsed: boolean;
   onToggle?: () => void;
+  onMenuSelect?: (menu: string) => void;
 }
 
-export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSidebarProps) => {
+export const UnifiedAdminSidebar = ({ isCollapsed, onToggle, onMenuSelect }: UnifiedAdminSidebarProps) => {
   const isMobile = useIsMobile();
   const menuItems = [
-    { icon: Home, path: '/admin', tooltip: 'Dashboard' },
-    { icon: Users, path: '/admin/users', tooltip: 'Usuários' },
-    { icon: MessageSquare, path: '/admin/messages', tooltip: 'Mensagens' },
-    { icon: BarChart2, path: '/admin/reports', tooltip: 'Relatórios' },
-    { icon: Settings, path: '/admin/settings', tooltip: 'Configurações' },
+    { icon: Home, id: 'dashboard', tooltip: 'Dashboard' },
+    { icon: Users, id: 'users', tooltip: 'Usuários' },
+    { icon: MessageSquare, id: 'messages', tooltip: 'Mensagens' },
+    { icon: BarChart2, id: 'reports', tooltip: 'Relatórios' },
+    { icon: Settings, id: 'settings', tooltip: 'Configurações' },
   ];
 
   const MenuContent = () => (
     <nav className="p-2">
       <div className="space-y-2">
         {menuItems.map((item, index) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className="group block"
+          <button
+            key={item.id}
+            onClick={() => onMenuSelect?.(item.id)}
+            className="group block w-full"
             title={item.tooltip}
             style={{
               animation: `fadeSlideIn 0.3s ease-out forwards`,
@@ -40,7 +40,7 @@ export const UnifiedAdminSidebar = ({ isCollapsed, onToggle }: UnifiedAdminSideb
                 <item.icon className="w-5 h-5 text-[#D6BCFA] transition-all duration-500 group-hover:scale-110 group-hover:text-white" />
               </div>
             </div>
-          </Link>
+          </button>
         ))}
       </div>
     </nav>
