@@ -49,7 +49,7 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
   };
 
   const getInputStyles = () => {
-    const baseStyles = "scrollbar-hide min-h-[40px] max-h-[40px] bg-[#9b87f5]/5 border-0 focus-visible:bg-[#9b87f5]/10 focus-visible:ring-2 focus-visible:ring-[#9b87f5]/40 focus-visible:ring-offset-0 resize-none flex-1 rounded-md text-sm py-2 px-3";
+    const baseStyles = "scrollbar-hide min-h-[40px] max-h-[40px] bg-[#9b87f5]/5 border-0 focus-visible:bg-[#9b87f5]/10 focus-visible:ring-2 focus-visible:ring-[#9b87f5]/40 focus-visible:ring-offset-0 resize-none flex-1 rounded-md text-sm py-2 px-3 h-[40px]";
     
     if (isMobile && isAndroid) {
       return `${baseStyles} android-input-adjust`;
@@ -59,8 +59,8 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
   };
 
   return (
-    <div className="p-3">
-      <div className="flex gap-2 items-end">
+    <div className="p-3 h-[72px] flex-shrink-0">
+      <div className="flex gap-2 items-end h-full">
         <Textarea
           ref={textareaRef}
           value={value}
