@@ -1,4 +1,4 @@
-import { Home, Users, Settings, BarChart2, MessageSquare, Menu, ChevronRight } from "lucide-react";
+import { Home, Users, Settings, BarChart2, MessageSquare, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -11,11 +11,11 @@ interface AdminSidebarProps {
 export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
   const isMobile = useIsMobile();
   const menuItems = [
-    { icon: Home, label: 'Dashboard', path: '/admin', description: 'Visão geral do sistema' },
-    { icon: Users, label: 'Usuários', path: '/admin/users', description: 'Gerenciar usuários' },
-    { icon: MessageSquare, label: 'Mensagens', path: '/admin/messages', description: 'Central de mensagens' },
-    { icon: BarChart2, label: 'Relatórios', path: '/admin/reports', description: 'Análise de dados' },
-    { icon: Settings, label: 'Configurações', path: '/admin/settings', description: 'Ajustes do sistema' },
+    { icon: Home, path: '/admin', tooltip: 'Dashboard' },
+    { icon: Users, path: '/admin/users', tooltip: 'Usuários' },
+    { icon: MessageSquare, path: '/admin/messages', tooltip: 'Mensagens' },
+    { icon: BarChart2, path: '/admin/reports', tooltip: 'Relatórios' },
+    { icon: Settings, path: '/admin/settings', tooltip: 'Configurações' },
   ];
 
   const MenuContent = () => (
@@ -26,24 +26,12 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
             key={item.path}
             to={item.path}
             className="group block"
+            title={item.tooltip}
           >
-            <div className="flex items-center gap-2 p-2 rounded-lg hover:bg-[#9b87f5]/5 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/0 via-[#9b87f5]/5 to-[#9b87f5]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="bg-[#9b87f5]/5 p-2 rounded-lg group-hover:bg-[#9b87f5]/10 transition-all duration-300">
-                <item.icon className="w-4 h-4 text-[#D6BCFA] group-hover:scale-110 transition-all duration-300" />
+            <div className="flex items-center justify-center p-2 rounded-lg hover:bg-[#9b87f5]/20 transition-all duration-300">
+              <div className="p-2 rounded-lg group-hover:bg-[#9b87f5]/30 transition-all duration-300">
+                <item.icon className="w-5 h-5 text-[#D6BCFA] group-hover:scale-110 transition-all duration-300" />
               </div>
-              
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-[#D6BCFA] truncate group-hover:text-white transition-colors duration-300">
-                  {item.label}
-                </p>
-                <p className="text-[10px] text-[#D6BCFA]/60 truncate group-hover:text-[#D6BCFA]/80 transition-colors duration-300">
-                  {item.description}
-                </p>
-              </div>
-              
-              <ChevronRight className="w-3 h-3 text-[#D6BCFA]/40 group-hover:text-[#D6BCFA] group-hover:translate-x-0.5 transition-all duration-300" />
             </div>
           </Link>
         ))}
@@ -58,25 +46,19 @@ export const AdminSidebar = ({ isCollapsed }: AdminSidebarProps) => {
           <Button
             variant="ghost"
             size="icon"
-            className="fixed right-4 bottom-20 z-50 h-12 w-12 rounded-full bg-[#9b87f5]/10 backdrop-blur-sm border border-[#D6BCFA]/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="fixed right-4 bottom-20 z-50 h-12 w-12 rounded-full bg-[#9b87f5]/20 backdrop-blur-md border border-[#D6BCFA]/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             <Menu className="h-5 w-5 text-[#D6BCFA]" />
           </Button>
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="w-[240px] bg-transparent border-r border-[#D6BCFA]/10 p-0 shadow-2xl"
+          className="w-[65px] bg-[#1a1f2c]/80 backdrop-blur-md border-r border-[#D6BCFA]/10 p-0 shadow-2xl"
         >
           <div className="pt-6">
-            <div className="px-4 mb-4">
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-[#9b87f5]/5">
-                <div className="bg-[#9b87f5]/10 p-1.5 rounded-lg">
-                  <Settings className="w-4 h-4 text-[#D6BCFA]" />
-                </div>
-                <div>
-                  <h2 className="text-sm font-medium text-[#D6BCFA]">Menu Admin</h2>
-                  <p className="text-[10px] text-[#D6BCFA]/60">Painel de Controle</p>
-                </div>
+            <div className="flex justify-center mb-4">
+              <div className="p-2 rounded-lg bg-[#9b87f5]/20">
+                <Settings className="w-5 h-5 text-[#D6BCFA]" />
               </div>
             </div>
             <MenuContent />
