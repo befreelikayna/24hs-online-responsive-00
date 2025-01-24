@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useRef, useState, useEffect } from "react";
 import { Send } from "lucide-react";
+import { isAndroid } from "react-device-detect";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ChatInputProps {
   value: string;
@@ -14,6 +16,7 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [countdown, setCountdown] = useState<number>(0);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const isMobile = useIsMobile();
 
   const startCountdown = () => {
     const duration = isReply ? 10 : 30;
@@ -45,6 +48,16 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
     textareaRef.current?.focus();
   };
 
+  const getInputStyles = () => {
+    const baseStyles = "scrollbar-hide min-h-[40px] max-h-[40px] bg-[#9b87f5]/5 border-0 focus-visible:bg-[#9b87f5]/10 focus-visible:ring-2 focus-visible:ring-[#9b87f5]/40 focus-visible:ring-offset-0 resize-none flex-1 rounded-md text-sm py-2 px-3";
+    
+    if (isMobile && isAndroid) {
+      return `${baseStyles} android-input-adjust`;
+    }
+    
+    return baseStyles;
+  };
+
   return (
     <div className="p-3">
       <div className="flex gap-2 items-end">
@@ -53,7 +66,7 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={isDisabled ? "Aguarde para enviar novas mensagens..." : "Digite sua mensagem..."}
-          className="scrollbar-hide min-h-[40px] max-h-[40px] bg-[#9b87f5]/5 border-0 focus-visible:bg-[#9b87f5]/10 focus-visible:ring-2 focus-visible:ring-[#9b87f5]/40 focus-visible:ring-offset-0 resize-none flex-1 rounded-md text-sm py-2 px-3"
+          className={getInputStyles()}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();

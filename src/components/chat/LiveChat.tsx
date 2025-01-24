@@ -4,6 +4,8 @@ import { ChatInput } from "./ChatInput";
 import { UserInfo } from "./UserInfo";
 import { useChatMessages } from "./hooks/useChatMessages";
 import { useScrollSync } from "./hooks/useScrollSync";
+import { isAndroid } from "react-device-detect";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface LiveChatProps {
   filterUserMessages?: boolean;
@@ -14,6 +16,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
   const [newMessage, setNewMessage] = useState("");
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const [selectedMessageId, setSelectedMessageId] = useState<string | null>(null);
+  const isMobile = useIsMobile();
   
   const {
     messages,
@@ -50,6 +53,14 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
     ? messages.filter(message => message.userName === "Você")
     : messages;
 
+  // Calcula o padding bottom baseado no dispositivo
+  const getBottomPadding = () => {
+    if (isMobile && isAndroid) {
+      return "pb-[calc(env(safe-area-inset-bottom)+48px)]"; // 48px é aproximadamente a altura dos botões de navegação
+    }
+    return "pb-[env(safe-area-inset-bottom)]";
+  };
+
   return (
     <div className="flex flex-col h-full relative">
       {selectedUser ? (
@@ -70,7 +81,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
           />
         </div>
       )}
-      <div className="fixed bottom-0 left-0 right-0 z-50 pb-[env(safe-area-inset-bottom)] bg-background/95 backdrop-blur-sm shadow-lg">
+      <div className={`fixed bottom-0 left-0 right-0 z-50 ${getBottomPadding()} bg-background/95 backdrop-blur-sm shadow-lg`}>
         <ChatInput
           value={newMessage}
           onChange={setNewMessage}

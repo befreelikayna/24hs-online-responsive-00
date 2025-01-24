@@ -49,6 +49,10 @@
   .overflow-wrap-anywhere {
     overflow-wrap: anywhere;
   }
+  
+  .android-input-adjust {
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
 }
 
 /* Custom scrollbar styles */
