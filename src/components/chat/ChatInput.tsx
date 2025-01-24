@@ -42,13 +42,12 @@ export const ChatInput = ({ value, onChange, onSend, isReply = false }: ChatInpu
     
     onSend();
     startCountdown();
-    // Focus back on the textarea after sending
     textareaRef.current?.focus();
   };
 
   return (
-    <div className="bg-background/95 backdrop-blur-sm border-t border-[#9b87f5]/10">
-      <div className="flex gap-2 items-end p-3">
+    <div className="p-3">
+      <div className="flex gap-2 items-end">
         <Textarea
           ref={textareaRef}
           value={value}

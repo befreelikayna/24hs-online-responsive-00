@@ -30,10 +30,9 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
 
     if (selectedMessageId) {
       handleReply(selectedMessageId, newMessage);
-      // Don't clear selectedMessageId when replying
     } else {
       addMessage(newMessage);
-      setSelectedMessageId(null); // Only clear when sending a new message
+      setSelectedMessageId(null);
     }
     
     setNewMessage("");
@@ -58,7 +57,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
       ) : (
         <div 
           ref={scrollRef} 
-          className="absolute top-0 left-0 right-0 bottom-0 overflow-y-auto pb-16"
+          className="absolute top-0 left-0 right-0 bottom-[80px] overflow-y-auto pb-4"
           onScroll={() => handleScroll()}
         >
           <MessagesList
@@ -71,7 +70,7 @@ export const LiveChat = ({ filterUserMessages = false, onUnreadCountChange }: Li
           />
         </div>
       )}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
+      <div className="fixed bottom-0 left-0 right-0 z-50 pb-[env(safe-area-inset-bottom)] bg-background/95 backdrop-blur-sm shadow-lg">
         <ChatInput
           value={newMessage}
           onChange={setNewMessage}
