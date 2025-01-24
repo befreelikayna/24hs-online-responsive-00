@@ -23,29 +23,18 @@ export const ContentPanel = ({ activeSection, isLoggedIn = false, onDemoLogin }:
 
   const handleStateToggle = () => {
     if (isMobile) {
-      if (!isFullscreen && !isMinimized) {
-        setIsFullscreen(true);
-        setIsMinimized(false);
-      } else if (isFullscreen) {
-        setIsFullscreen(false);
-        setIsMinimized(true);
-      } else {
-        setIsMinimized(false);
-        setIsFullscreen(false);
-      }
+      setIsFullscreen(!isFullscreen);
     }
   };
 
   const getStateIcon = () => {
     if (!isMobile) return null;
     
-    if (isFullscreen) {
-      return <Minimize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />;
-    } else if (isMinimized) {
-      return <Maximize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />;
-    } else {
-      return <Maximize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />;
-    }
+    return isFullscreen ? (
+      <Minimize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />
+    ) : (
+      <Maximize2 className="w-5 h-5 text-[#9b87f5] cursor-pointer hover:text-[#D6BCFA] transition-colors" />
+    );
   };
 
   if (!isLoggedIn) {
