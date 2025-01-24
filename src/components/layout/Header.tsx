@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut, CirclePlay, Menu } from "lucide-react";
+import { Bell, MessageSquare, User, LogOut, CirclePlay, Menu, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -84,6 +84,12 @@ export const Header = ({ isLoggedIn = false, onLogout, showMenuButton = false, o
                     <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
                       <User className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                       <span>Perfil</span>
+                    </DropdownMenuItem>
+                  </Link>
+                  <Link to="/admin">
+                    <DropdownMenuItem className="hover:bg-[#9b87f5]/10 cursor-pointer transition-colors duration-200 group">
+                      <LayoutDashboard className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+                      <span>Admin</span>
                     </DropdownMenuItem>
                   </Link>
                   <DropdownMenuItem 
